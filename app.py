@@ -4,27 +4,24 @@ import pydeck as pdk
 import time
 
 # ==========================================
-# 1. 页面基本配置
+# 1. 页面基本配置 (这次一定从这里开始复制)
 # ==========================================
 st.set_page_config(layout="wide", page_title="Asian Carbon Sandbox", page_icon="🌍")
 
-# ==========================================
-# 2. 状态初始化 & 顶层播放引擎
-# ==========================================
 if 'play_year' not in st.session_state:
     st.session_state.play_year = 1997
 if 'is_playing' not in st.session_state:
     st.session_state.is_playing = False
 
 if st.session_state.is_playing:
-    time.sleep(1.0) # 史诗版内容较多，稍微放慢语速
+    time.sleep(1.0) # 留出1秒钟的阅读时间
     if st.session_state.play_year < 2060:
         st.session_state.play_year += 1
     else:
         st.session_state.is_playing = False
 
 # ==========================================
-# 3. 语言切换
+# 2. 语言字典
 # ==========================================
 with st.sidebar:
     lang = st.radio("🌐 Language", ["中文", "English"], horizontal=True)
@@ -74,7 +71,7 @@ else:
     }
 
 # ==========================================
-# 4. 侧边栏
+# 3. 侧边栏
 # ==========================================
 with st.sidebar:
     st.header(t["sidebar_title"])
@@ -94,10 +91,9 @@ with st.sidebar:
     st.markdown(t["legend_title"] + "\n" + t["legend_text"])
 
 # ==========================================
-# 5. 【史诗级】国家历史数据库
+# 4. 【史诗级】国家历史数据库 (融合了PM最新研究成果)
 # ==========================================
 def get_detailed_history(country, year, lang):
-    # 这里存储的是你提供的完整文本
     db = {
         "cn": {
             1997: ("签署《京都议定书》，以发展中国家身份开始接触碳排放概念。", "Signed Kyoto Protocol, introduced to carbon emission concepts."),
@@ -107,10 +103,10 @@ def get_detailed_history(country, year, lang):
             2013: ("深圳、上海、北京碳排放权交易试点先后启动交易。", "Pilot ETS launched sequentially in Shenzhen, Shanghai, and Beijing."),
             2015: ("在巴黎气候大会承诺争取2030年前碳达峰。", "Committed at Paris Agreement to peak carbon emissions before 2030."),
             2017: ("《全国碳排放权交易市场建设方案》印发，启动全国市场建设。", "National ETS construction plan issued, initiating the market framework."),
-            2020: ("联合国大会宣布'3060'双碳目标（2030达峰，2060中和）。", "Announced '3060' dual carbon goals at the UN General Assembly."),
+            2020: ("联合国大会宣布'3060'双碳目标。", "Announced '3060' dual carbon goals at the UN General Assembly."),
             2021: ("全国碳市场正式上线，首批纳入发电行业，成为全球最大碳市场。", "National ETS officially launched for the power sector, becoming the world's largest."),
             2023: ("推进第二履约周期，研究纳入石化、钢铁等高耗能行业。", "Advanced 2nd compliance period, researching expansion to high-emission sectors."),
-            2024: ("首部行政法规发布；重启CCER；明确钢铁、水泥、铝冶炼纳入全国碳市场。", "First ETS regulation issued; CCER restarted; steel, cement & aluminum included."),
+            2024: ("重启CCER；首部行政法规发布；明确钢铁、水泥、铝冶炼纳入全国碳市场。", "CCER restarted; First ETS regulation issued; steel, cement & aluminum included."),
             2025: ("全国碳市场实现八大高耗能行业全覆盖，交易机制趋于成熟。", "National ETS covers all 8 major energy-intensive sectors."),
             2030: ("实现碳达峰。碳市场成熟，碳价有效反映减排成本。", "Carbon peak achieved. ETS matures with effective price signals."),
             2035: ("风光装机容量大幅提升，碳排放进入显著下降通道。", "Wind and solar capacity surges, emissions enter significant decline."),
@@ -147,8 +143,6 @@ def get_detailed_history(country, year, lang):
     }
     
     if country not in db: return ""
-    
-    # 获取截至该年份的最新动态
     years = sorted([y for y in db[country].keys() if y <= year])
     if not years: return "前期准备与能力建设阶段 / Preparation phase"
     
@@ -157,7 +151,7 @@ def get_detailed_history(country, year, lang):
     return f"【{latest}】{msg}"
 
 # ==========================================
-# 6. 绘图引擎
+# 5. 绘图引擎
 # ==========================================
 def get_data(year, cbam, link, t, lang):
     nodes = []
@@ -165,7 +159,6 @@ def get_data(year, cbam, link, t, lang):
         desc = get_detailed_history(code, year, lang)
         nodes.append({"name": name, "lon": lon, "lat": lat, "color": color, "radius": radius, "status": desc})
 
-    # 中国膨胀逻辑
     cn_r = 35000 if year < 2021 else (90000 if year < 2030 else 160000)
     
     if year >= 2011: add("cn", t["cn"], 116.4, 39.9, [255, 50, 50, 200], cn_r)
@@ -181,12 +174,10 @@ def get_data(year, cbam, link, t, lang):
         nodes.append({"name": t["my"], "lon": 101.9, "lat": 4.2, "color": [255, 200, 50, 200], "radius": 28000, "status": "2026: 计划征收钢铁行业碳税"})
 
     arcs = []
-    # 基础绿线
     if year >= 2020:
         for s in [[106.8, -6.2], [105.8, 21.0]]:
             for b in [[103.8, 1.3], [139.6, 35.6]]:
                 arcs.append({"s": s, "t": b, "c": [50, 255, 120, 150]})
-    # 事件线
     if year >= 2024: arcs.append({"s": [105.8, 21.0], "t": [103.8, 1.3], "c": [0, 255, 255, 255]})
     if 2022 <= year <= 2025: arcs.append({"s": [106.8, -6.2], "t": [103.8, 1.3], "c": [255, 140, 0, 255]})
     if year >= 2027:
@@ -204,7 +195,7 @@ def get_data(year, cbam, link, t, lang):
 dn, da = get_data(selected_year, cbam_trigger, link_trigger, t, lang)
 
 # ==========================================
-# 7. 渲染
+# 6. 渲染
 # ==========================================
 st.title(t["title"])
 st.markdown(f"**{t['subtitle']}**")
@@ -226,15 +217,12 @@ with col2:
         pdk.Layer("ArcLayer", da, get_source_position="s", get_target_position="t", get_source_color="c", get_target_color="c", get_width=4)
     ]
     
-    # 核心修复：更鲁棒的 Tooltip 语法
+    # 极简稳定版 Tooltip 语法
     st.pydeck_chart(pdk.Deck(
         layers=layers,
         initial_view_state=view,
         map_style="https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json",
-        tooltip={
-            "html": "<b>{name}</b><br/>{status}",
-            "style": {"backgroundColor": "#1a1a1a", "color": "white", "fontSize": "14px", "maxWidth": "300px"}
-        }
+        tooltip={"html": "<b>{name}</b><br/>{status}"}
     ))
 
 if st.session_state.is_playing: st.rerun()
