@@ -30,7 +30,7 @@ with st.sidebar:
 if lang == "中文":
     t = {
         "title": "🌍 亚洲碳市场与气候地缘世纪推演 (1997-2060)",
-        "subtitle": "SIPA 期末项目展示 | 研究员: Joey Wang",
+        "subtitle": "亚洲能源安全期末项目 | Jiayi 'Joey' Wang",
         "sidebar_title": "⚙️ 战略控制台",
         "slider": "🕰️ 时代演进",
         "play": "▶️ 播放", "pause": "⏸️ 暂停",
@@ -51,7 +51,7 @@ if lang == "中文":
 else:
     t = {
         "title": "🌍 Asian Carbon Market & Climate Geopolitics Sandbox",
-        "subtitle": "Asian Energy Security Final Project | Researcher: Jiayi "Joey" Wang",
+        "subtitle": "Asian Energy Security Final Project | Jiayi 'Joey' Wang",
         "sidebar_title": "⚙️ Command Center",
         "slider": "🕰️ Timeline Evolution",
         "play": "▶️ Play", "pause": "Pause",
