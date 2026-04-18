@@ -1,5 +1,3 @@
-# asian-carbon-market-sandbox
-
 # 🌍 亚洲碳市场与气候地缘政治沙盒 (1997-2060)
 # Asian Carbon Market & Climate Geopolitics Sandbox (1997-2060)
 
