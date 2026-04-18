@@ -148,20 +148,55 @@ def get_detailed_history(country, year, lang):
             2060: ("通过CCUS等负排放技术维持净负排放，巩固碳中和成果。", "Achieved net-negative emissions via CCUS to solidify carbon neutrality.")
         },
         "sg": {
-            2019: ("引入碳税机制，覆盖全国80%排放，初始税率5新元/吨。", "Introduced carbon tax ($5/t) covering 80% of national emissions."),
-            2024: ("碳税大幅提升至25新元/吨，积极推动《巴黎协定》第六条双边合作。", "Tax raised to $25/t; advancing Article 6 bilateral cooperation.")
+            1997: ("签署《京都议定书》，开始关注气候变化与碳排放。", "Signed Kyoto Protocol; began focusing on climate change."),
+            2006: ("发布《国家气候变化战略》，明确低碳发展方向。", "Released National Climate Change Strategy for low-carbon development."),
+            2012: ("启动排放监测和报告(MRV)框架，为碳交易铺路。", "Launched emissions MRV framework, paving the way for carbon pricing."),
+            2017: ("宣布将在2019年施行碳税，成为亚洲首个实施碳税的国家。", "Announced carbon tax for 2019, becoming the first in Asia."),
+            2019: ("正式实施碳税(5新元/吨)，覆盖年度排放达2.5万吨的设施。", "Implemented carbon tax ($5/t) for facilities >25,000t CO2e."),
+            2021: ("发布'新加坡2030绿色发展蓝图'，明确减碳路径。", "Launched Singapore Green Plan 2030, clarifying decarbonization path."),
+            2022: ("宣布大幅提高碳税：2024年增至25新元，2030年目标50-80新元。", "Announced steep tax hike: $25 by 2024, aiming for $50-$80 by 2030."),
+            2024: ("新碳税(25新元)生效，允许使用高质量碳权抵消最高5%排放。", "New tax ($25) effective; allows high-quality offsets for up to 5% emissions."),
+            2025: ("成功举办首场高标准碳权拍卖，吸引超10亿美金投标，确立枢纽地位。", "Held high-standard carbon auction (~$1B USD bids), securing hub status."),
+            2030: ("实现碳排放达峰，较正常水平减少约31.89%-43.2%。", "Emissions peak achieved; reduced ~31.89%-43.2% from BAU."),
+            2050: ("实现国家净零排放(Net-Zero)承诺。", "Achieved national net-zero emissions commitment."),
+            2060: ("维持碳中和愿景，相关法规深度融入国家长期发展战略。", "Maintained carbon neutrality, deeply integrated into long-term strategy.")
         },
         "id": {
-            2023: ("启动针对燃煤电厂的强制ETS，是东南亚首个强制碳市场。", "Launched mandatory ETS for coal plants, first in SE-Asia."),
-            2028: ("引入'总量上限—碳税—交易'混合机制，碳税与市场价挂钩。", "Introduced Cap-Tax-Trade hybrid mechanism linked to market prices.")
+            1997: ("泥炭地大火引发全球对印尼土地利用(LULUCF)碳排放的关注。", "Peatland fires drew global attention to Indonesia's LULUCF carbon emissions."),
+            2007: ("举办COP13通过《巴厘路线图》，奠定林业减碳国际地位。", "Hosted COP13 (Bali Action Plan), securing international status in forestry decarbonization."),
+            2010: ("与挪威签署10亿美元REDD+备忘录，通过保护森林获取碳汇资金。", "Signed $1B REDD+ MoU with Norway to secure carbon funds by protecting forests."),
+            2015: ("签署《巴黎协定》并提交国家自主贡献(NDC)减排目标。", "Signed Paris Agreement and submitted NDC reduction targets."),
+            2021: ("颁布总统第98号条例确立碳经济价值；承诺2060净零排放。", "Issued PR 98/2021 on Carbon Economic Value; pledged Net Zero by 2060."),
+            2022: ("提出JETP寻求资金退役煤电；因通胀推迟原定征收的碳税。", "Proposed JETP to retire coal; carbon tax delayed due to inflation."),
+            2023: ("9月正式启动首个本土碳交易所(IDXCarbon)，首批为林业碳信用。", "Launched IDXCarbon in Sept, with forestry credits as initial trades."),
+            2025: ("印尼碳交易所正式对外国投资者开放；碳税计划预期重启。", "IDXCarbon opens to foreign investors; carbon tax expected to resume."),
+            2030: ("工业、能源和交通部门全面纳入配额交易体系。", "Industry, energy, and transport sectors fully integrated into ETS."),
+            2050: ("目标实现电力部门碳中和。", "Target to achieve carbon neutrality in the power sector."),
+            2060: ("依托ETS、森林碳汇及CCS技术实现全面净零排放。", "Achieve Net Zero through ETS, forestry sinks, and CCS technology.")
         },
         "vn": {
-            2025: ("全国试点碳市场正式启动，覆盖电力、钢铁和水泥行业。", "National pilot ETS launched for power, steel, and cement."),
-            2029: ("全国碳市场完成试点，正式全面运行，逐步引入拍卖机制。", "ETS pilot completed; full mandatory operation begins with auctions.")
+            1997: ("签署《京都议定书》，开始寻求国际碳资金合作的可能性。", "Signed Kyoto Protocol; sought international carbon finance cooperation."),
+            2005: ("积极利用CDM机制，在能源等领域开发项目并出售CERs。", "Actively utilized CDM, developing energy projects and selling CERs."),
+            2015: ("签署《巴黎协定》，承诺自主减排。", "Signed Paris Agreement, committing to self-determined emission reductions."),
+            2020: ("修订《环境保护法》，确立建立ETS和碳信用市场的法律基础。", "Revised Environmental Protection Law, establishing legal basis for ETS."),
+            2022: ("颁布06/2022/ND-CP决议，确立碳定价框架及ETS时间表。", "Issued Decree 06/2022/ND-CP, establishing carbon pricing framework and ETS timeline."),
+            2024: ("确立碳盘查与报告合规要求，高碳排企业须年度报送。", "Established MRV compliance; high-emission enterprises must submit annual reports."),
+            2025: ("启动国家ETS试点运行，纳入水泥、钢铁、火电等重点行业。", "Launch pilot national ETS, incorporating cement, steel, and thermal power."),
+            2026: ("基于试点数据优化配额分配，尝试引入拍卖机制。", "Optimize quota allocation based on pilot data; introduce auctioning mechanism."),
+            2027: ("正式实施碳交易市场，纳入更多高耗能企业。", "Officially implement carbon market, expanding to more energy-intensive enterprises.")
         },
         "in": {
-            2023: ("碳信用交易计划(CCTS)启动交易试点。", "CCTS trading pilot launched."),
-            2026: ("CCTS首个正式履约期开始，九大工业部门全面过渡至该体系。", "CCTS first compliance period begins for 9 major industrial sectors.")
+            1997: ("《京都议定书》通过，作为发展中国家致力于推动机制建设。", "Kyoto Protocol adopted; committed to mechanism building as developing nation."),
+            2005: ("通过清洁发展机制(CDM)成为全球最大CER供应国之一，专注新能源。", "Became a top CER supplier via CDM, focusing on renewable energy."),
+            2011: ("发布国家增强能效使命(NMEEE)及PAT机制，是最早的强制碳交易尝试。", "Launched PAT mechanism under NMEEE, an early mandatory energy efficiency ETS."),
+            2015: ("《巴黎协定》承诺减少单位GDP碳排放强度，探索国内碳市场。", "Paris Agreement pledge to reduce GDP emission intensity; explored domestic ETS."),
+            2022: ("议会通过《能源节约修正案》，授权建立国家碳市场体系(ICM)。", "Passed Energy Conservation Amendment, authorizing Indian Carbon Market (ICM)."),
+            2023: ("正式发布《碳信用交易计划(CCTS)》，标志强制性碳市场规则奠定。", "Published Carbon Credit Trading Scheme (CCTS), laying mandatory ETS rules."),
+            2024: ("逐步将PAT机制转变为更成熟的碳交易体系，纳入电力与工业。", "Transitioning PAT to a mature ETS, incorporating power and industry sectors."),
+            2030: ("NDC关键节点：非化石燃料装机占比达到50%，市场涵盖基础工业。", "NDC milestone: 50% non-fossil capacity; market covers heavy industries."),
+            2040: ("碳排放预计达到峰值，碳市场交易活跃度达到顶峰。", "Emissions expected to peak; carbon market trading activity at its highest."),
+            2050: ("NDC深化阶段：碳价格机制成熟，高耗能产业全面脱碳。", "Deepened NDC stage: mature carbon pricing, total decarbonization of heavy industry."),
+            2060: ("全面接入负排放技术和碳捕集交易(CCS)，备战2070净零目标。", "Fully integrated negative emissions and CCS trading to prep for 2070 net-zero.")
         }
     }
     
