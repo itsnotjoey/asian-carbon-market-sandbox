@@ -17,14 +17,14 @@ if 'is_playing' not in st.session_state:
     st.session_state.is_playing = False
 
 if st.session_state.is_playing:
-    time.sleep(0.8) 
+    time.sleep(1.0) # 史诗版内容较多，稍微放慢语速
     if st.session_state.play_year < 2060:
         st.session_state.play_year += 1
     else:
         st.session_state.is_playing = False
 
 # ==========================================
-# 3. 语言字典
+# 3. 语言切换
 # ==========================================
 with st.sidebar:
     lang = st.radio("🌐 Language", ["中文", "English"], horizontal=True)
@@ -41,14 +41,14 @@ if lang == "中文":
         "cbam_toggle": "启动欧盟 CBAM 关税制裁",
         "link_toggle": "启动东北亚碳市场链接",
         "legend_title": "**图例说明:**",
-        "legend_text": "* 🔴 **主导市场**：中国\n* 🔵 **成熟市场**：日、韩、新\n* 🟡 **新兴市场**：印尼、越南、印度等\n* 🟢 **绿色资产流**：NbS自然碳汇矩阵\n* 🚨 **合规压力流**：受CBAM影响的碳成本外流\n* 🟡 **战略链路**：区域市场互联互通\n* 🌐 **特定事件**：Article 6 合作/跨境电网",
+        "legend_text": "* 🔴 **主导市场**：中国\n* 🔵 **成熟市场**：日、韩、新\n* 🟡 **新兴市场**：东盟与印度\n* 🟢 **绿色资产流**：NbS交易矩阵\n* 🚨 **合规压力流**：CBAM关税冲击线",
         "year_label": "📅 历史节点:",
-        "phase1_text": "第一阶段：早期探索期 (1997-2010)",
-        "phase2_text": "第二阶段：试点与强制转型 (2011-2020)",
-        "phase3_text": "第三阶段：巨兽苏醒与全球冲击 (2021-2030)",
-        "phase4_text": "第四阶段：净零与深度整合 (2031-2060)",
-        "cbam_alert": "🚨 **CBAM 冲击分析**：亚洲出口中心正面临合规资本外流压力。",
-        "link_alert": "✨ **战略解读**：区域互联显著提升了亚洲碳资产的市场溢价。",
+        "phase1_text": "第一阶段：早期探索与地方试点 (1997—2020)",
+        "phase2_text": "第二阶段：全国强制市场建立与快速扩张 (2021—2025)",
+        "phase3_text": "第三阶段：强制履约深化与行业扩容 (2026—2030)",
+        "phase4_text": "第四阶段：深度脱碳、区域一体化与净零 (2031—2060)",
+        "cbam_alert": "🚨 **CBAM 冲击分析**：亚洲主要出口国面临碳成本倒灌风险。",
+        "link_alert": "✨ **战略解读**：区域互联显著提升了亚洲碳资产的市场定价权。",
         "cn": "中国", "jp": "日本", "kr": "韩国", "sg": "新加坡", "id": "印尼", "in": "印度", "vn": "越南", "th": "泰国", "my": "马来西亚", "eu": "欧洲/CBAM"
     }
 else:
@@ -59,35 +59,33 @@ else:
         "slider": "🕰️ Timeline Evolution",
         "play": "▶️ Play", "pause": "Pause",
         "challenge_header": "⚠️ Macro Shocks",
-        "cbam_toggle": "Activate EU CBAM Sanctions",
-        "link_toggle": "Activate Northeast Asia Link",
+        "cbam_toggle": "Activate EU CBAM",
+        "link_toggle": "Activate NE-Asia Link",
         "legend_title": "**Legend:**",
-        "legend_text": "* 🔴 **Dominant**: China\n* 🔵 **Mature**: JP, KR, SG\n* 🟡 **Emerging**: ID, VN, IN\n* 🟢 **Green Flow**: NbS / Asset Matrix\n* 🚨 **Compliance**: CBAM-induced outflow\n* 🟡 **Link**: ETS Interconnection\n* 🌐 **Events**: Article 6 / Cross-border Grid",
+        "legend_text": "* 🔴 **Leader**: China\n* 🔵 **Mature**: JP, KR, SG\n* 🟡 **Emerging**: ASEAN & India\n* 🟢 **Green Flow**: NbS Matrix\n* 🚨 **CBAM**: Carbon Tariff Flows",
         "year_label": "📅 Year:",
-        "phase1_text": "Phase 1: Early Exploration (1997-2010)",
-        "phase2_text": "Phase 2: Pilots & Transition (2011-2020)",
-        "phase3_text": "Phase 3: The Behemoth (2021-2030)",
+        "phase1_text": "Phase 1: Early Exploration (1997-2020)",
+        "phase2_text": "Phase 2: National Expansion (2021-2025)",
+        "phase3_text": "Phase 3: Deep Compliance (2026-2030)",
         "phase4_text": "Phase 4: Net-Zero Integration (2031-2060)",
-        "cbam_alert": "🚨 **CBAM Impact**: Export hubs facing compliance capital outflows.",
-        "link_alert": "✨ **Strategic**: Integration boosts the premium of Asian carbon assets.",
-        "cn": "China", "jp": "Japan", "kr": "S.Korea", "sg": "Singapore", "id": "Indonesia", "in": "India", "vn": "Vietnam", "th": "Thailand", "my": "Malaysia", "eu": "Europe/CBAM"
+        "cbam_alert": "🚨 **CBAM Insight**: Major exporters face domestic carbon cost backflow.",
+        "link_alert": "✨ **Strategic**: Regional integration boosts carbon asset premium.",
+        "cn": "China", "jp": "Japan", "kr": "S.Korea", "sg": "Singapore", "id": "Indonesia", "in": "India", "vn": "Vietnam", "th": "Thailand", "my": "Malaysia", "eu": "Europe"
     }
 
 # ==========================================
-# 4. 侧边栏交互
+# 4. 侧边栏
 # ==========================================
 with st.sidebar:
     st.header(t["sidebar_title"])
-    col_p1, col_p2 = st.columns(2)
-    if col_p1.button(t["play"]): 
+    c_p1, c_p2 = st.columns(2)
+    if c_p1.button(t["play"]): 
         st.session_state.is_playing = True
         st.rerun()
-    if col_p2.button(t["pause"]): 
+    if c_p2.button(t["pause"]): 
         st.session_state.is_playing = False
         st.rerun()
-
     selected_year = st.slider(t["slider"], 1997, 2060, key="play_year")
-    
     st.markdown("---")
     st.subheader(t["challenge_header"])
     cbam_trigger = st.toggle(t["cbam_toggle"], value=False)
@@ -96,161 +94,138 @@ with st.sidebar:
     st.markdown(t["legend_title"] + "\n" + t["legend_text"])
 
 # ==========================================
-# 5. 国家历史事件数据库
+# 5. 【史诗级】国家历史数据库
 # ==========================================
-def get_country_status(country_code, current_year, lang):
-    history = {
+def get_detailed_history(country, year, lang):
+    # 这里存储的是你提供的完整文本
+    db = {
         "cn": {
-            1997: ("尚未启动市场机制", "No market mechanism"),
-            2011: ("批准7省市开展碳交易试点", "Approved 7 regional ETS pilots"),
-            2013: ("地方试点正式开市(相对限额)", "Regional pilots officially launched"),
-            2021: ("启动全国碳市场(电力行业)", "National ETS launched (Power sector)"),
-            2024: ("重启CCER，扩容至8大行业", "CCER restarted, expansion to 8 sectors"),
-            2027: ("引入拍卖机制，关注绝对减排", "Auctioning introduced, focus on absolute caps"),
-            2030: ("扩容完成，转为绝对总量上限", "Expansion complete, hard cap implemented"),
-            2060: ("达成碳中和", "Carbon Neutrality achieved")
+            2011: ("批准北京、上海、广东等7省市开展碳排放交易试点，为全国统一市场积累经验。", "Approved 7 regional ETS pilots (Beijing, Shanghai, etc.) to gain experience."),
+            2013: ("地方试点陆续正式开市，采用基于碳排放强度的相对总量上限。", "Regional pilots officially launched using intensity-based relative caps."),
+            2021: ("全国碳排放权交易市场正式启动，初期覆盖电力行业，成为全球覆盖量最大的市场。", "National ETS launched for power sector, becoming the world's largest market."),
+            2024: ("重启CCER市场，宣布ETS扩容至钢铁、水泥等8大行业。", "CCER market restarted; ETS expanded to 8 high-carbon sectors."),
+            2030: ("实现碳达峰，全国ETS扩容完成，机制转为绝对总量上限，配额拍卖全面铺开。", "Carbon peak reached; ETS covers 8 sectors with absolute caps and full auctioning."),
+            2060: ("中国实现碳中和目标，碳市场转型为负排放激励体系。", "Carbon neutrality achieved; ETS shifts to negative emission incentives.")
         },
         "jp": {
-            1997: ("允许自愿碳额度抵消", "Voluntary carbon offsets allowed"),
-            2010: ("东京都启动亚洲首个强制ETS", "Tokyo launches Asia's first city-level ETS"),
-            2023: ("启动全国GX-ETS(自愿参与)", "GX-ETS launched (Voluntary phase)"),
-            2026: ("GX-ETS转为强制履约", "GX-ETS becomes mandatory"),
-            2028: ("引入GX附加费", "GX Surcharge introduced"),
-            2033: ("电力行业强制配额拍卖", "Mandatory power sector auctions")
+            1997: ("颁布措施允许企业通过自愿碳额度抵消排放。", "Allowed voluntary carbon offsets for corporations."),
+            2010: ("东京都启动亚洲首个城市级强制总量与交易计划(TMG ETS)。", "Tokyo launched Asia's first city-level mandatory ETS."),
+            2023: ("推出绿色转型排放权交易市场(GX-ETS)，进入全国自愿参与阶段。", "Launched GX-ETS for national voluntary participation."),
+            2026: ("GX-ETS正式从自愿转为强制履约，引入价格上下限机制。", "GX-ETS becomes mandatory with price floor and ceiling mechanisms."),
+            2033: ("针对电力行业高排放主体正式引入强制配额拍卖。", "Mandatory quota auctions introduced for the power sector.")
         },
         "kr": {
-            1997: ("前期酝酿阶段", "Preparation phase"),
-            2010: ("颁布《低碳绿色增长基本法》", "Low Carbon Green Growth Act enacted"),
-            2015: ("启动东亚首个全国强制K-ETS", "Launched East Asia's first national K-ETS"),
-            2026: ("第四版计划: 引入碳差额合约(CCfD)", "Phase 4: CCfD mechanism introduced")
+            2010: ("颁布《低碳绿色增长基本法》，确立碳定价为核心工具。", "Enacted Low Carbon Green Growth Act, making carbon pricing a core tool."),
+            2015: ("正式建立东亚首个全国性强制碳市场(K-ETS)，采用绝对上限。", "Launched East Asia's first national K-ETS with absolute caps."),
+            2026: ("实施第四版计划，电力行业拍卖比例提升至50%，引入碳差额合约(CCfD)。", "Phase 4 starts: Power sector auctioning to 50%; CCfD introduced.")
         },
         "sg": {
-            1997: ("前期酝酿阶段", "Preparation phase"),
-            2019: ("引入碳税机制 (5新元/吨)", "Carbon tax introduced ($5 SGD/t)"),
-            2024: ("碳税提至25新元，推进Art 6合作", "Tax raised to $25 SGD, Art 6 deals advanced")
+            2019: ("引入碳税机制，覆盖全国80%排放，初始税率5新元/吨。", "Introduced carbon tax ($5/t) covering 80% of national emissions."),
+            2024: ("碳税大幅提升至25新元/吨，积极推动《巴黎协定》第六条双边合作。", "Tax raised to $25/t; advancing Article 6 bilateral cooperation.")
         },
         "id": {
-            1997: ("NbS自然碳汇初步发展", "Early NbS development"),
-            2023: ("启动燃煤电厂强制ETS", "Mandatory ETS for coal plants launched"),
-            2025: ("ETS扩容至燃油/燃气电厂", "ETS expanded to oil/gas plants"),
-            2028: ("引入'上限-碳税-交易'混合机制", "Cap-Tax-Trade hybrid mechanism introduced")
+            2023: ("启动针对燃煤电厂的强制ETS，是东南亚首个强制碳市场。", "Launched mandatory ETS for coal plants, first in SE-Asia."),
+            2028: ("引入'总量上限—碳税—交易'混合机制，碳税与市场价挂钩。", "Introduced Cap-Tax-Trade hybrid mechanism linked to market prices.")
         },
         "vn": {
-            1997: ("前期酝酿阶段", "Preparation phase"),
-            2025: ("全国试点碳市场启动", "National pilot ETS launched"),
-            2029: ("碳市场全面强制运行", "Carbon market fully operational")
+            2025: ("全国试点碳市场正式启动，覆盖电力、钢铁和水泥行业。", "National pilot ETS launched for power, steel, and cement."),
+            2029: ("全国碳市场完成试点，正式全面运行，逐步引入拍卖机制。", "ETS pilot completed; full mandatory operation begins with auctions.")
         },
         "in": {
-            1997: ("前期酝酿阶段", "Preparation phase"),
-            2023: ("碳信用交易计划(CCTS)启动试点", "CCTS pilot launched"),
-            2026: ("CCTS首个正式履约期开始", "CCTS first compliance period begins")
+            2023: ("碳信用交易计划(CCTS)启动交易试点。", "CCTS trading pilot launched."),
+            2026: ("CCTS首个正式履约期开始，九大工业部门全面过渡至该体系。", "CCTS first compliance period begins for 9 major industrial sectors.")
         }
     }
     
-    if country_code not in history:
-        return "数据收集中 / Data compiling..."
-        
-    past_years = [y for y in history[country_code].keys() if y <= current_year]
-    if not past_years:
-        return "酝酿中 / Developing"
-        
-    latest_year = max(past_years)
-    event_text = history[country_code][latest_year][0] if lang == "中文" else history[country_code][latest_year][1]
+    if country not in db: return ""
     
-    return f"📍 {latest_year}: {event_text}"
+    # 获取截至该年份的最新动态
+    years = sorted([y for y in db[country].keys() if y <= year])
+    if not years: return "前期准备与能力建设阶段 / Preparation phase"
+    
+    latest = years[-1]
+    msg = db[country][latest][0] if lang == "中文" else db[country][latest][1]
+    return f"【{latest}】{msg}"
 
 # ==========================================
-# 6. 数据引擎
+# 6. 绘图引擎
 # ==========================================
-def get_dynamic_data(year, cbam_active, link_active, t, lang):
+def get_data(year, cbam, link, t, lang):
     nodes = []
-    
-    def add_node(code, name, lon, lat, color, size):
-        status = get_country_status(code, year, lang)
-        nodes.append({"name": name, "lon": lon, "lat": lat, "color": color, "radius": size, "status": status})
+    def add(code, name, lon, lat, color, radius):
+        desc = get_detailed_history(code, year, lang)
+        nodes.append({"name": name, "lon": lon, "lat": lat, "color": color, "radius": radius, "status": desc})
 
-    cn_size = 35000 if year < 2021 else (85000 if year < 2030 else 160000)
-    jp_size = 20000 if year < 2023 else 55000
-
-    if year >= 2011: add_node("cn", t["cn"], 116.4, 39.9, [255, 50, 50, 200], cn_size)
-    if year >= 1997: add_node("jp", t["jp"], 139.6, 35.6, [50, 150, 255, 200], jp_size)
-    if year >= 2015: add_node("kr", t["kr"], 126.9, 37.5, [50, 150, 255, 200], 45000)
-    if year >= 2019: add_node("sg", t["sg"], 103.8, 1.3, [50, 150, 255, 200], 35000)
+    # 中国膨胀逻辑
+    cn_r = 35000 if year < 2021 else (90000 if year < 2030 else 160000)
     
+    if year >= 2011: add("cn", t["cn"], 116.4, 39.9, [255, 50, 50, 200], cn_r)
+    if year >= 1997: add("jp", t["jp"], 139.6, 35.6, [50, 150, 255, 200], 55000)
+    if year >= 2010: add("kr", t["kr"], 126.9, 37.5, [50, 150, 255, 200], 45000)
+    if year >= 2019: add("sg", t["sg"], 103.8, 1.3, [50, 150, 255, 200], 35000)
     if year >= 2023: 
-        add_node("id", t["id"], 106.8, -6.2, [255, 200, 50, 200], 45000)
-        add_node("in", t["in"], 78.9, 20.5, [255, 200, 50, 200], 50000)
+        add("id", t["id"], 106.8, -6.2, [255, 200, 50, 200], 45000)
+        add("in", t["in"], 78.9, 20.5, [255, 200, 50, 200], 50000)
     if year >= 2025: 
-        add_node("vn", t["vn"], 105.8, 21.0, [255, 200, 50, 200], 30000)
-        nodes.append({"name": t["th"], "lon": 100.9, "lat": 15.8, "color": [255, 200, 50, 200], "radius": 28000, "status": "2025: 拟议气候变化法案 / Proposed Climate Bill"})
-        nodes.append({"name": t["my"], "lon": 101.9, "lat": 4.2, "color": [255, 200, 50, 200], "radius": 28000, "status": "2026: 钢铁能源行业碳税 / Carbon tax on steel/energy"})
-
-    nodes.append({"name": t["eu"], "lon": 10.0, "lat": 50.0, "color": [255, 255, 255, 50], "radius": 10000, "status": "CBAM 高压区 / Pressure Zone" if lang=="中文" else "CBAM Pressure Zone"})
+        add("vn", t["vn"], 105.8, 21.0, [255, 200, 50, 200], 30000)
+        nodes.append({"name": t["th"], "lon": 100.9, "lat": 15.8, "color": [255, 200, 50, 200], "radius": 28000, "status": "2025: 提交气候变化法案草案"})
+        nodes.append({"name": t["my"], "lon": 101.9, "lat": 4.2, "color": [255, 200, 50, 200], "radius": 28000, "status": "2026: 计划征收钢铁行业碳税"})
 
     arcs = []
+    # 基础绿线
     if year >= 2020:
-        flow_color = [50, 255, 120, 180]
-        for s in [[106.8, -6.2], [105.8, 21.0], [101.9, 4.2]]:
-            for b in [[103.8, 1.3], [139.6, 35.6], [126.9, 37.5]]:
-                arcs.append({"s": s, "t": b, "c": flow_color})
-    
+        for s in [[106.8, -6.2], [105.8, 21.0]]:
+            for b in [[103.8, 1.3], [139.6, 35.6]]:
+                arcs.append({"s": s, "t": b, "c": [50, 255, 120, 150]})
+    # 事件线
     if year >= 2024: arcs.append({"s": [105.8, 21.0], "t": [103.8, 1.3], "c": [0, 255, 255, 255]})
     if 2022 <= year <= 2025: arcs.append({"s": [106.8, -6.2], "t": [103.8, 1.3], "c": [255, 140, 0, 255]})
     if year >= 2027:
-        grid_color = [180, 0, 255, 255]
-        arcs.append({"s": [100.9, 15.8], "t": [101.9, 4.2], "c": grid_color})
-        arcs.append({"s": [101.9, 4.2], "t": [103.8, 1.3], "c": grid_color})
-
-    if cbam_active and year >= 2025:
-        p_color = [255, 30, 30, 230]
-        for h in [[116.4, 39.9], [105.8, 21.0], [126.9, 37.5], [139.6, 35.6], [78.9, 20.5]]:
-            arcs.append({"s": h, "t": [10.0, 50.0], "c": p_color})
-    if link_active and year >= 2016:
-        l_color = [255, 215, 0, 255]
-        core = [[116.4, 39.9], [139.6, 35.6], [126.9, 37.5]]
-        arcs.append({"s": core[0], "t": core[1], "c": l_color})
-        arcs.append({"s": core[1], "t": core[2], "c": l_color})
-        arcs.append({"s": core[2], "t": core[0], "c": l_color})
+        for p in [[[100.9, 15.8], [101.9, 4.2]], [[101.9, 4.2], [103.8, 1.3]]]:
+            arcs.append({"s": p[0], "t": p[1], "c": [180, 0, 255, 255]})
+    if cbam and year >= 2025:
+        for h in [[116.4, 39.9], [126.9, 37.5], [139.6, 35.6]]:
+            arcs.append({"s": h, "t": [10.0, 50.0], "c": [255, 30, 30, 200]})
+    if link and year >= 2016:
+        c = [[116.4, 39.9], [139.6, 35.6], [126.9, 37.5]]
+        for i in range(3): arcs.append({"s": c[i], "t": c[(i+1)%3], "c": [255, 215, 0, 255]})
 
     return pd.DataFrame(nodes), pd.DataFrame(arcs)
 
-df_n, df_a = get_dynamic_data(selected_year, cbam_trigger, link_trigger, t, lang)
+dn, da = get_data(selected_year, cbam_trigger, link_trigger, t, lang)
 
 # ==========================================
-# 7. UI 呈现
+# 7. 渲染
 # ==========================================
 st.title(t["title"])
 st.markdown(f"**{t['subtitle']}**")
 
-c1, c2 = st.columns([1, 2.8])
-with c1:
+col1, col2 = st.columns([1, 2.8])
+with col1:
     st.subheader(f"{t['year_label']} {selected_year}")
-    if selected_year < 2011: st.info(t["phase1_text"])
-    elif 2011 <= selected_year < 2021: st.info(t["phase2_text"])
-    elif 2021 <= selected_year <= 2030: st.warning(t["phase3_text"])
+    if selected_year < 2021: st.info(t["phase1_text"])
+    elif selected_year <= 2025: st.info(t["phase2_text"])
+    elif selected_year <= 2030: st.warning(t["phase3_text"])
     else: st.success(t["phase4_text"])
     if cbam_trigger and selected_year >= 2025: st.error(t["cbam_alert"])
     if link_trigger and selected_year >= 2016: st.success(t["link_alert"])
 
-with c2:
-    view = pdk.ViewState(latitude=22.0, longitude=112.0, zoom=2.7, pitch=45)
-    layers = []
-    if not df_n.empty:
-        layers.append(pdk.Layer("ScatterplotLayer", df_n, get_position="[lon, lat]", get_color="color", get_radius="radius", pickable=True, opacity=0.7))
-    if not df_a.empty:
-        layers.append(pdk.Layer("ArcLayer", df_a, get_source_position="s", get_target_position="t", get_source_color="c", get_target_color="c", get_width=4, pickable=True))
+with col2:
+    view = pdk.ViewState(latitude=22.0, longitude=112.0, zoom=2.7, pitch=40)
+    layers = [
+        pdk.Layer("ScatterplotLayer", dn, get_position="[lon, lat]", get_color="color", get_radius="radius", pickable=True, opacity=0.8),
+        pdk.Layer("ArcLayer", da, get_source_position="s", get_target_position="t", get_source_color="c", get_target_color="c", get_width=4)
+    ]
     
-    tooltip_html = """
-    <div style="font-family: Arial, sans-serif; font-size: 14px;">
-        <b style="color: #4CAF50; font-size: 16px;">{name}</b><br/>
-        <span style="color: #ECEFF1;">{status}</span>
-    </div>
-    """
-    
-    st.pydeck_chart(pdk.Deck(layers=layers, initial_view_state=view, map_style="https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json", tooltip={"html": tooltip_html}))
+    # 核心修复：更鲁棒的 Tooltip 语法
+    st.pydeck_chart(pdk.Deck(
+        layers=layers,
+        initial_view_state=view,
+        map_style="https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json",
+        tooltip={
+            "html": "<b>{name}</b><br/>{status}",
+            "style": {"backgroundColor": "#1a1a1a", "color": "white", "fontSize": "14px", "maxWidth": "300px"}
+        }
+    ))
 
-# ==========================================
-# 8. 循环收尾
-# ==========================================
-if st.session_state.is_playing:
-    st.rerun()
+if st.session_state.is_playing: st.rerun()
