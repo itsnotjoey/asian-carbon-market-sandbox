@@ -78,4 +78,4 @@ with col2:
     if not df_a.empty:
         layers.append(pdk.Layer("ArcLayer", df_a, get_source_position="s", get_target_position="t", get_source_color="c", get_target_color="c", get_width=4, pickable=True))
     
-    st.pydeck_chart(pdk.Deck(layers=layers, initial_view_state=view, map_style="mapbox://styles/mapbox/dark-v10", tooltip={"text": "{name}"}))
+    st.pydeck_chart(pdk.Deck(layers=layers, initial_view_state=view, map_style="https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json", tooltip={"text": "{name}"}))
