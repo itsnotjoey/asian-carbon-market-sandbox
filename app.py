@@ -9,13 +9,20 @@ import time
 st.set_page_config(layout="wide", page_title="Asian Carbon Sandbox", page_icon="🌍")
 
 # ==========================================
-# 2. 状态初始化 (State Initialization)
+# 2. 状态初始化 & 顶层播放引擎 (修复报错的关键点)
 # ==========================================
-# 确保滑块和自动播放共享同一个‘play_year’状态
 if 'play_year' not in st.session_state:
-    st.session_state.play_year = 2024
+    st.session_state.play_year = 1997
 if 'is_playing' not in st.session_state:
     st.session_state.is_playing = False
+
+# 【修复黑科技】：在任何界面画出来之前，先算好今年的年份
+if st.session_state.is_playing:
+    time.sleep(0.7) # 这里控制播放速度，0.7秒跳一年
+    if st.session_state.play_year < 2060:
+        st.session_state.play_year += 1
+    else:
+        st.session_state.is_playing = False
 
 # ==========================================
 # 3. 语言字典
@@ -68,18 +75,20 @@ else:
     }
 
 # ==========================================
-# 4. 侧边栏双控逻辑 (Sync Logic)
+# 4. 侧边栏交互 (画出界面)
 # ==========================================
 with st.sidebar:
     st.header(t["sidebar_title"])
     
-    # 播放控制按钮
     col_p1, col_p2 = st.columns(2)
-    if col_p1.button(t["play"]): st.session_state.is_playing = True
-    if col_p2.button(t["pause"]): st.session_state.is_playing = False
+    if col_p1.button(t["play"]): 
+        st.session_state.is_playing = True
+        st.rerun() # 按钮点下后，立刻重新从头跑代码，触发顶部的 +1 逻辑
+    if col_p2.button(t["pause"]): 
+        st.session_state.is_playing = False
+        st.rerun()
 
-    # 核心同步滑块：绑定到 play_year 状态
-    # 一旦用户手动拖动，session_state 也会同步更新
+    # 滑块现在安全了，它只会读取顶部已经算好的年份
     selected_year = st.slider(t["slider"], 1997, 2060, key="play_year")
     
     st.markdown("---")
@@ -94,7 +103,6 @@ with st.sidebar:
 # ==========================================
 def get_dynamic_data(year, cbam_active, link_active, t):
     nodes = []
-    # 节点规模随年份动态膨胀
     if year >= 2011:
         size = 35000 if year < 2021 else (85000 if year < 2030 else 160000)
         nodes.append({"name": t["cn"], "lon": 116.4, "lat": 39.9, "color": [255, 50, 50, 200], "radius": size})
@@ -113,22 +121,19 @@ def get_dynamic_data(year, cbam_active, link_active, t):
     nodes.append({"name": t["eu"], "lon": 10.0, "lat": 50.0, "color": [255, 255, 255, 50], "radius": 10000})
 
     arcs = []
-    # 1. 绿色 NbS 网络
     if year >= 2020:
         flow_color = [50, 255, 120, 180]
         for s in [[106.8, -6.2], [105.8, 21.0], [101.9, 4.2]]:
             for b in [[103.8, 1.3], [139.6, 35.6], [126.9, 37.5]]:
                 arcs.append({"s": s, "t": b, "c": flow_color})
     
-    # 2. 特定事件线
-    if year >= 2024: arcs.append({"s": [105.8, 21.0], "t": [103.8, 1.3], "c": [0, 255, 255, 255]}) # Art 6
-    if 2022 <= year <= 2025: arcs.append({"s": [106.8, -6.2], "t": [103.8, 1.3], "c": [255, 140, 0, 255]}) # Export Ban
+    if year >= 2024: arcs.append({"s": [105.8, 21.0], "t": [103.8, 1.3], "c": [0, 255, 255, 255]})
+    if 2022 <= year <= 2025: arcs.append({"s": [106.8, -6.2], "t": [103.8, 1.3], "c": [255, 140, 0, 255]})
     if year >= 2027:
-        grid_color = [180, 0, 255, 255] # Electric Purple Grid
+        grid_color = [180, 0, 255, 255]
         arcs.append({"s": [100.9, 15.8], "t": [101.9, 4.2], "c": grid_color})
         arcs.append({"s": [101.9, 4.2], "t": [103.8, 1.3], "c": grid_color})
 
-    # 3. CBAM & Link 开关
     if cbam_active and year >= 2025:
         p_color = [255, 30, 30, 230]
         for h in [[116.4, 39.9], [105.8, 21.0], [126.9, 37.5], [139.6, 35.6], [78.9, 20.5]]:
@@ -170,12 +175,7 @@ with c2:
     st.pydeck_chart(pdk.Deck(layers=layers, initial_view_state=view, map_style="https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json", tooltip={"text": "{name}"}))
 
 # ==========================================
-# 7. 自动播放驱动 (Auto-Play Driver)
+# 7. 循环收尾：如果正在播放，告诉服务器马上再跑一次
 # ==========================================
 if st.session_state.is_playing:
-    if st.session_state.play_year < 2060:
-        time.sleep(0.7) # 播放速度调节
-        st.session_state.play_year += 1
-        st.rerun()
-    else:
-        st.session_state.is_playing = False
+    st.rerun()
