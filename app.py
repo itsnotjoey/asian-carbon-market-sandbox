@@ -29,7 +29,7 @@ with st.sidebar:
 
 if lang == "中文":
     t = {
-        "title": "🌍 亚洲碳市场与气候地缘世纪推演 (1997-2060)",
+        "title": "🌍 亚洲碳市场与气候地缘政治沙盒 (1997-2060)",
         "subtitle": "亚洲能源安全期末项目 | Jiayi 'Joey' Wang",
         "sidebar_title": "⚙️ 战略控制台",
         "slider": "🕰️ 时代演进",
@@ -37,8 +37,8 @@ if lang == "中文":
         "challenge_header": "⚠️ 宏观挑战与冲击",
         "cbam_toggle": "启动欧盟 CBAM 关税制裁",
         "link_toggle": "启动东北亚碳市场链接",
-        "legend_title": "**图例说明:**",
-        "legend_text": "* 🔴 **主导市场**：中国\n* 🔵 **成熟市场**：日、韩、新\n* 🟡 **新兴市场**：东盟与印度\n* 🟢 **绿色资产流**：NbS交易矩阵\n* 🚨 **合规压力流**：CBAM关税冲击线",
+        "legend_title": "**图例与动态资金流:**",
+        "legend_text": "* 🔴🔵🟡 **国家节点**：各级碳市场规模（随年份膨胀）\n* 🟢 **绿色矩阵 (2020起)**：东南亚自然碳汇(NbS)出口\n* 🟠 **橙色警报 (2022-2025)**：印尼碳出口限制与贸易壁垒\n* 🌐 **青色通道 (2024起)**：新越基于 Article 6 的双边碳流\n* ⚡ **紫色大动脉 (2027起)**：跨国物理绿电网(替代虚拟碳权)\n* 🚨 **红色射线 (左侧触发)**：受 CBAM 影响的碳成本倒灌\n* 🟡 **金色链路 (左侧触发)**：东北亚碳市场互联互通",
         "year_label": "📅 历史节点:",
         "phase1_text": "第一阶段：早期探索与地方试点 (1997—2020)",
         "phase2_text": "第二阶段：全国强制市场建立与快速扩张 (2021—2025)",
@@ -58,8 +58,8 @@ else:
         "challenge_header": "⚠️ Macro Shocks",
         "cbam_toggle": "Activate EU CBAM",
         "link_toggle": "Activate NE-Asia Link",
-        "legend_title": "**Legend:**",
-        "legend_text": "* 🔴 **Leader**: China\n* 🔵 **Mature**: JP, KR, SG\n* 🟡 **Emerging**: ASEAN & India\n* 🟢 **Green Flow**: NbS Matrix\n* 🚨 **CBAM**: Carbon Tariff Flows",
+        "legend_title": "**Legend & Dynamic Flows:**",
+        "legend_text": "* 🔴🔵🟡 **Nodes**: Market scale (inflates dynamically)\n* 🟢 **Green Matrix (2020+)**: SE Asia NbS carbon exports\n* 🟠 **Orange Alert (2022-2025)**: Indonesia carbon export ban\n* 🌐 **Cyan Channel (2024+)**: SG-VN Article 6 bilateral flow\n* ⚡ **Purple Artery (2027+)**: ASEAN cross-border green grid\n* 🚨 **Red Rays (Toggle)**: CBAM-induced compliance cost outflow\n* 🟡 **Gold Link (Toggle)**: Northeast Asia ETS interconnection",
         "year_label": "📅 Year:",
         "phase1_text": "Phase 1: Early Exploration (1997-2020)",
         "phase2_text": "Phase 2: National Expansion (2021-2025)",
@@ -67,7 +67,7 @@ else:
         "phase4_text": "Phase 4: Net-Zero Integration (2031-2060)",
         "cbam_alert": "🚨 **CBAM Insight**: Major exporters face domestic carbon cost backflow.",
         "link_alert": "✨ **Strategic**: Regional integration boosts carbon asset premium.",
-        "cn": "China", "jp": "Japan", "kr": "S.Korea", "sg": "Singapore", "id": "Indonesia", "in": "India", "vn": "Vietnam", "th": "Thailand", "my": "Malaysia", "eu": "欧洲/CBAM"
+        "cn": "China", "jp": "Japan", "kr": "S.Korea", "sg": "Singapore", "id": "Indonesia", "in": "India", "vn": "Vietnam", "th": "Thailand", "my": "Malaysia", "eu": "Europe"
     }
 
 # ==========================================
