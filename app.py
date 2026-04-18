@@ -81,4 +81,4 @@ def get_dynamic_data(year, cbam_active, link_active):
     return pd.DataFrame(nodes), pd.DataFrame(arcs)
 
 # 执行计算
-df_n, df_a = get_dynamic_data(selected_year, cbam
+df_n, df_a = get_dynamic_data(selected_year, cbam_trigger, link_trigger)
