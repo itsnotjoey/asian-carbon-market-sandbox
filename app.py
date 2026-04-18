@@ -4,7 +4,7 @@ import pydeck as pdk
 import time
 
 # ==========================================
-# 1. 页面基本配置 (这次一定从这里开始复制)
+# 1. 页面基本配置
 # ==========================================
 st.set_page_config(layout="wide", page_title="Asian Carbon Sandbox", page_icon="🌍")
 
@@ -14,7 +14,7 @@ if 'is_playing' not in st.session_state:
     st.session_state.is_playing = False
 
 if st.session_state.is_playing:
-    time.sleep(1.0) # 留出1秒钟的阅读时间
+    time.sleep(1.2) # 因为史料变多了，稍微再放慢一点点播放速度供阅读
     if st.session_state.play_year < 2060:
         st.session_state.play_year += 1
     else:
@@ -67,7 +67,7 @@ else:
         "phase4_text": "Phase 4: Net-Zero Integration (2031-2060)",
         "cbam_alert": "🚨 **CBAM Insight**: Major exporters face domestic carbon cost backflow.",
         "link_alert": "✨ **Strategic**: Regional integration boosts carbon asset premium.",
-        "cn": "China", "jp": "Japan", "kr": "S.Korea", "sg": "Singapore", "id": "Indonesia", "in": "India", "vn": "Vietnam", "th": "Thailand", "my": "Malaysia", "eu": "Europe"
+        "cn": "China", "jp": "Japan", "kr": "S.Korea", "sg": "Singapore", "id": "Indonesia", "in": "India", "vn": "Vietnam", "th": "Thailand", "my": "Malaysia", "eu": "欧洲/CBAM"
     }
 
 # ==========================================
@@ -91,7 +91,7 @@ with st.sidebar:
     st.markdown(t["legend_title"] + "\n" + t["legend_text"])
 
 # ==========================================
-# 4. 【史诗级】国家历史数据库 (融合了PM最新研究成果)
+# 4. 【史诗级】国家历史数据库 (全面整合中日韩深度史料)
 # ==========================================
 def get_detailed_history(country, year, lang):
     db = {
@@ -113,16 +113,39 @@ def get_detailed_history(country, year, lang):
             2060: ("实现碳中和。通过碳交易、CCUS及大规模碳汇抵消剩余排放。", "Carbon neutrality achieved via ETS, CCUS, and massive carbon sinks.")
         },
         "jp": {
-            1997: ("颁布措施允许企业通过自愿碳额度抵消排放。", "Allowed voluntary carbon offsets for corporations."),
-            2010: ("东京都启动亚洲首个城市级强制总量与交易计划(TMG ETS)。", "Tokyo launched Asia's first city-level mandatory ETS."),
-            2023: ("推出绿色转型排放权交易市场(GX-ETS)，进入全国自愿参与阶段。", "Launched GX-ETS for national voluntary participation."),
-            2026: ("GX-ETS正式从自愿转为强制履约，引入价格上下限机制。", "GX-ETS becomes mandatory with price floor and ceiling mechanisms."),
-            2033: ("针对电力行业高排放主体正式引入强制配额拍卖。", "Mandatory quota auctions introduced for the power sector.")
+            1997: ("COP3在京都召开通过《京都议定书》；经团连实施自愿性环保行动。", "COP3 held in Kyoto, Kyoto Protocol adopted. Keidanren launches voluntary plans."),
+            2005: ("环境省开始推动'国内自愿性碳排放交易制度'。", "MOE promotes domestic voluntary emissions trading scheme."),
+            2008: ("各项自愿计划整合为'国内碳排放交易整合市场'。", "Voluntary plans integrated into the domestic emissions trading market."),
+            2009: ("发布《绿色经济与社会变革》政策草案。", "Draft policy for 'Green Economy and Social Change' released."),
+            2011: ("福岛地震导致核电停摆，化石能源依赖增加，重新评估减排策略。", "Fukushima disaster halts nuclear power, increasing fossil fuel reliance."),
+            2012: ("开始实施针对特定能源利用的配套法规。", "Implemented supporting regulations for specific energy utilization."),
+            2013: ("启动了包含日元碳减排市场在内的自愿性机制。", "Launched voluntary mechanisms including the J-Credit scheme."),
+            2020: ("正式提出2050年碳中和承诺，公布'绿色增长战略'。", "Officially pledged 2050 carbon neutrality; published 'Green Growth Strategy'."),
+            2021: ("设定具体目标：2030年较2018年减排46%—50%。", "Set 2030 target: 46%-50% emission reduction from 2018 levels."),
+            2023: ("10月正式启动GX（绿色转型）碳信用市场。", "Officially launched the GX (Green Transformation) carbon credit market."),
+            2024: ("逐步完善GX联盟交易规则，企业开始强制报告并自愿交易。", "GX League rules refined; mandatory reporting with voluntary trading begins."),
+            2025: ("设定2035年减排60%新目标，并计划在2028年征收碳税。", "New target: 60% reduction by 2035. Carbon tax planned for 2028."),
+            2030: ("达到中期减排目标（较2018年减排46%-50%）。", "Achieved mid-term reduction target (46%-50% vs 2018)."),
+            2040: ("目标较2013年减排73%，可再生能源发电占比力争50%。", "Target: 73% reduction (vs 2013); aim for 50% renewable power generation."),
+            2050: ("全面实现碳中和（净零排放）。", "Comprehensive carbon neutrality (net-zero emissions) achieved."),
+            2060: ("维持负碳排放以对抗气候变化。", "Maintain negative carbon emissions to combat climate change.")
         },
         "kr": {
-            2010: ("颁布《低碳绿色增长基本法》，确立碳定价为核心工具。", "Enacted Low Carbon Green Growth Act, making carbon pricing a core tool."),
-            2015: ("正式建立东亚首个全国性强制碳市场(K-ETS)，采用绝对上限。", "Launched East Asia's first national K-ETS with absolute caps."),
-            2026: ("实施第四版计划，电力行业拍卖比例提升至50%，引入碳差额合约(CCfD)。", "Phase 4 starts: Power sector auctioning to 50%; CCfD introduced.")
+            1997: ("签署《京都议定书》，开启国内气候变化政策研究。", "Signed Kyoto Protocol; initiated domestic climate policy research."),
+            2005: ("《京都议定书》正式生效，开始逐步制定温室气体减排规划。", "Kyoto Protocol effective; began drafting GHG reduction plans."),
+            2010: ("通过《低碳绿色增长基本法》，确立建立碳交易体系的法律基础。", "Passed Low Carbon Green Growth Act, establishing legal basis for ETS."),
+            2012: ("通过《温室气体排放许可法》，标志亚洲首个全国性强制碳市场诞生。", "Passed GHG Emission Trading Act, establishing K-ETS legal framework."),
+            2015: ("K-ETS第一阶段正式启动，以免费配额为主，涵盖电力、钢铁等。", "K-ETS Phase 1 launched (mostly free allocation) covering power, steel, etc."),
+            2018: ("K-ETS第二阶段启动，设定碳排放基准并提高减排目标。", "K-ETS Phase 2: Benchmarking introduced, reduction targets increased."),
+            2019: ("碳市场引入做市商和机构投资者，开启碳市场金融属性。", "Market makers and institutions introduced to boost financialization."),
+            2020: ("文在寅总统提出'绿色新政'，10月正式宣布2050年实现碳中和。", "Proposed 'Green New Deal'; announced 2050 carbon neutrality target in Oct."),
+            2021: ("K-ETS第三阶段启动，引入有偿竞拍；承诺2030年减排35%。", "K-ETS Phase 3: Paid auctions introduced; committed to 35% reduction by 2030."),
+            2022: ("加快碳市场金融化，探索碳期货产品。", "Accelerated market financialization; exploring carbon futures."),
+            2023: ("规划并逐步推出碳期货产品，以增强碳市场的避险功能。", "Rolled out carbon futures to enhance market hedging capabilities."),
+            2026: ("K-ETS第四阶段，免费配额降至极低，碳价显著提升以倒逼技术升级。", "K-ETS Phase 4: Free quotas minimized; carbon prices rise to force tech upgrades."),
+            2030: ("确保实现较2018年减排35%以上的承诺。", "Secured commitment of >35% emission reduction compared to 2018."),
+            2050: ("实现碳中和（净零排放）目标。", "Achieved carbon neutrality (net-zero emissions)."),
+            2060: ("通过CCUS等负排放技术维持净负排放，巩固碳中和成果。", "Achieved net-negative emissions via CCUS to solidify carbon neutrality.")
         },
         "sg": {
             2019: ("引入碳税机制，覆盖全国80%排放，初始税率5新元/吨。", "Introduced carbon tax ($5/t) covering 80% of national emissions."),
@@ -144,14 +167,14 @@ def get_detailed_history(country, year, lang):
     
     if country not in db: return ""
     years = sorted([y for y in db[country].keys() if y <= year])
-    if not years: return "前期准备与能力建设阶段 / Preparation phase"
+    if not years: return "前期酝酿与能力建设阶段 / Preparation phase"
     
     latest = years[-1]
     msg = db[country][latest][0] if lang == "中文" else db[country][latest][1]
     return f"【{latest}】{msg}"
 
 # ==========================================
-# 5. 绘图引擎 (修复：所有国家从1997年起全程可见)
+# 5. 绘图引擎 (终极可见度修复)
 # ==========================================
 def get_data(year, cbam, link, t, lang):
     nodes = []
@@ -159,16 +182,15 @@ def get_data(year, cbam, link, t, lang):
         desc = get_detailed_history(code, year, lang)
         nodes.append({"name": name, "lon": lon, "lat": lat, "color": color, "radius": radius, "status": desc})
 
-    # 动态调整各国的圆圈大小，1997年开始都是小圆点(15000)，随后按历史进程逐渐膨胀
-    cn_r = 15000 if year < 2011 else (35000 if year < 2021 else (90000 if year < 2030 else 160000))
-    jp_r = 15000 if year < 2010 else (35000 if year < 2023 else 55000)
-    kr_r = 15000 if year < 2015 else 45000
-    sg_r = 10000 if year < 2019 else 35000
-    id_r = 15000 if year < 2023 else 45000
-    in_r = 15000 if year < 2023 else 50000
-    vn_r = 10000 if year < 2025 else 30000
+    # 稍微加大了所有早期的基础物理半径，让它们更像一个“国家级节点”
+    cn_r = 40000 if year < 2011 else (90000 if year < 2030 else 160000)
+    jp_r = 40000 if year < 2010 else (60000 if year < 2023 else 80000)
+    kr_r = 40000 if year < 2015 else 60000
+    sg_r = 30000 if year < 2019 else 45000
+    id_r = 40000 if year < 2023 else 55000
+    in_r = 40000 if year < 2023 else 60000
+    vn_r = 30000 if year < 2025 else 45000
 
-    # 核心修复：移除年份限制，让它们从 1997 年起就作为一个物理锚点存在
     add("cn", t["cn"], 116.4, 39.9, [255, 50, 50, 200], cn_r)
     add("jp", t["jp"], 139.6, 35.6, [50, 150, 255, 200], jp_r)
     add("kr", t["kr"], 126.9, 37.5, [50, 150, 255, 200], kr_r)
@@ -177,11 +199,8 @@ def get_data(year, cbam, link, t, lang):
     add("in", t["in"], 78.9, 20.5, [255, 200, 50, 200], in_r)
     add("vn", t["vn"], 105.8, 21.0, [255, 200, 50, 200], vn_r)
     
-    # 泰国和马来西亚 (这两个因为事件较少，暂作静态占位)
-    nodes.append({"name": t["th"], "lon": 100.9, "lat": 15.8, "color": [255, 200, 50, 200], "radius": 15000 if year < 2025 else 28000, "status": "2025: 提交气候变化法案草案" if lang=="中文" else "2025: Proposed Climate Bill"})
-    nodes.append({"name": t["my"], "lon": 101.9, "lat": 4.2, "color": [255, 200, 50, 200], "radius": 15000 if year < 2026 else 28000, "status": "2026: 计划征收钢铁行业碳税" if lang=="中文" else "2026: Carbon tax on steel"})
-
-    # 欧洲外部节点
+    nodes.append({"name": t["th"], "lon": 100.9, "lat": 15.8, "color": [255, 200, 50, 200], "radius": 30000 if year < 2025 else 40000, "status": "2025: 提交气候变化法案草案" if lang=="中文" else "2025: Proposed Climate Bill"})
+    nodes.append({"name": t["my"], "lon": 101.9, "lat": 4.2, "color": [255, 200, 50, 200], "radius": 30000 if year < 2026 else 40000, "status": "2026: 计划征收钢铁行业碳税" if lang=="中文" else "2026: Carbon tax on steel"})
     nodes.append({"name": t["eu"], "lon": 10.0, "lat": 50.0, "color": [255, 255, 255, 50], "radius": 10000, "status": "CBAM 高压区 / Pressure Zone" if lang=="中文" else "CBAM Pressure Zone"})
 
     arcs = []
@@ -206,7 +225,7 @@ def get_data(year, cbam, link, t, lang):
 dn, da = get_data(selected_year, cbam_trigger, link_trigger, t, lang)
 
 # ==========================================
-# 6. 渲染
+# 6. 渲染 (引入 radius_min_pixels 黑科技)
 # ==========================================
 st.title(t["title"])
 st.markdown(f"**{t['subtitle']}**")
@@ -223,12 +242,13 @@ with col1:
 
 with col2:
     view = pdk.ViewState(latitude=22.0, longitude=112.0, zoom=2.7, pitch=40)
+    
+    # 核心修复点：加入了 radius_min_pixels=7，强行锁定在屏幕上的最小尺寸
     layers = [
-        pdk.Layer("ScatterplotLayer", dn, get_position="[lon, lat]", get_color="color", get_radius="radius", pickable=True, opacity=0.8),
+        pdk.Layer("ScatterplotLayer", dn, get_position="[lon, lat]", get_color="color", get_radius="radius", radius_min_pixels=7, pickable=True, opacity=0.8),
         pdk.Layer("ArcLayer", da, get_source_position="s", get_target_position="t", get_source_color="c", get_target_color="c", get_width=4)
     ]
     
-    # 极简稳定版 Tooltip 语法
     st.pydeck_chart(pdk.Deck(
         layers=layers,
         initial_view_state=view,
