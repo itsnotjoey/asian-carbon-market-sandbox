@@ -100,12 +100,21 @@ def get_detailed_history(country, year, lang):
     # 这里存储的是你提供的完整文本
     db = {
         "cn": {
-            2011: ("批准北京、上海、广东等7省市开展碳排放交易试点，为全国统一市场积累经验。", "Approved 7 regional ETS pilots (Beijing, Shanghai, etc.) to gain experience."),
-            2013: ("地方试点陆续正式开市，采用基于碳排放强度的相对总量上限。", "Regional pilots officially launched using intensity-based relative caps."),
-            2021: ("全国碳排放权交易市场正式启动，初期覆盖电力行业，成为全球覆盖量最大的市场。", "National ETS launched for power sector, becoming the world's largest market."),
-            2024: ("重启CCER市场，宣布ETS扩容至钢铁、水泥等8大行业。", "CCER market restarted; ETS expanded to 8 high-carbon sectors."),
-            2030: ("实现碳达峰，全国ETS扩容完成，机制转为绝对总量上限，配额拍卖全面铺开。", "Carbon peak reached; ETS covers 8 sectors with absolute caps and full auctioning."),
-            2060: ("中国实现碳中和目标，碳市场转型为负排放激励体系。", "Carbon neutrality achieved; ETS shifts to negative emission incentives.")
+            1997: ("签署《京都议定书》，以发展中国家身份开始接触碳排放概念。", "Signed Kyoto Protocol, introduced to carbon emission concepts."),
+            2002: ("积极开展清洁发展机制(CDM)项目建设。", "Actively developed Clean Development Mechanism (CDM) projects."),
+            2005: ("CDM项目蓬勃发展，成为当时全球最大CDM碳信用供应国。", "Became the world's largest supplier of CDM carbon credits."),
+            2011: ("发改委批准北京、天津、广东等七省市开展碳交易试点。", "NDRC approved 7 regional carbon trading pilots."),
+            2013: ("深圳、上海、北京碳排放权交易试点先后启动交易。", "Pilot ETS launched sequentially in Shenzhen, Shanghai, and Beijing."),
+            2015: ("在巴黎气候大会承诺争取2030年前碳达峰。", "Committed at Paris Agreement to peak carbon emissions before 2030."),
+            2017: ("《全国碳排放权交易市场建设方案》印发，启动全国市场建设。", "National ETS construction plan issued, initiating the market framework."),
+            2020: ("联合国大会宣布'3060'双碳目标（2030达峰，2060中和）。", "Announced '3060' dual carbon goals at the UN General Assembly."),
+            2021: ("全国碳市场正式上线，首批纳入发电行业，成为全球最大碳市场。", "National ETS officially launched for the power sector, becoming the world's largest."),
+            2023: ("推进第二履约周期，研究纳入石化、钢铁等高耗能行业。", "Advanced 2nd compliance period, researching expansion to high-emission sectors."),
+            2024: ("首部行政法规发布；重启CCER；明确钢铁、水泥、铝冶炼纳入全国碳市场。", "First ETS regulation issued; CCER restarted; steel, cement & aluminum included."),
+            2025: ("全国碳市场实现八大高耗能行业全覆盖，交易机制趋于成熟。", "National ETS covers all 8 major energy-intensive sectors."),
+            2030: ("实现碳达峰。碳市场成熟，碳价有效反映减排成本。", "Carbon peak achieved. ETS matures with effective price signals."),
+            2035: ("风光装机容量大幅提升，碳排放进入显著下降通道。", "Wind and solar capacity surges, emissions enter significant decline."),
+            2060: ("实现碳中和。通过碳交易、CCUS及大规模碳汇抵消剩余排放。", "Carbon neutrality achieved via ETS, CCUS, and massive carbon sinks.")
         },
         "jp": {
             1997: ("颁布措施允许企业通过自愿碳额度抵消排放。", "Allowed voluntary carbon offsets for corporations."),
