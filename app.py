@@ -151,7 +151,7 @@ def get_detailed_history(country, year, lang):
     return f"【{latest}】{msg}"
 
 # ==========================================
-# 5. 绘图引擎
+# 5. 绘图引擎 (修复：所有国家从1997年起全程可见)
 # ==========================================
 def get_data(year, cbam, link, t, lang):
     nodes = []
@@ -159,19 +159,30 @@ def get_data(year, cbam, link, t, lang):
         desc = get_detailed_history(code, year, lang)
         nodes.append({"name": name, "lon": lon, "lat": lat, "color": color, "radius": radius, "status": desc})
 
-    cn_r = 35000 if year < 2021 else (90000 if year < 2030 else 160000)
+    # 动态调整各国的圆圈大小，1997年开始都是小圆点(15000)，随后按历史进程逐渐膨胀
+    cn_r = 15000 if year < 2011 else (35000 if year < 2021 else (90000 if year < 2030 else 160000))
+    jp_r = 15000 if year < 2010 else (35000 if year < 2023 else 55000)
+    kr_r = 15000 if year < 2015 else 45000
+    sg_r = 10000 if year < 2019 else 35000
+    id_r = 15000 if year < 2023 else 45000
+    in_r = 15000 if year < 2023 else 50000
+    vn_r = 10000 if year < 2025 else 30000
+
+    # 核心修复：移除年份限制，让它们从 1997 年起就作为一个物理锚点存在
+    add("cn", t["cn"], 116.4, 39.9, [255, 50, 50, 200], cn_r)
+    add("jp", t["jp"], 139.6, 35.6, [50, 150, 255, 200], jp_r)
+    add("kr", t["kr"], 126.9, 37.5, [50, 150, 255, 200], kr_r)
+    add("sg", t["sg"], 103.8, 1.3, [50, 150, 255, 200], sg_r)
+    add("id", t["id"], 106.8, -6.2, [255, 200, 50, 200], id_r)
+    add("in", t["in"], 78.9, 20.5, [255, 200, 50, 200], in_r)
+    add("vn", t["vn"], 105.8, 21.0, [255, 200, 50, 200], vn_r)
     
-    if year >= 2011: add("cn", t["cn"], 116.4, 39.9, [255, 50, 50, 200], cn_r)
-    if year >= 1997: add("jp", t["jp"], 139.6, 35.6, [50, 150, 255, 200], 55000)
-    if year >= 2010: add("kr", t["kr"], 126.9, 37.5, [50, 150, 255, 200], 45000)
-    if year >= 2019: add("sg", t["sg"], 103.8, 1.3, [50, 150, 255, 200], 35000)
-    if year >= 2023: 
-        add("id", t["id"], 106.8, -6.2, [255, 200, 50, 200], 45000)
-        add("in", t["in"], 78.9, 20.5, [255, 200, 50, 200], 50000)
-    if year >= 2025: 
-        add("vn", t["vn"], 105.8, 21.0, [255, 200, 50, 200], 30000)
-        nodes.append({"name": t["th"], "lon": 100.9, "lat": 15.8, "color": [255, 200, 50, 200], "radius": 28000, "status": "2025: 提交气候变化法案草案"})
-        nodes.append({"name": t["my"], "lon": 101.9, "lat": 4.2, "color": [255, 200, 50, 200], "radius": 28000, "status": "2026: 计划征收钢铁行业碳税"})
+    # 泰国和马来西亚 (这两个因为事件较少，暂作静态占位)
+    nodes.append({"name": t["th"], "lon": 100.9, "lat": 15.8, "color": [255, 200, 50, 200], "radius": 15000 if year < 2025 else 28000, "status": "2025: 提交气候变化法案草案" if lang=="中文" else "2025: Proposed Climate Bill"})
+    nodes.append({"name": t["my"], "lon": 101.9, "lat": 4.2, "color": [255, 200, 50, 200], "radius": 15000 if year < 2026 else 28000, "status": "2026: 计划征收钢铁行业碳税" if lang=="中文" else "2026: Carbon tax on steel"})
+
+    # 欧洲外部节点
+    nodes.append({"name": t["eu"], "lon": 10.0, "lat": 50.0, "color": [255, 255, 255, 50], "radius": 10000, "status": "CBAM 高压区 / Pressure Zone" if lang=="中文" else "CBAM Pressure Zone"})
 
     arcs = []
     if year >= 2020:
