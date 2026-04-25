@@ -385,84 +385,311 @@ with tab1:
 # Tab 2: 市场微观数据库 (基于 ICAP 2025 报告)
 # ------------------------------------------
 with tab2:
-    st.subheader("📚 亚太区域碳市场微观数据库 (ICAP 2025)")
-    st.markdown("本数据库基于 **International Carbon Action Partnership (ICAP) 2025 状态报告** 整理，收录了亚太地区核心国家与地方级碳市场的运作机制。")
-    
-    # 市场数据库字典
-    market_db = {
-        "中国 (全国碳市场)": {
-            "status": "2021年启动，是全球覆盖排放量最大的碳市场。",
-            "coverage": "目前覆盖电力行业（含自备电厂），并计划于2024-2026年逐步扩展至钢铁、水泥和铝冶炼行业。2024年排放总量上限约80亿吨二氧化碳当量，覆盖全国总排放量的60%以上。纳入门槛为年排放量达到26,000吨，2024年覆盖约3,500家单位。",
-            "allocation": "目前100%采用基于产量的基准法免费分配，未来计划引入拍卖机制。",
-            "offset": "允许使用全国核证自愿减排量（CCER）抵销不超过5%的核查排放量。2024年平均二级市场价格为95.96元人民币。"
-        },
-        "韩国 (K-ETS)": {
-            "status": "2015年启动，是东亚首个全国强制性碳市场。目前正处于向第四版基本计划过渡的重大改革期。",
-            "coverage": "2024年排放总量上限为5.67亿吨二氧化碳当量，覆盖韩国约79%的排放量。涵盖电力、工业、交通、航空、废弃物、建筑等行业的816家企业。纳入门槛为年排放超过12.5万吨的公司或2.5万吨的设施。",
-            "allocation": "采用祖父法和基准法免费分配，同时对非易受贸易影响行业强制进行至少10%的拍卖，第四阶段将进一步扩大拍卖比例。",
-            "offset": "允许使用国内及符合条件的国际抵销信用，上限均为5%。2024年平均二级市场价格为9,238韩元（约6.78美元）。"
-        },
-        "澳大利亚 (Safeguard Mechanism)": {
-            "status": "2023年7月正式启动“保障机制”改革，属于基于排放强度的碳交易体系。",
-            "coverage": "涵盖采矿、制造、交通、油气及废弃物等。2022年覆盖排放量为1.387亿吨（占总排放量26%）。门槛为每年直接排放超10万吨，共纳入219家主体。",
-            "allocation": "基于实际产量和排放强度的基准法免费分配，基准线每年下降4.9%直至2030年。目前无拍卖。",
-            "offset": "可无数量限制使用澳大利亚碳信用（ACCU），超过30%需公开说明。2024财年超排设施可以75澳元（约50美元）购买ACCU。"
-        },
-        "印度尼西亚 (IDXCarbon)": {
-            "status": "2023年启动了基于强度的电力行业碳交易机制。",
-            "coverage": "第一阶段涵盖146座25兆瓦及以上燃煤电厂，绝对排放总量上限约为2.57亿吨二氧化碳当量。",
-            "allocation": "基于技术排放批准限额（PTBAE）免费分配，首年100%免费，次年降至75-85%，支持拍卖交易。",
-            "offset": "允许使用印尼碳减排指标（SPE-GRK）。2024年二级市场抵销信用平均价格约58,800印尼盾（约3.66美元）。"
-        },
-        "新西兰 (NZ ETS)": {
-            "status": "2008年启动，碳排放总量上限与国家2050年净零目标保持一致。",
-            "coverage": "2025年绝对上限为1,910万吨。覆盖林业、能源、工业、废弃物等，含4,617个注册主体（多数为林业）。",
-            "allocation": "拍卖占据主导（2024年占51%）。高排放且贸易暴露行业（EITE）获部分免费配额，林业直接获得配额。",
-            "offset": "目前不允许使用任何抵销信用。2024年平均拍卖价格为64新西兰元（约35.91美元）。"
-        },
-        "北京 (区域试点)": {
-            "status": "2013年11月启动，中国三个由地方人大批准立法的区域碳市场之一。",
-            "coverage": "2022年上限约4,400万吨，覆盖全市约30%的排放量，含882家单位。纳入门槛5,000吨。",
-            "allocation": "祖父法或基准法免费分配。政府保留不超过5%的配额用于拍卖。",
-            "offset": "CCER及BCER抵销上限5%（半数需来自北京）。2024年均价102元人民币。"
-        },
-        "广东 (区域试点)": {
-            "status": "2013年12月启动，是中国规模最大、现货交易量最高的区域碳市场。",
-            "coverage": "2023年配额总量2.97亿吨。覆盖九大行业的391家单位。门槛为年排放10,000吨或能耗5,000吨标煤。",
-            "allocation": "基准法和祖父法免费分配，首个引入配额拍卖的地方市场。",
-            "offset": "CCER和PHCER上限10%（70%需来自本省）。2024年均价51.37元人民币。"
-        },
-        "上海 (区域试点)": {
-            "status": "2013年11月启动，唯一连续100%履约的区域碳市场，金融创新中心。",
-            "coverage": "2023年上限1.05亿吨。涵盖工业、建筑、交通等378家单位。电力行业已转至全国碳市场。",
-            "allocation": "基准法和祖父法免费分配，辅以固定拍卖。",
-            "offset": "CCER和SHCER上限5%，绿电消费可视作零排放。2024年均价75.45元人民币。"
-        },
-        "日本东京都 (TMG ETS)": {
-            "status": "2010年4月启动，全球首个城市级碳市场，与埼玉县链接。",
-            "coverage": "2022年核查排放1,120万吨，覆盖约20%城市排放，含1,200个大型建筑及工厂。门槛为消耗150万升原油当量。",
-            "allocation": "100%免费分配，结合履约系数（办公楼降至50%）。",
-            "offset": "允许使用可再生能源等指标。2024年均价约600日元（约3.96美元）。"
+    if lang == "中文":
+        tab2_title = "📚 亚太区域碳市场微观数据库 (ICAP 2025)"
+        tab2_desc = "本数据库基于 **International Carbon Action Partnership (ICAP) 2025 状态报告** 整理，收录了亚太地区 22 个核心国家与地方级碳市场的详细运作机制。"
+        selector_label = "📌 请选择要查询的碳市场体系："
+        lbl_status = "**市场现状：**"
+        lbl_coverage = "**🏭 覆盖范围**"
+        lbl_allocation = "**⚖️ 配额与分配**"
+        lbl_offset = "**🔄 抵销机制与价格**"
+        
+        market_db = {
+            "澳大利亚 (Australia)": {
+                "status": "于2023年7月正式启动“保障机制”（Safeguard Mechanism），属于基于排放强度的碳交易体系。",
+                "coverage": "涵盖采矿、制造业、国内交通运输以及石油、天然气和废弃物等行业。2022年经核查的覆盖排放量为1.387亿吨二氧化碳当量（占总排放量的26%）。纳入门槛为每年直接（范围1）排放量超过10万吨二氧化碳当量的设施。截至2023财年，共纳入219家主体。",
+                "allocation": "采用基于实际产量和排放强度的基准法进行免费分配，标准基准线默认每年下降4.9%直至2030年。目前没有拍卖机制。",
+                "offset": "允许无数量限制地使用澳大利亚碳信用（ACCU），但使用量超过基准30%时需公开说明原因。2024财年，超排设施可向监管机构以75澳元（约合50美元）的固定价格购买ACCU。"
+            },
+            "新西兰 (New Zealand)": {
+                "status": "于2008年启动，是涵盖范围广泛的核心气候政策，其排放总量上限轨迹与国家2050年净零目标保持一致。",
+                "coverage": "涵盖林业、固定能源、工业加工、液体化石燃料、废弃物和合成温室气体等行业。2025年的绝对排放总量上限为1,910万吨二氧化碳当量。农业排放报告义务已于2024年被废除。截至2024年底，共有4,617个注册主体（其中多数为自愿加入的林业主体）。",
+                "allocation": "以拍卖为主（2024年拍卖配额占51%）。对排放密集且易受贸易影响的（EITE）行业采用基于产量和强度基准的免费分配。林业及其他移除活动可直接获得配额。",
+                "offset": "目前不允许使用抵销信用（2015年6月后禁止国际信用）。2024年平均二级市场价格为59.31新西兰元（约合35.91美元），平均拍卖价格为64新西兰元。"
+            },
+            "北京 (Beijing)": {
+                "status": "2013年11月启动，是中国三个由地方人大批准立法的区域碳市场之一，并率先实施了价格上下限稳定机制。",
+                "coverage": "2022年排放上限约为4,400万吨二氧化碳当量，覆盖全市约30%的排放。涵盖供热、水泥、石化、制造业、服务业及公共交通等行业的882家单位。纳入门槛为年排放5,000吨二氧化碳当量。",
+                "allocation": "采用基准法（如电力、数据中心等）或基于历史强度的祖父法免费分配，保留不超过5%的配额用于不定期拍卖。",
+                "offset": "允许使用CCER和北京核证自愿减排量（BCER），上限为年度排放量的5%（其中至少50%需来自北京本地项目）。2024年二级市场平均价格为102元人民币（约合14美元）。"
+            },
+            "菲律宾 (Philippines)": {
+                "status": "正在审议中。2025年2月众议院二读通过了第11375号法案，旨在建立碳定价框架和实施机制。",
+                "coverage": "该法案要求能源、交通、工业、农业、林业和废弃物行业的大型排放源制定脱碳计划。",
+                "allocation": "气候变化委员会（CCC）将汇总部门脱碳路径，并确定单个纳管主体的年度配额分配计划。",
+                "offset": "纳管主体可通过购买国内外抵销信用（包括林业、可再生能源等项目），或按气候变化委员会设定的碳价为超排部分缴纳资金来履行合规义务。"
+            },
+            "中国 (China - 全国碳市场)": {
+                "status": "2021年启动，是目前全球覆盖排放量最大的、基于排放强度的碳交易体系。",
+                "coverage": "目前涵盖电力行业，并将于2024年至2026年间扩展至钢铁、水泥和铝冶炼行业。2024年排放总量上限约80亿吨二氧化碳当量（占全国总排放量60%以上），覆盖约3,500家年排放超26,000吨的单位。",
+                "allocation": "目前100%采用基于产量的基准法免费分配。《暂行条例》明确提出未来将引入拍卖机制并逐步扩大适用范围。",
+                "offset": "允许使用全国碳市场未涵盖项目产生的CCER，抵销上限为核查排放量的5%。2024年二级市场平均价格为95.96元人民币。"
+            },
+            "韩国 (Republic of Korea)": {
+                "status": "2015年启动，为东亚首个全国性强制碳市场。目前正实施重大改革以对齐2030及2050净零目标。",
+                "coverage": "2024年上限为5.671亿吨二氧化碳当量，覆盖韩国约79%的温室气体排放。涵盖电力、工业、建筑、交通等行业共816家企业。纳入门槛为企业年排放逾12.5万吨或设施逾2.5万吨。",
+                "allocation": "对EITE行业100%免费分配，其余适用拍卖的行业配额至少有10%需通过拍卖获得（第三阶段基准法分配比例达60%，第四阶段将提高至75%）。",
+                "offset": "允许使用国内及符合条件的国际抵销信用，总上限为每家企业履约义务的5%。2024年二级市场平均价格为9,238韩元（约合6.78美元），平均拍卖价为10,355韩元。"
+            },
+            "重庆 (Chongqing)": {
+                "status": "2014年启动，是中国唯一覆盖非二氧化碳温室气体（如甲烷、HFCs等）的区域碳市场。自2021年起由绝对总量转为基于强度的排放上限。",
+                "coverage": "涵盖所有工业领域（电解铝、水泥、钢铁等）的334家单位（2023年）。纳入门槛为年排放13,000吨或能耗5,000吨标煤。",
+                "allocation": "采用历史强度法、基准法或祖父法免费分配，自2021年起辅以临时拍卖。对实现“减污降碳”或达到能效基准的企业有额外配额奖励。",
+                "offset": "CQCER（“碳惠通”）抵销上限为履约义务的5%。另允许外购绿色电力抵销最多8%的缺口。2024年二级市场均价为40.05元人民币。"
+            },
+            "埼玉县 (Saitama)": {
+                "status": "2011年启动，涵盖大型建筑和工厂，且自启动起便与东京总量与交易计划相链接。",
+                "coverage": "2022年经核查排放量为630万吨二氧化碳当量。涵盖571个工商业建筑及工厂（门槛：连续三年耗能超150万升原油当量）。",
+                "allocation": "100%免费分配。每个设施的绝对上限基于“基准年排放量 × (1-履约系数) × 5年”计算。第四履约期（2025-2029年）履约系数将收紧至50%（办公楼）或48%（工厂）。",
+                "offset": "允许使用中小设施指标、县外指标、可再生能源及东京减排指标。场外可再生能源视为零排放。历史平均价格约为144日元（约合0.95美元）。"
+            },
+            "福建 (Fujian)": {
+                "status": "2016年启动，拥有以碳汇和林业为重点的省级机制，连续七年履约率100%。",
+                "coverage": "2022年上限为1.162亿吨二氧化碳当量。涵盖石化、化工、建材、钢铁、陶瓷、航空等行业的293家单位（电力于2019年移出）。门槛为年能耗5,000吨标煤。",
+                "allocation": "主要通过祖父法（如陶瓷）或基准法（如化工、航空）免费分配。仅在2016年举行过一次拍卖。",
+                "offset": "允许使用CCER（上限5%）和福建林业碳汇（FFCER）；若同时使用两者，抵销上限可达10%。2024年二级市场均价为21.52元人民币。"
+            },
+            "上海 (Shanghai)": {
+                "status": "2013年启动，全国唯一自启动以来连续保持100%履约率的市场，抵销市场活跃且率先开展远期交易。",
+                "coverage": "2023年上限1.05亿吨二氧化碳当量，涵盖工业、海运、建筑、国内航空等领域的378家单位。自2024年起扩展至数据中心及道路运输行业。",
+                "allocation": "采用行业基准法或祖父法免费分配，辅以每年两次以上的固定拍卖。对达到减污降碳标准的企业有额外0.3-0.5%奖励。",
+                "offset": "CCER和上海核证自愿减排量（SHCER）总抵销上限为5%。符合条件的跨省购买绿电可视为零排放。2024年二级市场均价为75.45元人民币，拍卖均价为77.87元。"
+            },
+            "广东 (Guangdong)": {
+                "status": "2013年启动，是中国规模最大、现货交易量最高的区域碳市场。首个引入拍卖机制的试点。",
+                "coverage": "2023年上限2.97亿吨二氧化碳当量，涵盖水泥、钢铁、石化、造纸、航空等，并扩容至陶瓷、纺织和数据中心的391家单位。门槛为年排放1万吨或能耗5,000吨标煤。",
+                "allocation": "以免费分配为主（基准法及基于历史排放的祖父法）。新进入者（自2023起）仅提供6%免费配额。曾不定期进行拍卖。",
+                "offset": "CCER和本地碳普惠（PHCER）使用上限为年度排放的10%，且其中70%必须来自广东省内。广东还对PHCER进行拍卖。2024年二级市场均价为51.37元人民币。"
+            },
+            "深圳 (Shenzhen)": {
+                "status": "2013年启动，由地方人大专门立法监管，市场流动性活跃，率先实施跨区域交易。",
+                "coverage": "2024年上限3,350万吨二氧化碳当量。涵盖制造、水务、交通、建筑等，2024年新增数据中心、固废、餐饮零售及公共机构等领域的737家单位。门槛为年排放超3,000吨。",
+                "allocation": "采用基准法（如供水、天然气、数据中心）或祖父法免费分配，辅以不定期拍卖（如2014年和2022年）。",
+                "offset": "CCER、碳普惠等抵销信用使用上限为清缴缺口的20%。自2024起绿电也纳入抵销。2024年二级市场均价为47.78元人民币。"
+            },
+            "湖北 (Hubei)": {
+                "status": "2014年启动，是中国最活跃的区域碳市场之一，负责运营全国碳市场注册登记和结算系统。",
+                "coverage": "2023年上限1.79亿吨二氧化碳当量。不预先限定行业，适用于所有年排放量≥13,000吨的工业单位，共涵盖449家。",
+                "allocation": "采用基准法和祖父法免费分配，辅以“市场调整系数”调控总量，并设有20%或20万吨的履约缺口上限。每年通常举行两次配额拍卖。",
+                "offset": "CCER上限为分配量的10%。另允许配额短缺的单位使用绿电证书及武汉市级抵销信用，上限均为10%。2024年二级市场均价为40.41元人民币。"
+            },
+            "中国台湾 (Taiwan, China)": {
+                "status": "建设中。2023年《气候变迁因应法》规定将分阶段实施碳费及国内总量管制与交易计划（ETS）。",
+                "coverage": "要求年排放超25,000吨二氧化碳当量的电力和制造业从2026年起（基于2025年排放）缴纳碳费。",
+                "allocation": "初期以征收碳费为主，费率为每吨300新台币（约合9.34美元）。计划在四年内（最早2026年）由碳费过渡到ETS。",
+                "offset": "允许使用国内自愿减排项目信用（上限10%），以及特定标准下的国际抵销信用（上限5%）。"
+            },
+            "印度 (India)": {
+                "status": "建设中。基于《2001年节能法》修正案建立的碳信用交易计划（CCTS）正在制定中，首个合规期计划于2026财年开启。",
+                "coverage": "属于基于强度的基准线与信用体系。初期将覆盖能源密集型行业的约800家实体（包括铝、水泥、钢铁、石化、化肥等9个行业），逐步取代现有的PAT计划。",
+                "allocation": "政府将设定包含三年目标的温室气体强度轨迹。超额完成目标的企业将获发碳信用证书（CCCs），未达标者则需在市场上购买并注销等量CCCs。",
+                "offset": "计划并行推出国内自愿抵销机制，允许非纳管实体开发减排/移除项目获取CCCs以提高市场流动性。价格机制由电力交易所及中央电力监管委员会（CERC）监管。"
+            },
+            "泰国 (Thailand)": {
+                "status": "建设中。《气候变化法案》终稿预计于2025年提交内阁审批，并计划于2027年实施。提案机制包含ETS、碳税及碳边境调节机制。",
+                "coverage": "将由泰国温室气体管理组织（TGO）制定分行业的温室气体上限，并由管理部门（DCCE）设立在线报告平台和交易登记系统。",
+                "allocation": "分配计划每三至五年更新一次，包含绝对上限机制、逐步递减的配额总量，以及明确的拍卖与免费分配比例。",
+                "offset": "法规将明确允许用于合规的碳信用（如国内的T-VER项目）数量上限及资质标准。自2013年起已运行自愿碳市场（V-ETS）试点并允许使用抵销信用。"
+            },
+            "印度尼西亚 (Indonesia)": {
+                "status": "2023年推出针对电力行业的强制性、基于强度的碳市场（NEK Trading Scheme），计划于2025年转向“总量上限-税-交易”混合体系。",
+                "coverage": "第一阶段（2023-2024）上限约2.568亿吨二氧化碳当量，涵盖146座并网燃煤电厂（装机≥25MW）。预计后续将扩容至自备燃煤电厂及燃气电厂等。",
+                "allocation": "采用技术排放限额（PTBAE）进行基准法免费分配，首年100%免费，次年降至75-85%（依履约情况而定）。具备在IDXCarbon进行拍卖的机制但目前无交易量。",
+                "offset": "允许无数量限制地使用国内抵销信用（SPE-GRK，需来自可再生能源或能效等项目）。2024年场外配额均价约12,000印尼盾（约0.76美元），二级市场SPE均价约58,800印尼盾。"
+            },
+            "天津 (Tianjin)": {
+                "status": "2013年12月启动，与全国碳市场并行运行，目前正进行将海运、航空及数据中心纳入管控的公众咨询。",
+                "coverage": "2023年上限为7,400万吨二氧化碳当量。涵盖所有年排放≥20,000吨的工业领域，共包含159家单位。",
+                "allocation": "采用祖父法（大多数行业依据2023年排放量设定0.96-0.98的调整系数）或基准法（建材行业、新进入者）进行免费分配。曾于2019至2021年间举行五次临时拍卖。",
+                "offset": "允许使用CCER和天津本地林业碳汇，总使用量不得超过年度义务的10%（仅限2013年后非水电类CO2减排项目）。外购非化石能源也可抵销。2024年二级市场均价为23.66元人民币。"
+            },
+            "日本 (Japan)": {
+                "status": "十年绿色转型（GX）政策的核心部分。自愿性GX-ETS于2023-2024启动，将在2026财年全面过渡为强制性碳市场。",
+                "coverage": "第一阶段（自愿期）已有超700家企业参与，占全国排放总量的50%以上。",
+                "allocation": "第一阶段基于基准线与信用体系运行。计划从2033财年起，向电力行业的高排放纳管主体引入强制拍卖机制。",
+                "offset": "允许使用J-Credits（国内机制）以及JCM（联合信用机制）的国际抵销信用。此外将于2028财年起对化石燃料进口和开采商征收碳附加费（GX-Surcharge）。"
+            },
+            "东京都 (Tokyo)": {
+                "status": "2010年4月启动，是全球首个城市级碳市场。与埼玉县市场相连接，即将进入减排要求极为严格的第四履约期（2025-2029年）。",
+                "coverage": "2024年上限1,220万吨二氧化碳当量（占都会区20%），覆盖约1,200个年耗能超1,500千升原油当量的工商业建筑及工厂。",
+                "allocation": "100%免费分配。绝对上限基于“基准年排放 × (1-履约系数) × 5年”。第四履约期系数收紧至50%（办公楼）或48%（工厂）。达标设施可将超额减排量作为指标交易。",
+                "offset": "允许使用中小设施指标、东京都外指标（上限1/3）、可再生能源及埼玉减排指标。场外可再生能源及绿电合约均被视为零排放。2024年均价约600日元（约合3.96美元）。"
+            },
+            "马来西亚 (Malaysia)": {
+                "status": "建设中。2022年推出了全球首个符合伊斯兰教法的自愿碳市场平台（BCX），且2024年发布了包含国内ETS条款的《气候变化法案》咨询文件。",
+                "coverage": "法案提议建立国内排放交易体系（ETS），在设施层面引入温室气体排放门槛。砂拉越州也已通过包含工业强制排放门槛的气候法案。",
+                "allocation": "目前正在与世界银行合作开展碳定价工具的可行性研究，重点聚焦政策与市场设计、注册系统开发以及基准线分配与基础设施开发。",
+                "offset": "计划利用现有的Bursa Carbon Exchange (BCX) 平台支持合规市场及自愿市场的碳信用交易与注销。"
+            },
+            "越南 (Vietnam)": {
+                "status": "建设中。基于2021年修订的《环境保护法》，政府获得了建立国家信用机制（NCM）和国内ETS的法律授权。预计2025年6月开启试点，2029年全面运行。",
+                "coverage": "年排放超过3,000吨二氧化碳当量的设施自2025年起负有报告义务。试点阶段主要针对高排放部门。",
+                "allocation": "试点期（2025-2028）的排放配额将向高排放行业100%免费发放，自然资源和环境部（MONRE）将制定排放限额与分配方法。全面运行后可能引入拍卖机制。",
+                "offset": "允许在规定门槛内使用认证碳信用（CCCs）进行合规，来源包括国内项目及CDM、JCM和《巴黎协定》第6.4条等国际机制。"
+            }
         }
-    }
+    else:
+        tab2_title = "📚 Asia-Pacific Carbon Market Profiles (ICAP 2025)"
+        tab2_desc = "This database is compiled based on the **ICAP 2025 Status Report**, covering the operational mechanisms of 22 national and sub-national carbon markets across the APAC region."
+        selector_label = "📌 Select a Carbon Market Profile:"
+        lbl_status = "**Market Status:**"
+        lbl_coverage = "**🏭 Coverage**"
+        lbl_allocation = "**⚖️ Allocation & Distribution**"
+        lbl_offset = "**🔄 Offsets & Pricing**"
+        
+        market_db = {
+            "Australia": {
+                "status": "The Safeguard Mechanism was officially launched as an intensity-based emissions trading system in July 2023.",
+                "coverage": "Covers around 220 facilities in the mining, manufacturing, domestic transport, oil, gas, and waste sectors. In 2022, verified covered emissions were 138.7 MtCO2e (26% of total emissions). The inclusion threshold is direct (Scope 1) emissions of over 100,000 tCO2e per year. In FY2023, 219 entities were covered.",
+                "allocation": "Free allocation is conducted using a production-adjusted emissions intensity framework (output-based benchmarking). The standard baseline decline rate is set at a default of 4.9% per year until 2030. Allowances are currently not auctioned.",
+                "offset": "Unlimited use of Australian Carbon Credit Units (ACCUs) is allowed, but facilities surrendering ACCUs equal to more than 30% of their baseline must publicly state why more onsite abatement was not undertaken. In FY2024, facilities exceeding their baseline could purchase ACCUs from the regulator at a fixed price of AUD 75 (approx. USD 50)."
+            },
+            "New Zealand": {
+                "status": "Launched in 2008, the NZ ETS is a central climate policy with a cap trajectory aligned with the country's 2050 net-zero targets.",
+                "coverage": "Covers forestry, stationary energy, industrial processing, liquid fossil fuels, and waste. The 2025 cap is 19.1 MtCO2e. Agricultural emission reporting obligations were repealed in 2024. As of late 2024, there are 4,617 registered entities (mostly voluntary forestry participants).",
+                "allocation": "Primarily allocated via auctioning (51% in 2024). Free allocation is provided based on output and intensity benchmarks for emissions-intensive, trade-exposed (EITE) activities. Forestry and other removal activities are granted units for sequestration.",
+                "offset": "Offset credits (and international units since 2015) are not allowed. Average 2024 auction price was NZD 64, and the secondary market price was NZD 59.31."
+            },
+            "Beijing": {
+                "status": "Launched in November 2013, it is one of three Chinese pilots backed by regional congress legislation and pioneered a price corridor mechanism.",
+                "coverage": "The 2022 cap was ~44 MtCO2e, covering ~30% of the city’s emissions. Regulates 882 entities across heat, cement, petrochemicals, manufacturing, service, and public transport. Inclusion threshold is 5,000 tCO2 per year.",
+                "allocation": "Allowances are distributed for free via benchmarking or grandparenting. Up to 5% is set aside for irregular auctions.",
+                "offset": "CCERs and local BCERs are allowed up to 5% of annual emissions (at least 50% must originate from Beijing). The 2024 average secondary market price was CNY 102 (USD 14)."
+            },
+            "Philippines": {
+                "status": "Under consideration. House Bill No. 11375 establishing a Carbon Emission Pricing Framework was approved on 2nd Reading in February 2025.",
+                "coverage": "Mandates large emitters from energy, transportation, industry, agriculture, forestry, and waste sectors to develop decarbonization plans.",
+                "allocation": "The Climate Change Commission (CCC) will consolidate sectoral pathways and determine annual allowance allocation plans for covered entities.",
+                "offset": "Entities exceeding allowances can purchase carbon allowances, internationally recognized offset credits, or contribute funds towards decarbonization equivalent to the CCC's established carbon price."
+            },
+            "China (National)": {
+                "status": "Operating since 2021 as an intensity-based system, it is the world's largest ETS by covered emissions.",
+                "coverage": "Cap is estimated at ~8,000 MtCO2 (2024), representing >60% of national emissions. Currently covers the power sector, with ongoing expansion to steel, cement, and aluminum smelters (2024–2026). Covers ~3,500 entities with emissions over 26,000 tCO2e/year.",
+                "allocation": "100% free allocation using output-based benchmarking. Interim Regulations clarify that auctioning will be introduced and gradually expanded.",
+                "offset": "Covered entities can use CCERs for up to 5% of their verified emissions. The 2024 average secondary market price was CNY 95.96 (USD 13.33)."
+            },
+            "Republic of Korea": {
+                "status": "Launched in 2015 as East Asia's first nationwide mandatory ETS. Currently undergoing major reforms through the Basic Plan for 2026-2035.",
+                "coverage": "The 2024 cap was 567.1 MtCO2e (79% of GHG emissions). Covers 816 entities in power, industry, buildings, waste, transport, aviation, and maritime. Threshold: >125,000 tCO2/company or >25,000 tCO2/facility.",
+                "allocation": "100% free allocation for EITE sectors. Eligible sectors must procure at least 10% of allowances via auction. Benchmarking reaches 60% of primary allocation in Phase 3 and will rise to 75% in Phase 4.",
+                "offset": "Domestic and international offsets are allowed up to 5% combined. The 2024 average auction price was KRW 10,355 (USD 7.60), and the secondary market average was KRW 9,238 (USD 6.78)."
+            },
+            "Chongqing": {
+                "status": "Launched in 2014, it is the only Chinese pilot covering non-CO2 GHGs. Shifted from absolute caps to intensity-based caps in 2021.",
+                "coverage": "Covers 334 entities (2023) across industrial sectors (e.g., aluminum, cement, steel). Inclusion threshold is 13,000 tCO2e or 5,000 tce/year.",
+                "allocation": "Utilizes benchmarking, historical intensity, and grandparenting for free allocation. Ad hoc auctions were introduced in 2021. Rewards entities meeting air pollution/efficiency standards with bonus allocations.",
+                "offset": "Only local CQCERs allowed for up to 5% of compliance obligations. Non-fossil energy purchases outside the city can offset up to 8% of shortfalls. The 2024 average secondary market price was CNY 40.05 (USD 5.56)."
+            },
+            "Saitama": {
+                "status": "Launched in April 2011, it has been linked to the Tokyo Cap-and-Trade program since inception and covers large buildings and factories.",
+                "coverage": "Verified emissions were 6.3 MtCO2 (2021), accounting for ~17% of prefectural emissions. Regulates 571 commercial and industrial facilities consuming ≥1,500 kL crude oil equivalent annually.",
+                "allocation": "100% free allocation based on absolute historical base-year emissions and a compliance factor. The reduction factor tightens to 50% (office) or 48% (factory) in the fourth period (2025–2029).",
+                "offset": "Allows specific offsets (Saitama, outside Saitama, Tokyo, and renewable credits) with quantitative limits (up to 1/3 or 50% for outside credits). Off-site renewable energy counts as zero emissions. Average price: JPY 144 (USD 0.95)."
+            },
+            "Fujian": {
+                "status": "Launched in September 2016. Maintained 100% compliance for seven years and places a strong emphasis on forestry offsets.",
+                "coverage": "The 2022 cap was 116.2 MtCO2. Regulates 293 entities in petrochemical, chemical, building materials, steel, aviation, and ceramics. Threshold: 5,000 tce/year.",
+                "allocation": "Free allocation is predominantly based on grandparenting or benchmarking. Only one ad hoc auction was held in 2016.",
+                "offset": "CCER limit is 5%; combined limit increases to 10% if domestic Fujian Forestry credits (FFCERs) are also used. The 2024 average secondary market price was CNY 21.52 (USD 2.99)."
+            },
+            "Shanghai": {
+                "status": "Launched in November 2013, the pilot has consistently maintained a 100% compliance rate. Operates the national ETS exchange platform and has broadened to road transport and data centers.",
+                "coverage": "2023 cap was 105 MtCO2. Regulates 378 entities in industry, aviation, maritime, buildings, data centers, and road transport. Thresholds vary (e.g., 20,000 tCO2 for industry, 10,000 tCO2 for road transport).",
+                "allocation": "Free allocation utilizes benchmarking and historical intensity. Between 2020 and 2023, auctions were held twice a year (three in 2024) to provide additional supply.",
+                "offset": "CCERs and local SHCERs allowed up to 5%. Eligible green power transactions count as zero emissions. 2024 average auction price was CNY 77.87 (USD 10.82), and secondary market price was CNY 75.45 (USD 10.48)."
+            },
+            "Guangdong": {
+                "status": "Launched in December 2013. It is the largest regional ETS in China and the first to introduce auctioning and Tan Pu Hui mechanisms.",
+                "coverage": "2023 cap was 297 MtCO2. Regulates 391 entities across cement, steel, petrochemicals, paper, aviation, ceramics, textiles, ports, and data centers. Threshold: 10,000 tCO2 or 5,000 tce/year.",
+                "allocation": "Primarily free allocation (benchmarking and grandparenting). Ad hoc auctions have been held but suspended since 2020. New entrants (since 2023) receive only 6% free allocation.",
+                "offset": "CCERs and local PHCERs are limited to 10% (at least 70% must originate in Guangdong). PHCERs are also auctioned. The 2024 average secondary market price was CNY 51.37 (USD 7.14)."
+            },
+            "Shenzhen": {
+                "status": "Launched in June 2013 as the only Chinese pilot operating at a sub-provincial level, backed by a dedicated ETS bill. Exhibits the highest liquidity.",
+                "coverage": "2024 cap is 33.5 MtCO2. Covers 737 entities in water, gas, manufacturing, waste, public buildings, data centers, and the service sector. Threshold: 3,000 tCO2/year.",
+                "allocation": "Largely distributed for free using benchmarking and grandparenting based on historical intensity or GDP. Two ad hoc auctions have been held (2014 and 2022).",
+                "offset": "CCERs, Tan Pu Hui, and local offsets can cover up to 20% of shortfalls. Green power can also offset shortfalls starting in 2024. The 2024 average secondary market price was CNY 47.78 (USD 6.64)."
+            },
+            "Hubei": {
+                "status": "Launched in April 2014. One of the most active pilots, and its exchange operates the registry and clearing system for the national ETS.",
+                "coverage": "2023 cap was 179 MtCO2. It covers all industrial sectors, establishing an inclusion threshold (instead of targeting specific sectors) of 13,000 tCO2/year (from 2023). Covers 449 entities.",
+                "allocation": "Uses benchmarking and grandparenting for free allocation, along with a 'market adjustment factor'. Regular ad hoc auctions are held twice a year.",
+                "offset": "CCERs limited to 10%. Green electricity certificates and Wuhan city credits can be used specifically to offset shortfalls (capped at 10%). The 2024 average secondary market price was CNY 40.41 (USD 5.75)."
+            },
+            "Taiwan, China": {
+                "status": "Under development. The 2023 Climate Change Response Act mandates a carbon fee transitioning to a domestic ETS within four years (as early as 2026).",
+                "coverage": "The initial carbon fee will apply to power and manufacturing industries emitting more than 25,000 tCO2e annually, based on 2025 emissions.",
+                "allocation": "The system begins with a carbon fee of TWD 300 (USD 9.34) per tCO2e in 2026, transitioning into a full cap-and-trade mechanism.",
+                "offset": "Emission reduction credits from domestic voluntary/offset projects can cover up to 10% of chargeable emissions. Low-leakage risk facilities can use international credits for up to 5%."
+            },
+            "India": {
+                "status": "Under development. Following the Energy Conservation Act amendment, a legal framework was established for an intensity-based Carbon Credit Trading Scheme (CCTS), launching its first compliance period in FY2026.",
+                "coverage": "Initially covers ~800 entities from 9 energy-intensive sectors (e.g., aluminium, cement, iron, steel) transitioning from the existing PAT scheme.",
+                "allocation": "Output-based free allocation with GHG intensity targets (baselines) set for 3-year periods. Overachievers earn Carbon Credit Certificates (CCCs); underachievers must surrender CCCs.",
+                "offset": "A voluntary domestic crediting mechanism will allow non-covered entities to generate CCCs to boost liquidity. The Central Electricity Regulatory Commission will regulate trading on power exchanges."
+            },
+            "Thailand": {
+                "status": "Under development. The final draft of the Climate Change Act is expected for cabinet approval in 2025 and enforcement in 2027. Includes an ETS, carbon tax, and CBAM.",
+                "coverage": "The Department of Climate Change and Environment (DCCE) will set emission caps and manage reporting platforms for industries defined by ministerial regulations.",
+                "allocation": "Allocation plans will be updated every 3 to 5 years, defining the caps, phase-down mechanisms, and the share of allowances to be auctioned.",
+                "offset": "Covered entities can surrender eligible carbon credits (like domestic T-VERs) under defined limits. A voluntary ETS (V-ETS) pilot has been running since 2013."
+            },
+            "Indonesia": {
+                "status": "Operating since 2023. A mandatory, intensity-based ETS for the power sector that will eventually transition into a hybrid 'cap-tax-and-trade' system by 2025.",
+                "coverage": "Phase 1 (2023-2024) cap was ~256.8 MtCO2e. Regulates 146 grid-connected coal-fired power plants (≥25 MW) operated mostly by PLN. Expected to expand to captive CFPPs and gas-fired plants.",
+                "allocation": "Allowances (PTBAE-PU) are distributed via output-based benchmarking (100% free first year; 75-85% thereafter). Auctioning via IDXCarbon is planned but not currently utilized.",
+                "offset": "Unlimited use of domestic offset credits (SPE-GRK) from renewable and efficiency projects. 2024 average OTC allowance price: IDR 12,000 (USD 0.76); secondary offset price: IDR 58,800 (USD 3.66)."
+            },
+            "Tianjin": {
+                "status": "Launched in December 2013, operates in parallel with the national ETS. Currently holding public consultations to expand to maritime, aviation, and data centers.",
+                "coverage": "2023 cap was 74 MtCO2. Covers 159 entities across all industrial sectors emitting ≥20,000 tCO2/year.",
+                "allocation": "Free allocation via grandparenting (0.96-0.98 reduction factors applied for 2024) and benchmarking (for building materials and new entrants). Five ad hoc auctions were held between 2019 and 2021.",
+                "offset": "CCERs (post-2013 non-hydro CO2 projects) and Tianjin forestry offsets allowed up to 10%. Eligible non-fossil power may also offset obligations. The 2024 average secondary market price was CNY 23.66 (USD 3.29)."
+            },
+            "Japan": {
+                "status": "Voluntary GX-ETS launched in 2023/2024. Will transition into a mandatory ETS from FY2026 alongside a fossil fuel carbon levy (GX-Surcharge) starting in FY2028.",
+                "coverage": "The voluntary phase involves more than 700 companies accounting for over 50% of the nation's GHG emissions.",
+                "allocation": "Operates currently as a baseline-and-credit system. Auctioning will be introduced for high-emitting entities in the power sector from FY2033.",
+                "offset": "Domestic J-Credits and international Joint Crediting Mechanism (JCM) credits are permitted for compliance."
+            },
+            "Tokyo": {
+                "status": "Launched in April 2010. The world’s first city-wide ETS, linked to Saitama's system. Preparing for aggressive cuts in the fourth compliance period (FY2025–2029).",
+                "coverage": "2024 cap was 12.2 MtCO2 (covering ~20% of Tokyo's emissions). Covers ~1,200 commercial/industrial facilities consuming ≥1,500 kL crude oil equivalent annually.",
+                "allocation": "100% free allocation. Baselines calculated via absolute historical emissions multiplied by a compliance factor. This factor tightens to 50% (office buildings) and 48% (factories) in the fourth period.",
+                "offset": "Permits various offsets (outside Tokyo, small/mid-size, renewables, Saitama credits) capped generally at one-third of the facility's obligations. Off-site renewables count as zero emissions. 2024 average price: JPY 600 (USD 3.96)."
+            },
+            "Malaysia": {
+                "status": "Under development. Launched the Bursa Carbon Exchange (BCX) for the voluntary market in 2022. The 2024 draft National Climate Change Bill sets the legal framework for a Domestic ETS.",
+                "coverage": "The draft legislation includes provisions to introduce mandatory emissions thresholds at the facility level to manage and trade allowances.",
+                "allocation": "The government, in cooperation with the World Bank, is currently executing feasibility studies regarding market design, registry development, and ETS infrastructure.",
+                "offset": "The framework heavily emphasizes integrating BCX (voluntary market exchange) with broader domestic compliance structures."
+            },
+            "Vietnam": {
+                "status": "Under development. The 2021 Law on Environmental Protection provides the legal mandate. Pilot ETS begins in June 2025, operating fully by 2029.",
+                "coverage": "Facilities with annual GHG emissions >3,000 tCO2e must report biennially starting in 2025. Pilot phase targets high-emitting sectors.",
+                "allocation": "During the pilot (2025–2028), emissions allowances will be allocated 100% for free to covered high-emitters. Auctioning mechanisms are anticipated post-2029.",
+                "offset": "Integration of Certified Carbon Credits (CCCs) from domestic and international sources (including CDM, JCM, and Paris Agreement Article 6.4) is permitted within defined limits."
+            }
+        }
 
-    # 交互式选择器
-    selected_market = st.selectbox("📌 请选择要查询的碳市场体系：", list(market_db.keys()))
+    st.subheader(tab2_title)
+    st.markdown(tab2_desc)
     
-    # 渲染数据卡片
+    selected_market = st.selectbox(selector_label, list(market_db.keys()))
     data = market_db[selected_market]
+    
     st.markdown(f"### {selected_market}")
-    st.info(f"**市场现状：** {data['status']}")
+    st.info(f"{lbl_status} {data['status']}")
     
     c1, c2 = st.columns(2)
     with c1:
-        st.markdown("**🏭 覆盖范围 (Coverage)**")
+        st.markdown(lbl_coverage)
         st.write(data['coverage'])
     with c2:
-        st.markdown("**⚖️ 配额与分配 (Allocation)**")
+        st.markdown(lbl_allocation)
         st.write(data['allocation'])
         
-    st.markdown("**🔄 抵销机制与价格 (Offsets & Pricing)**")
+    st.markdown(lbl_offset)
     st.success(data['offset'])
 
 # ==========================================
