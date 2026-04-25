@@ -29,8 +29,8 @@ with st.sidebar:
 
 if lang == "中文":
     t = {
-        "title": "🌍 亚洲碳市场与气候地缘政治沙盒 (1997-2060)",
-        "subtitle": "亚洲能源安全期末项目 | Jiayi 'Joey' Wang",
+        "title": "🌍 亚洲碳市场与气候地缘世纪推演 (1997-2060)",
+        "subtitle": "SIPA 期末项目展示 | 面向气候投资与跨国战略决策",
         "sidebar_title": "⚙️ 战略控制台",
         "slider": "🕰️ 时代演进",
         "play": "▶️ 播放", "pause": "⏸️ 暂停",
@@ -38,20 +38,21 @@ if lang == "中文":
         "cbam_toggle": "启动欧盟 CBAM 关税制裁",
         "link_toggle": "启动东北亚碳市场链接",
         "legend_title": "**图例与动态资金流:**",
-        "legend_text": "**【国家节点与市场规模】**\n* 🔴 **主导市场**：中国（规模随年份膨胀）\n* 🔵 **成熟市场**：日、韩、新（绝对限额/高碳税）\n* 🟡 **新兴市场**：东盟与印度（自然碳汇供应方）\n\n**【时间轴触发连线】**\n* 🟢 **绿色连线 (2020起)**：东南亚自然碳汇(NbS)出口\n* 🟠 **橙色连线 (2022-2025)**：印尼碳出口限制与贸易壁垒\n* 🌐 **青色连线 (2024起)**：新越 Article 6 双边碳流通道\n* ⚡ **紫色连线 (2027起)**：跨国物理绿电网（替代虚拟碳权）\n\n**【手动开关触发连线】**\n* 🚨 **红色连线 (左侧开关)**：受 CBAM 影响的碳合规成本倒灌\n* 🟡 **金色连线 (左侧开关)**：东北亚碳市场互联互通",
+        "legend_text": "**【国家与区域节点】**\n* 🔴 **主导市场**：中国\n* 🔵 **成熟市场**：日、韩、新\n* 🟡 **新兴市场**：东盟与印度\n* 🟣 **中东枢纽**：沙特、阿联酋\n\n**【时间轴动态连线】**\n* 🟢 **绿色连线 (2020起)**：东南亚自然碳汇(NbS)出口\n* 🟠 **橙色连线 (2022-2025)**：印尼碳出口限制与贸易壁垒\n* 💖 **粉色大动脉 (2023起)**：中东主权资金投资亚洲气候资产\n* 🌐 **青色连线 (2024起)**：新越 Article 6 双边通道\n* ⚡ **紫色连线 (2027起)**：跨国物理绿电网\n\n**【手动开关触发】**\n* 🚨 **红色射线**：CBAM 碳合规成本倒灌\n* 🟡 **金色链路**：东北亚碳市场互联互通",
         "year_label": "📅 历史节点:",
         "phase1_text": "第一阶段：早期探索与地方试点 (1997—2020)",
         "phase2_text": "第二阶段：全国强制市场建立与快速扩张 (2021—2025)",
-        "phase3_text": "第三阶段：强制履约深化与行业扩容 (2026—2030)",
+        "phase3_text": "第三阶段：强制履约深化与扩容 (2026—2030)",
         "phase4_text": "第四阶段：深度脱碳、区域一体化与净零 (2031—2060)",
-        "cbam_alert": "🚨 **CBAM 冲击分析**：亚洲主要出口国面临碳成本倒灌风险。",
-        "link_alert": "✨ **战略解读**：区域互联显著提升了亚洲碳资产的市场定价权。",
-        "cn": "中国", "jp": "日本", "kr": "韩国", "sg": "新加坡", "id": "印尼", "in": "印度", "vn": "越南", "th": "泰国", "my": "马来西亚", "eu": "欧洲/CBAM"
+        "cbam_alert": "🚨 **CBAM 冲击**：亚洲主要出口国面临碳成本倒灌。",
+        "link_alert": "✨ **战略互联**：区域互联提升亚洲碳资产定价权。",
+       "cn": "中国", "jp": "日本", "kr": "韩国", "sg": "新加坡", "id": "印尼", "in": "印度", "vn": "越南", "th": "泰国", "my": "马来西亚", "eu": "欧洲/CBAM", "me": "中东(沙特/UAE)",
+        "au": "澳大利亚", "kpi_title": "📊 宏观量化指标预估", "kpi_1": "区域碳市场覆盖量", "kpi_2": "亚洲平均碳价基准"
     }
 else:
     t = {
         "title": "🌍 Asian Carbon Market & Climate Geopolitics Sandbox",
-        "subtitle": "Asian Energy Security Final Project | Jiayi 'Joey' Wang",
+        "subtitle": "Asian Energy Security Final Project | Strategic Briefing",
         "sidebar_title": "⚙️ Command Center",
         "slider": "🕰️ Timeline Evolution",
         "play": "▶️ Play", "pause": "Pause",
@@ -59,15 +60,16 @@ else:
         "cbam_toggle": "Activate EU CBAM",
         "link_toggle": "Activate NE-Asia Link",
         "legend_title": "**Legend & Dynamic Flows:**",
-        "legend_text": "**[ Country Nodes & Scale ]**\n* 🔴 **Dominant Market**: China (Scale inflates dynamically)\n* 🔵 **Mature Markets**: JP, KR, SG (Absolute cap / High tax)\n* 🟡 **Emerging Markets**: ASEAN & India (NbS Suppliers)\n\n**[ Timeline-Triggered Lines ]**\n* 🟢 **Green Lines (2020+)**: SE Asia NbS carbon exports\n* 🟠 **Orange Lines (2022-2025)**: Indonesia carbon export ban\n* 🌐 **Cyan Lines (2024+)**: SG-VN Article 6 bilateral flow\n* ⚡ **Purple Lines (2027+)**: ASEAN cross-border green grid\n\n**[ Toggle-Triggered Lines ]**\n* 🚨 **Red Lines (Toggle)**: CBAM-induced compliance cost outflow\n* 🟡 **Gold Lines (Toggle)**: Northeast Asia ETS interconnection",
+        "legend_text": "**[ Regional Nodes ]**\n* 🔴 **Dominant**: China\n* 🔵 **Mature**: JP, KR, SG\n* 🟡 **Emerging**: ASEAN & India\n* 🟣 **ME Hub**: Saudi Arabia, UAE\n\n**[ Timeline-Triggered Lines ]**\n* 🟢 **Green Lines (2020+)**: SE Asia NbS carbon exports\n* 🟠 **Orange Lines (2022-2025)**: Indonesia carbon export ban\n* 💖 **Pink Artery (2023+)**: ME sovereign wealth flowing to Asian climate assets\n* 🌐 **Cyan Lines (2024+)**: SG-VN Article 6 flow\n* ⚡ **Purple Lines (2027+)**: ASEAN cross-border green grid\n\n**[ Toggle-Triggered Lines ]**\n* 🚨 **Red Lines**: CBAM compliance cost outflow\n* 🟡 **Gold Lines**: Northeast Asia ETS interconnection",
         "year_label": "📅 Year:",
         "phase1_text": "Phase 1: Early Exploration (1997-2020)",
         "phase2_text": "Phase 2: National Expansion (2021-2025)",
         "phase3_text": "Phase 3: Deep Compliance (2026-2030)",
         "phase4_text": "Phase 4: Net-Zero Integration (2031-2060)",
-        "cbam_alert": "🚨 **CBAM Insight**: Major exporters face domestic carbon cost backflow.",
-        "link_alert": "✨ **Strategic**: Regional integration boosts carbon asset premium.",
-        "cn": "China", "jp": "Japan", "kr": "S.Korea", "sg": "Singapore", "id": "Indonesia", "in": "India", "vn": "Vietnam", "th": "Thailand", "my": "Malaysia", "eu": "Europe"
+        "cbam_alert": "🚨 **CBAM Insight**: Exporters face domestic carbon cost backflow.",
+        "link_alert": "✨ **Strategic**: Regional integration boosts carbon premium.",
+        "cn": "China", "jp": "Japan", "kr": "S.Korea", "sg": "Singapore", "id": "Indonesia", "in": "India", "vn": "Vietnam", "th": "Thailand", "my": "Malaysia", "eu": "Europe", "me": "Middle East",
+        "au": "Australia", "kpi_title": "📊 Macro Quantitative Projections", "kpi_1": "Regional ETS Coverage", "kpi_2": "Avg Carbon Price Benchmark"
     }
 
 # ==========================================
@@ -197,6 +199,24 @@ def get_detailed_history(country, year, lang):
             2040: ("碳排放预计达到峰值，碳市场交易活跃度达到顶峰。", "Emissions expected to peak; carbon market trading activity at its highest."),
             2050: ("NDC深化阶段：碳价格机制成熟，高耗能产业全面脱碳。", "Deepened NDC stage: mature carbon pricing, total decarbonization of heavy industry."),
             2060: ("全面接入负排放技术和碳捕集交易(CCS)，备战2070净零目标。", "Fully integrated negative emissions and CCS trading to prep for 2070 net-zero.")
+        },
+        "me": {
+            1997: ("作为传统化石能源出口巨头，初期在国际气候谈判中持保守态度。", "Traditional fossil fuel exporters; initially conservative in climate negotiations."),
+            2015: ("签署《巴黎协定》，海湾国家开始提出经济多元化与能源转型愿景。", "Signed Paris Agreement; Gulf states began envisioning economic diversification."),
+            2021: ("沙特提出'绿色沙特倡议'及2060净零目标，阿联酋宣布2050净零目标。", "Saudi announced Green Initiative & 2060 Net Zero; UAE pledged Net Zero by 2050."),
+            2022: ("沙特主权基金(PIF)牵头成立中东与北非自愿碳市场(RVCMC)。", "Saudi PIF established the MENA Regional Voluntary Carbon Market Co (RVCMC)."),
+            2023: ("阿联酋举办COP28，大力发展碳金融，阿布扎比吸引众多绿色资管机构入驻。", "UAE hosted COP28, aggressively expanding carbon finance and green asset management."),
+            2025: ("主权财富基金加速跨国布局，向亚洲(如印尼、印度)的绿色基建及碳汇注入巨资。", "Sovereign wealth funds poured capital into Asian green infrastructure and carbon sinks."),
+            2030: ("中东从'化石能源出口中心'初步转型为连接亚欧的'气候金融与绿氢枢纽'。", "Transitioning from fossil fuel exporters to a climate finance & green hydrogen hub.")
+        },
+        "au": {
+            1997: ("签署《京都议定书》，但由于国内化石能源利益，气候政策长期摇摆。", "Signed Kyoto but climate policy fluctuated heavily due to domestic fossil fuel interests."),
+            2011: ("短暂引入碳定价机制(Carbon Pricing Mechanism)，但于2014年被废除。", "Briefly introduced a Carbon Pricing Mechanism, which was repealed in 2014."),
+            2016: ("建立保障机制(Safeguard Mechanism)，要求大型排放设施控制基准线。", "Established Safeguard Mechanism to limit emissions from large facilities."),
+            2023: ("彻底改革保障机制，要求高排企业每年减排4.9%，实质上转变为交易市场。", "Reformed Safeguard Mechanism (requiring 4.9% annual cuts), effectively becoming a baseline-and-credit market."),
+            2025: ("加速对日韩的绿氢出口布局，并探索跨国碳捕集与封存(CCS)枢纽合作。", "Accelerated green hydrogen exports to JP/KR and explored cross-border CCS hub cooperation."),
+            2030: ("转型为'可再生能源超级大国'，为亚洲提供大量零碳能源与高质量碳信用。", "Transitioning into a 'Renewable Energy Superpower', supplying zero-carbon energy and credits to Asia."),
+            2050: ("实现净零排放，成为亚太地区负排放技术(CDR)和绿色大宗商品的核心基石。", "Achieved Net-Zero, becoming the APAC cornerstone for CDR and green commodities.")
         }
     }
     
@@ -225,6 +245,8 @@ def get_data(year, cbam, link, t, lang):
     id_r = 40000 if year < 2023 else 55000
     in_r = 40000 if year < 2023 else 60000
     vn_r = 30000 if year < 2025 else 45000
+    me_r = 30000 if year < 2021 else 55000
+    au_r = 30000 if year < 2016 else 55000
 
     add("cn", t["cn"], 116.4, 39.9, [255, 50, 50, 200], cn_r)
     add("jp", t["jp"], 139.6, 35.6, [50, 150, 255, 200], jp_r)
@@ -233,6 +255,8 @@ def get_data(year, cbam, link, t, lang):
     add("id", t["id"], 106.8, -6.2, [255, 200, 50, 200], id_r)
     add("in", t["in"], 78.9, 20.5, [255, 200, 50, 200], in_r)
     add("vn", t["vn"], 105.8, 21.0, [255, 200, 50, 200], vn_r)
+    add("me", t["me"], 45.0, 24.0, [148, 0, 211, 200], me_r)
+    add("au", t["au"], 133.2, -25.2, [255, 140, 0, 200], au_r) # 橙色节点代表澳洲
     
     nodes.append({"name": t["th"], "lon": 100.9, "lat": 15.8, "color": [255, 200, 50, 200], "radius": 30000 if year < 2025 else 40000, "status": "2025: 提交气候变化法案草案" if lang=="中文" else "2025: Proposed Climate Bill"})
     nodes.append({"name": t["my"], "lon": 101.9, "lat": 4.2, "color": [255, 200, 50, 200], "radius": 30000 if year < 2026 else 40000, "status": "2026: 计划征收钢铁行业碳税" if lang=="中文" else "2026: Carbon tax on steel"})
@@ -254,6 +278,14 @@ def get_data(year, cbam, link, t, lang):
     if link and year >= 2016:
         c = [[116.4, 39.9], [139.6, 35.6], [126.9, 37.5]]
         for i in range(3): arcs.append({"s": c[i], "t": c[(i+1)%3], "c": [255, 215, 0, 255]})
+    # 中东 -> 亚洲 绿色资金/碳资产跨境流动
+    if year >= 2023:
+        for target in [[106.8, -6.2], [78.9, 20.5]]: # 飞向印尼、印度
+            arcs.append({"s": [45.0, 24.0], "t": target, "c": [255, 20, 147, 200]}) # 深粉色资金线
+    # arcs 连线的部分，追加：
+    if year >= 2025:
+        for target in [[139.6, 35.6], [126.9, 37.5]]: # 飞向日本、韩国
+            arcs.append({"s": [133.2, -25.2], "t": target, "c": [0, 255, 127, 200]}) # 亮绿色代表绿氢/新能源供应链
 
     return pd.DataFrame(nodes), pd.DataFrame(arcs)
 
@@ -273,6 +305,25 @@ with col1:
     elif selected_year <= 2025: st.info(t["phase2_text"])
     elif selected_year <= 2030: st.warning(t["phase3_text"])
     else: st.success(t["phase4_text"])
+    
+    # --- 新增的动态 KPI 数据面板 ---
+    st.markdown("---")
+    st.markdown(f"**{t['kpi_title']}**")
+    
+    coverage = "0"
+    price = "$0"
+    if 2011 <= selected_year < 2021: coverage, price = "1.2 Gt", "$3 - $5"
+    elif 2021 <= selected_year <= 2025: coverage, price = "8.5 Gt", "$8 - $12"
+    elif 2026 <= selected_year <= 2030: coverage, price = "12.0 Gt", "$25 - $35"
+    elif 2031 <= selected_year <= 2040: coverage, price = "15.5 Gt", "$60 - $80"
+    elif selected_year > 2040: coverage, price = "18.0 Gt", "$100+"
+    
+    m1, m2 = st.columns(2)
+    m1.metric(t["kpi_1"], coverage)
+    m2.metric(t["kpi_2"], price)
+    st.markdown("---")
+    # ------------------------------
+
     if cbam_trigger and selected_year >= 2025: st.error(t["cbam_alert"])
     if link_trigger and selected_year >= 2016: st.success(t["link_alert"])
 
