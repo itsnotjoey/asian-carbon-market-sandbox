@@ -387,7 +387,7 @@ with tab1:
 with tab2:
     if lang == "中文":
         tab2_title = "📚 亚太区域碳市场微观数据库 (ICAP 2025)"
-        tab2_desc = "本数据库基于 **International Carbon Action Partnership (ICAP) 2025 状态报告** 整理，收录了亚太地区 22 个核心国家与地方级碳市场的详细运作机制。"
+        tab2_desc = "本数据库基于 **International Carbon Action Partnership (ICAP) Emissions Trading Worldwide: Status Report 2025** 整理，收录了亚太地区 22 个核心国家与地方级碳市场的详细运作机制。"
         selector_label = "📌 请选择要查询的碳市场体系："
         lbl_status = "**市场现状：**"
         lbl_coverage = "**🏭 覆盖范围**"
@@ -530,7 +530,7 @@ with tab2:
         }
     else:
         tab2_title = "📚 Asia-Pacific Carbon Market Profiles (ICAP 2025)"
-        tab2_desc = "This database is compiled based on the **ICAP 2025 Status Report**, covering the operational mechanisms of 22 national and sub-national carbon markets across the APAC region."
+        tab2_desc = "This database is compiled based on the **International Carbon Action Partnership (ICAP) Emissions Trading Worldwide: Status Report 2025**, covering the operational mechanisms of 22 national and sub-national carbon markets across the APAC region."
         selector_label = "📌 Select a Carbon Market Profile:"
         lbl_status = "**Market Status:**"
         lbl_coverage = "**🏭 Coverage**"
