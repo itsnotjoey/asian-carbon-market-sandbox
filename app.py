@@ -301,29 +301,14 @@ st.markdown(f"<p style='color: gray; margin-top: 5px;'><b>{t['subtitle']}</b></p
 col1, col2 = st.columns([1, 2.8])
 with col1:
     st.subheader(f"{t['year_label']} {selected_year}")
+    
+    # 历史阶段文本
     if selected_year < 2021: st.info(t["phase1_text"])
     elif selected_year <= 2025: st.info(t["phase2_text"])
     elif selected_year <= 2030: st.warning(t["phase3_text"])
     else: st.success(t["phase4_text"])
     
-    # --- 新增的动态 KPI 数据面板 ---
-    st.markdown("---")
-    st.markdown(f"**{t['kpi_title']}**")
-    
-    coverage = "0"
-    price = "$0"
-    if 2011 <= selected_year < 2021: coverage, price = "1.2 Gt", "$3 - $5"
-    elif 2021 <= selected_year <= 2025: coverage, price = "8.5 Gt", "$8 - $12"
-    elif 2026 <= selected_year <= 2030: coverage, price = "12.0 Gt", "$25 - $35"
-    elif 2031 <= selected_year <= 2040: coverage, price = "15.5 Gt", "$60 - $80"
-    elif selected_year > 2040: coverage, price = "18.0 Gt", "$100+"
-    
-    m1, m2 = st.columns(2)
-    m1.metric(t["kpi_1"], coverage)
-    m2.metric(t["kpi_2"], price)
-    st.markdown("---")
-    # ------------------------------
-
+    # 宏观冲击警告 (保留了最重要的战略提示)
     if cbam_trigger and selected_year >= 2025: st.error(t["cbam_alert"])
     if link_trigger and selected_year >= 2016: st.success(t["link_alert"])
 
