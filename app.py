@@ -292,41 +292,178 @@ def get_data(year, cbam, link, t, lang):
 dn, da = get_data(selected_year, cbam_trigger, link_trigger, t, lang)
 
 # ==========================================
-# 6. 渲染 (引入 radius_min_pixels 黑科技)
+# 6. 渲染与双标签页系统
 # ==========================================
-# 使用 HTML 强制缩小字体，避免换行
+# 极简标题
 st.markdown(f"<h3 style='margin-bottom: 0px;'>{t['title']}</h3>", unsafe_allow_html=True)
 st.markdown(f"<p style='color: gray; margin-top: 5px;'><b>{t['subtitle']}</b></p>", unsafe_allow_html=True)
 
-col1, col2 = st.columns([1, 2.8])
-with col1:
-    st.subheader(f"{t['year_label']} {selected_year}")
-    
-    # 历史阶段文本
-    if selected_year < 2021: st.info(t["phase1_text"])
-    elif selected_year <= 2025: st.info(t["phase2_text"])
-    elif selected_year <= 2030: st.warning(t["phase3_text"])
-    else: st.success(t["phase4_text"])
-    
-    # 宏观冲击警告 (保留了最重要的战略提示)
-    if cbam_trigger and selected_year >= 2025: st.error(t["cbam_alert"])
-    if link_trigger and selected_year >= 2016: st.success(t["link_alert"])
+# 创建双标签页
+tab1, tab2 = st.tabs(["🌍 世纪地缘沙盘 (Geopolitics Sandbox)", "📊 市场微观数据库 (Market Profiles)"])
 
-with col2:
-    view = pdk.ViewState(latitude=22.0, longitude=112.0, zoom=2.7, pitch=40)
+# ------------------------------------------
+# Tab 1: 主沙盘视图 (原有的所有内容)
+# ------------------------------------------
+with tab1:
+    col1, col2 = st.columns([1, 2.8])
+    with col1:
+        st.subheader(f"{t['year_label']} {selected_year}")
+        if selected_year < 2021: st.info(t["phase1_text"])
+        elif selected_year <= 2025: st.info(t["phase2_text"])
+        elif selected_year <= 2030: st.warning(t["phase3_text"])
+        else: st.success(t["phase4_text"])
+        
+        if cbam_trigger and selected_year >= 2025: st.error(t["cbam_alert"])
+        if link_trigger and selected_year >= 2016: st.success(t["link_alert"])
+
+    with col2:
+        view = pdk.ViewState(latitude=22.0, longitude=112.0, zoom=2.7, pitch=40)
+        layers = [
+            pdk.Layer("ScatterplotLayer", dn, get_position="[lon, lat]", get_color="color", get_radius="radius", radius_min_pixels=7, pickable=True, opacity=0.8),
+            pdk.Layer("ArcLayer", da, get_source_position="s", get_target_position="t", get_source_color="c", get_target_color="c", get_width=4)
+        ]
+        st.pydeck_chart(pdk.Deck(
+            layers=layers,
+            initial_view_state=view,
+            map_style="https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json",
+            tooltip={"html": "<b>{name}</b><br/>{status}"}
+        ))
+
+    # 静态历史年表附录
+    st.markdown("---")
+    st.subheader("📜 亚洲碳市场发展年表（1997—2060）" if lang == "中文" else "📜 Asian Carbon Market Timeline (1997-2060)")
+
+    if lang == "中文":
+        st.markdown("""
+        **第一阶段：早期探索与地方试点（1997—2020）**
+        * **1997年**：日本颁布措施允许企业通过自愿碳额度抵消排放。
+        * **2005年**：日本启动自愿排放交易体系（JVETS）。
+        * **2010年**：日本东京都政府启动亚洲首个城市级强制性总量与交易计划（TMG ETS）。韩国颁布《低碳绿色增长基本法》。
+        * **2011年**：中国发改委批准北京、上海等7省市开展碳排放权交易试点。日本埼玉县ETS启动并与东京都市场互联。
+        * **2013年**：中国各地试点陆续正式开市，深圳率先启动。
+        * **2015年**：韩国建立东亚首个全国性强制碳市场（K-ETS）。
+        * **2016年**：亚洲协会政策研究院提出中日韩三国碳市场渐进式链接路线图。
+        * **2019年**：新加坡引入碳税机制，初始税率5新元/吨。
+        * **2020年**：东南亚自愿碳信用供应占全球约21%，达到历史高峰，随后快速萎缩。
+
+        **第二阶段：全国强制市场建立与快速扩张（2021—2025）**
+        * **2021年**：中国全国碳排放权交易市场正式启动。
+        * **2022年**：韩国K-ETS进入第三阶段，覆盖范围扩至全国79%排放量。
+        * **2023年**：日本推出绿色转型排放权交易市场（GX-ETS）；印尼启动燃煤电厂强制ETS；印度碳信用交易计划（CCTS）启动试点。
+        * **2024年**：中国重启CCER市场，宣布ETS将扩容至钢铁等8大行业。新加坡碳税提升至25新元/吨。
+        * **2025年**：越南全国试点碳市场启动。欧盟CBAM正式开始征收碳关税。
+
+        **第三阶段：强制履约深化与行业扩容（2026—2030）**
+        * **2026年**：日本GX-ETS转为强制履约。韩国引入"碳差额合约（CCfD）"。印度CCTS首个正式履约期开始。
+        * **2027年**：中国全国ETS进入第二阶段，逐步引入拍卖机制。印尼ETS扩容。
+        * **2028年**：日本引入GX附加费。印尼引入"总量上限—碳税—交易"混合机制。
+        * **2029年**：越南全国碳市场正式全面运行。
+        * **2030年**：中国实现碳达峰。东盟共同碳框架（ACCF）推动标准互认。
+
+        **第四阶段：深度脱碳、区域一体化与净零目标（2031—2060）**
+        * **2033年**：日本对电力行业高排放主体正式引入强制配额拍卖。
+        * **2035年**：欧盟CBAM全面实施。中国全国碳市场免费配额基本退出。
+        * **2040年**：中日韩三国碳市场链接框架趋于成熟。东南亚成为全球碳抵消枢纽。
+        * **2050年**：日、韩、新实现碳中和或净零排放。
+        * **2060年**：中国实现碳中和目标，全国碳市场转型为净零后的碳移除激励体系。
+        """)
+    else:
+        st.markdown("*Please refer to the detailed timeline in the previous section or switch to Chinese for full details.*")
+
+    with st.expander("📚 References"):
+        st.markdown("""
+        * Australian Government (DCCEEW). (2023). *Safeguard Mechanism Reforms*.
+        * BloombergNEF. (2025). *Advancing Southeast Asia Carbon Market: Nature and Nurture*.
+        * CLP. (2024). *CLP’s Climate Vision 2050*.
+        * EWING, J. (2016). *Roadmap to a Northeast Asian Carbon Market*. Asia Society Policy Institute.
+        * International Carbon Action Partnership. (2025). *Emissions Trading Worldwide: Status Report 2025*. ICAP.
+        * International Energy Agency. (2021). *Net Zero by 2050*. IEA.
+        * World Economic Forum, & Bain & Company. (2025). *Asia’s Carbon Markets: Strategic Imperatives for Corporations*. WEF.
+        """)
+
+# ------------------------------------------
+# Tab 2: 市场微观数据库 (基于 ICAP 2025 报告)
+# ------------------------------------------
+with tab2:
+    st.subheader("📚 亚太区域碳市场微观数据库 (ICAP 2025)")
+    st.markdown("本数据库基于 **International Carbon Action Partnership (ICAP) 2025 状态报告** 整理，收录了亚太地区核心国家与地方级碳市场的运作机制。")
     
-    # 核心修复点：加入了 radius_min_pixels=7，强行锁定在屏幕上的最小尺寸
-    layers = [
-        pdk.Layer("ScatterplotLayer", dn, get_position="[lon, lat]", get_color="color", get_radius="radius", radius_min_pixels=7, pickable=True, opacity=0.8),
-        pdk.Layer("ArcLayer", da, get_source_position="s", get_target_position="t", get_source_color="c", get_target_color="c", get_width=4)
-    ]
+    # 市场数据库字典
+    market_db = {
+        "中国 (全国碳市场)": {
+            "status": "2021年启动，是全球覆盖排放量最大的碳市场。",
+            "coverage": "目前覆盖电力行业（含自备电厂），并计划于2024-2026年逐步扩展至钢铁、水泥和铝冶炼行业。2024年排放总量上限约80亿吨二氧化碳当量，覆盖全国总排放量的60%以上。纳入门槛为年排放量达到26,000吨，2024年覆盖约3,500家单位。",
+            "allocation": "目前100%采用基于产量的基准法免费分配，未来计划引入拍卖机制。",
+            "offset": "允许使用全国核证自愿减排量（CCER）抵销不超过5%的核查排放量。2024年平均二级市场价格为95.96元人民币。"
+        },
+        "韩国 (K-ETS)": {
+            "status": "2015年启动，是东亚首个全国强制性碳市场。目前正处于向第四版基本计划过渡的重大改革期。",
+            "coverage": "2024年排放总量上限为5.67亿吨二氧化碳当量，覆盖韩国约79%的排放量。涵盖电力、工业、交通、航空、废弃物、建筑等行业的816家企业。纳入门槛为年排放超过12.5万吨的公司或2.5万吨的设施。",
+            "allocation": "采用祖父法和基准法免费分配，同时对非易受贸易影响行业强制进行至少10%的拍卖，第四阶段将进一步扩大拍卖比例。",
+            "offset": "允许使用国内及符合条件的国际抵销信用，上限均为5%。2024年平均二级市场价格为9,238韩元（约6.78美元）。"
+        },
+        "澳大利亚 (Safeguard Mechanism)": {
+            "status": "2023年7月正式启动“保障机制”改革，属于基于排放强度的碳交易体系。",
+            "coverage": "涵盖采矿、制造、交通、油气及废弃物等。2022年覆盖排放量为1.387亿吨（占总排放量26%）。门槛为每年直接排放超10万吨，共纳入219家主体。",
+            "allocation": "基于实际产量和排放强度的基准法免费分配，基准线每年下降4.9%直至2030年。目前无拍卖。",
+            "offset": "可无数量限制使用澳大利亚碳信用（ACCU），超过30%需公开说明。2024财年超排设施可以75澳元（约50美元）购买ACCU。"
+        },
+        "印度尼西亚 (IDXCarbon)": {
+            "status": "2023年启动了基于强度的电力行业碳交易机制。",
+            "coverage": "第一阶段涵盖146座25兆瓦及以上燃煤电厂，绝对排放总量上限约为2.57亿吨二氧化碳当量。",
+            "allocation": "基于技术排放批准限额（PTBAE）免费分配，首年100%免费，次年降至75-85%，支持拍卖交易。",
+            "offset": "允许使用印尼碳减排指标（SPE-GRK）。2024年二级市场抵销信用平均价格约58,800印尼盾（约3.66美元）。"
+        },
+        "新西兰 (NZ ETS)": {
+            "status": "2008年启动，碳排放总量上限与国家2050年净零目标保持一致。",
+            "coverage": "2025年绝对上限为1,910万吨。覆盖林业、能源、工业、废弃物等，含4,617个注册主体（多数为林业）。",
+            "allocation": "拍卖占据主导（2024年占51%）。高排放且贸易暴露行业（EITE）获部分免费配额，林业直接获得配额。",
+            "offset": "目前不允许使用任何抵销信用。2024年平均拍卖价格为64新西兰元（约35.91美元）。"
+        },
+        "北京 (区域试点)": {
+            "status": "2013年11月启动，中国三个由地方人大批准立法的区域碳市场之一。",
+            "coverage": "2022年上限约4,400万吨，覆盖全市约30%的排放量，含882家单位。纳入门槛5,000吨。",
+            "allocation": "祖父法或基准法免费分配。政府保留不超过5%的配额用于拍卖。",
+            "offset": "CCER及BCER抵销上限5%（半数需来自北京）。2024年均价102元人民币。"
+        },
+        "广东 (区域试点)": {
+            "status": "2013年12月启动，是中国规模最大、现货交易量最高的区域碳市场。",
+            "coverage": "2023年配额总量2.97亿吨。覆盖九大行业的391家单位。门槛为年排放10,000吨或能耗5,000吨标煤。",
+            "allocation": "基准法和祖父法免费分配，首个引入配额拍卖的地方市场。",
+            "offset": "CCER和PHCER上限10%（70%需来自本省）。2024年均价51.37元人民币。"
+        },
+        "上海 (区域试点)": {
+            "status": "2013年11月启动，唯一连续100%履约的区域碳市场，金融创新中心。",
+            "coverage": "2023年上限1.05亿吨。涵盖工业、建筑、交通等378家单位。电力行业已转至全国碳市场。",
+            "allocation": "基准法和祖父法免费分配，辅以固定拍卖。",
+            "offset": "CCER和SHCER上限5%，绿电消费可视作零排放。2024年均价75.45元人民币。"
+        },
+        "日本东京都 (TMG ETS)": {
+            "status": "2010年4月启动，全球首个城市级碳市场，与埼玉县链接。",
+            "coverage": "2022年核查排放1,120万吨，覆盖约20%城市排放，含1,200个大型建筑及工厂。门槛为消耗150万升原油当量。",
+            "allocation": "100%免费分配，结合履约系数（办公楼降至50%）。",
+            "offset": "允许使用可再生能源等指标。2024年均价约600日元（约3.96美元）。"
+        }
+    }
+
+    # 交互式选择器
+    selected_market = st.selectbox("📌 请选择要查询的碳市场体系：", list(market_db.keys()))
     
-    st.pydeck_chart(pdk.Deck(
-        layers=layers,
-        initial_view_state=view,
-        map_style="https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json",
-        tooltip={"html": "<b>{name}</b><br/>{status}"}
-    ))
+    # 渲染数据卡片
+    data = market_db[selected_market]
+    st.markdown(f"### {selected_market}")
+    st.info(f"**市场现状：** {data['status']}")
+    
+    c1, c2 = st.columns(2)
+    with c1:
+        st.markdown("**🏭 覆盖范围 (Coverage)**")
+        st.write(data['coverage'])
+    with c2:
+        st.markdown("**⚖️ 配额与分配 (Allocation)**")
+        st.write(data['allocation'])
+        
+    st.markdown("**🔄 抵销机制与价格 (Offsets & Pricing)**")
+    st.success(data['offset'])
 
 # ==========================================
 # 7. 静态历史年表附录与参考文献
