@@ -302,7 +302,8 @@ st.markdown(f"<p style='color: gray; margin-top: 5px;'><b>{t['subtitle']}</b></p
 tab1, tab2, tab3 = st.tabs([
     "🌍 世纪地缘沙盘 (Geopolitics Sandbox)", 
     "📊 市场微观数据库 (Market Profiles)",
-    "🎛️ 宏观战略政策简报 (Strategic Policy Briefing)"
+    "🎛️ 宏观战略政策简报 (Strategic Policy Briefing)",
+    "📖 深度研究报告 (Comprehensive Report)"
 ])
 # ------------------------------------------
 # Tab 1: 主沙盘视图 (原有的所有内容)
@@ -750,6 +751,52 @@ with tab3:
         * **Geopolitical Shift**: Traditional petrostates (Saudi Arabia, UAE) are pivoting toward massive green investments, while ASEAN countries (Indonesia, Malaysia) hold vast Nature-based Solutions (NbS) potential but lack transition capital.
         * **Strategic Implication**: Post-2025, the convergence of Middle Eastern sovereign wealth and Southeast Asian climate assets forms a new "South-South" green artery, largely bypassing Western financial dominance.
         * **Policy Recommendation**: Redefine Asian Energy Security to encompass not just fossil fuel supply chains, but the deep cross-border integration of green grid infrastructure, carbon offsets, and sovereign green capital.
+        """)
+# ------------------------------------------
+# Tab 4: 深度研究报告 (Comprehensive Report)
+# ------------------------------------------
+with tab4:
+    st.subheader("📖 亚洲碳定价的觉醒：从机制碎片化到地缘战略防御")
+    st.caption("综合研究报告 | 基于沙盘推演、市场微观数据与 CBAM 冲击分析")
+    st.markdown("---")
+    
+    if lang == "中文":
+        st.markdown("""
+        *(您可以将您写好的详细报告正文粘贴在这里)*
+        
+        #### 一、 执行摘要 (Executive Summary)
+        亚洲能源安全的定义正在被改写。传统的“化石能源保供”正在向“低碳供应链安全与碳定价权争夺”转移...
+        
+        #### 二、 历史地缘演变：从跟随者到规则制定者
+        通过【世纪地缘沙盘】的演进可以看出，亚洲碳市场经历了从 CDM 时代的被动跟随，到如今本土 ETS 的全面觉醒...
+        
+        #### 三、 市场微观洞察：碎片化与不对称的亚洲格局
+        基于【市场微观数据库】对亚太22个机制的梳理，当前亚洲碳定价面临的最大挑战是机制的极度碎片化...
+        
+        #### 四、 2026 CBAM 冲击：亚洲的财务敞口与战略反击
+        正如【战略简报】所揭示，欧盟 CBAM 的实质是气候话语权与资本的跨国转移...
+        
+        #### 五、 结语
+        未来的亚洲能源安全，谁掌握了碳定价权和绿色基础设施，谁就掌握了下一个世纪的地缘主导权。
+        """)
+    else:
+        st.markdown("""
+        *(Paste your English report content here)*
+        
+        #### I. Executive Summary
+        The definition of Asian Energy Security is being rewritten...
+        
+        #### II. Historical Geopolitics: From Followers to Rule-Makers
+        As observed in the [Geopolitics Sandbox]...
+        
+        #### III. Market Observations: A Fragmented Landscape
+        Based on the [Market Profiles] of 22 APAC systems...
+        
+        #### IV. The 2026 CBAM Shock & Strategic Defense
+        As highlighted in the [Policy Briefing], CBAM acts as a cross-border wealth transfer...
+        
+        #### V. Conclusion
+        In the future of Asian energy security, pricing power equals geopolitical power.
         """)
 # ==========================================
 # 7. 静态历史年表附录与参考文献
