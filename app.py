@@ -298,8 +298,8 @@ dn, da = get_data(selected_year, cbam_trigger, link_trigger, t, lang)
 st.markdown(f"<h3 style='margin-bottom: 0px;'>{t['title']}</h3>", unsafe_allow_html=True)
 st.markdown(f"<p style='color: gray; margin-top: 5px;'><b>{t['subtitle']}</b></p>", unsafe_allow_html=True)
 
-# 创建双标签页
-tab1, tab2, tab3 = st.tabs([
+# 创建四标签页
+tab1, tab2, tab3, tab4 = st.tabs([
     "🌍 世纪地缘沙盘 (Geopolitics Sandbox)", 
     "📊 市场微观数据库 (Market Profiles)",
     "🎛️ 宏观战略政策简报 (Strategic Policy Briefing)",
