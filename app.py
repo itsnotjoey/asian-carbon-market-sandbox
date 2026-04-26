@@ -302,7 +302,7 @@ st.markdown(f"<p style='color: gray; margin-top: 5px;'><b>{t['subtitle']}</b></p
 tab1, tab2, tab3 = st.tabs([
     "🌍 世纪地缘沙盘 (Geopolitics Sandbox)", 
     "📊 市场微观数据库 (Market Profiles)",
-    "🎛️ 企业合规压力测试 (CBAM Simulator)"
+    "🎛️ 宏观战略政策简报 (Strategic Policy Briefing)"
 ])
 # ------------------------------------------
 # Tab 1: 主沙盘视图 (原有的所有内容)
@@ -694,7 +694,63 @@ with tab2:
         
     st.markdown(lbl_offset)
     st.success(data['offset'])
+# ------------------------------------------
+# Tab 3: 宏观战略政策简报 (Strategic Policy Briefing)
+# ------------------------------------------
+with tab3:
+    st.subheader("📑 亚洲能源安全与气候地缘战略简报 (Strategic Policy Briefing)")
+    
+    if lang == "中文":
+        st.markdown("""
+        **致：宏观政策制定者、气候外交官与能源战略研究员** 本简报基于“世纪地缘沙盘”的动态推演结果，提炼了影响未来亚洲能源安全的**三大核心地缘政治趋势**。
+        """)
+        
+        st.info("**💡 核心洞察一：绿色保护主义与“碳主权”的觉醒 (The Rise of Green Protectionism)**")
+        st.markdown("""
+        * **地缘现象**：随着欧盟 CBAM（碳边境调节机制）在 2026 年后全面落地，亚洲传统的“高碳出口驱动型”经济体面临严峻的碳成本倒灌。
+        * **战略推演**：CBAM 本质上是气候话语权与资本的跨国转移。如果亚洲国家不加速建立本土强制碳市场并提升碳价，其原本可用于国内能源转型的资金将以“关税”形式流失至欧洲。
+        * **政策建议**：亚洲各国必须在 2030 年前完成碳定价机制的强制化与金融化，以捍卫本国“碳主权”。
+        """)
+        
+        st.success("**💡 核心洞察二：东北亚区域互联是争夺定价权的唯一出路 (NE Asia ETS Integration)**")
+        st.markdown("""
+        * **地缘现象**：中、日、韩三国目前拥有亚洲最成熟、体量最大的碳市场，但各自为政导致碳资产存在巨大价差，在国际上缺乏统一的定价权。
+        * **战略推演**：沙盘推演显示，若中日韩在 2030-2040 年间实现碳配额（Allowance）的跨国互认与链接，将彻底重塑全球碳金融格局，使东北亚成为抗衡欧洲 ETS 的全球第二极。
+        * **政策建议**：建议以双边 Article 6 协议为起点，逐步探索中日韩及东盟共同碳框架（ACCF），建立亚洲区域碳价基准。
+        """)
+        
+        st.warning("**💡 核心洞察三：中东资本与东南亚碳汇的新型“气候轴心” (The New Climate Finance Axis)**")
+        st.markdown("""
+        * **地缘现象**：沙特、阿联酋等传统化石能源巨头正在疯狂投资绿色基建；而印尼、马来西亚等东盟国家手握全球最丰富的自然碳汇（NbS）潜力，但极度缺乏转型资金。
+        * **战略推演**：2025年以后，中东主权财富基金与东南亚气候资产的结合，正在形成一条完全独立于西方体系的“南南合作”绿色大动脉。
+        * **政策建议**：亚洲能源安全不再仅仅是“石油与天然气的保供”，更是“绿电基建、碳汇抵消与主权绿色资本”的深度跨国绑定。
+        """)
 
+    else:
+        st.markdown("""
+        **To: Policymakers, Climate Diplomats, and Energy Strategists** Based on the sandbox simulations, this briefing extracts **three core geopolitical trends** shaping the future of Asian Energy Security.
+        """)
+        
+        st.info("**💡 Insight I: Green Protectionism and the Defense of 'Carbon Sovereignty'**")
+        st.markdown("""
+        * **Geopolitical Shift**: With the EU's CBAM fully implemented post-2026, Asia's traditional carbon-intensive export economies face severe compliance cost outflows.
+        * **Strategic Implication**: CBAM acts as a cross-border wealth transfer. If Asian nations do not aggressively develop domestic mandatory ETS and raise local carbon prices, capital needed for their own green transition will be drained as tariffs to Europe.
+        * **Policy Recommendation**: Accelerate the transition from voluntary to mandatory, financialized carbon pricing by 2030 to defend domestic "carbon sovereignty."
+        """)
+        
+        st.success("**💡 Insight II: Northeast Asia Integration as the Counterbalance (NE Asia ETS Integration)**")
+        st.markdown("""
+        * **Geopolitical Shift**: China, Japan, and South Korea host Asia's largest and most mature carbon markets. However, fragmentation prevents Asia from holding global carbon pricing power.
+        * **Strategic Implication**: Sandbox projections indicate that linking the C-J-K markets between 2030-2040 would fundamentally reshape global carbon finance, creating a true counterbalance to the EU ETS.
+        * **Policy Recommendation**: Utilize Article 6 bilateral agreements as a stepping stone toward an ASEAN Common Carbon Framework (ACCF) and a unified Asian carbon price benchmark.
+        """)
+        
+        st.warning("**💡 Insight III: The Middle East - ASEAN 'Climate Finance Axis'**")
+        st.markdown("""
+        * **Geopolitical Shift**: Traditional petrostates (Saudi Arabia, UAE) are pivoting toward massive green investments, while ASEAN countries (Indonesia, Malaysia) hold vast Nature-based Solutions (NbS) potential but lack transition capital.
+        * **Strategic Implication**: Post-2025, the convergence of Middle Eastern sovereign wealth and Southeast Asian climate assets forms a new "South-South" green artery, largely bypassing Western financial dominance.
+        * **Policy Recommendation**: Redefine Asian Energy Security to encompass not just fossil fuel supply chains, but the deep cross-border integration of green grid infrastructure, carbon offsets, and sovereign green capital.
+        """)
 # ==========================================
 # 7. 静态历史年表附录与参考文献
 # ==========================================
