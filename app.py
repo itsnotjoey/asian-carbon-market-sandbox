@@ -30,7 +30,7 @@ with st.sidebar:
 if lang == "中文":
     t = {
         "title": "🌍 亚洲碳市场与气候地缘世纪推演 (1997-2060)",
-        "subtitle": "SIPA 期末项目展示 | 面向气候投资与跨国战略决策",
+        "subtitle": "亚洲能源安全 期末项目展示 | 面向气候投资与跨国战略决策",
         "sidebar_title": "⚙️ 战略控制台",
         "slider": "🕰️ 时代演进",
         "play": "▶️ 播放", "pause": "⏸️ 暂停",
