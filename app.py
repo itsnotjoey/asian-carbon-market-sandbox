@@ -299,8 +299,11 @@ st.markdown(f"<h3 style='margin-bottom: 0px;'>{t['title']}</h3>", unsafe_allow_h
 st.markdown(f"<p style='color: gray; margin-top: 5px;'><b>{t['subtitle']}</b></p>", unsafe_allow_html=True)
 
 # 创建双标签页
-tab1, tab2 = st.tabs(["🌍 世纪地缘沙盘 (Geopolitics Sandbox)", "📊 市场微观数据库 (Market Profiles)"])
-
+tab1, tab2, tab3 = st.tabs([
+    "🌍 世纪地缘沙盘 (Geopolitics Sandbox)", 
+    "📊 市场微观数据库 (Market Profiles)",
+    "🎛️ 企业合规压力测试 (CBAM Simulator)"
+])
 # ------------------------------------------
 # Tab 1: 主沙盘视图 (原有的所有内容)
 # ------------------------------------------
