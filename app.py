@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import pydeck as pdk
 import time
+import streamlit.components.v1 as components
 
 # ==========================================
 # 1. 页面基本配置
