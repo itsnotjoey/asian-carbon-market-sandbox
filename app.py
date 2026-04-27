@@ -696,6 +696,94 @@ with tab2:
         
     st.markdown(lbl_offset)
     st.success(data['offset'])
+
+st.markdown(lbl_offset)
+    st.success(data['offset'])
+
+    # ==========================================
+    # --- 以下为你需要新增的思维导图代码 ---
+    # ==========================================
+    
+    st.markdown("---") # 添加一条分割线，区分上下两部分
+    
+    if lang == "中文":
+        st.markdown("#### 🗺️ 市场全景架构图 (交互式)")
+        st.caption("💡 提示：点击蓝色圆点可以展开/折叠分支，使用鼠标滚轮缩放，按住左键拖拽。")
+    else:
+        st.markdown("#### 🗺️ Market Taxonomy (Interactive)")
+        st.caption("💡 Tip: Click blue circles to expand/collapse. Scroll to zoom, drag to move.")
+
+    # 按照 NotebookLM 逻辑编写的 Markdown 层级
+    mindmap_content = """
+# Global Carbon Market Profiles
+## Established Markets
+- **Australia**
+  - Safeguard Mechanism
+  - Mining and Manufacturing
+  - ACCU Offsets
+- **New Zealand**
+  - 2008 Launch
+  - Forestry & Energy
+- **Republic of Korea**
+  - 2015 Launch
+  - Power & Industry
+- **Indonesia**
+  - Power Sector
+## China Markets
+- **National ETS**
+  - World's Largest
+  - Power Sector
+  - CCER Offsets
+- **Regional Pilots**
+  - Beijing: Price Corridor
+  - Shanghai: 100% Compliance
+  - Guangdong: Largest Regional
+  - Shenzhen: High Liquidity
+  - Hubei: Registry Operator
+  - Chongqing: Non-CO2 GHGs
+  - Tianjin: Industrial Focus
+  - Fujian: Forestry Emphasis
+## Japan Markets
+- **GX-ETS**
+  - Voluntary Phase
+  - Mandatory by 2026
+  - Fossil Fuel Levy
+- **City-Level**
+  - Tokyo: Buildings Focus
+  - Saitama: Linked to Tokyo
+## Developing Markets
+- **India**
+  - CCTS Scheme
+  - Power & Industries
+- **Southeast Asia**
+  - Thailand
+  - Malaysia
+  - Vietnam
+- **Taiwan, China**
+  - Carbon Fee
+  - Transition to ETS
+## Common Mechanisms
+- Benchmarking
+- Grandparenting
+- Auctioning
+- Offset Credits
+    """
+    
+    # 嵌入 Markmap HTML 引擎
+    html_code = f"""
+    <div class="markmap" style="height: 500px; border: 1px solid #444; border-radius: 10px; background: #1a1a1a;">
+    <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader@0.16"></script>
+    <pre decode>
+    {mindmap_content}
+    </pre>
+    </div>
+    <style>
+    .markmap > svg {{ width: 100%; height: 100%; }}
+    </style>
+    """
+    
+    # 渲染 HTML 组件
+    components.html(html_code, height=520)
 # ------------------------------------------
 # Tab 3: 宏观战略政策简报 (Strategic Policy Briefing)
 # ------------------------------------------
