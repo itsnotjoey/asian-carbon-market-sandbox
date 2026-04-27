@@ -772,40 +772,56 @@ with tab2:
 - Offset Credits
     """
     
-    # 嵌入 Markmap HTML 引擎 (增加纯白字体覆盖和防拦截样式)
+    # 嵌入 Markmap HTML 引擎 (修复画布塌陷与居中问题)
     html_code = f"""
     <!DOCTYPE html>
-    <html>
+    <html lang="en">
     <head>
+    <meta charset="UTF-8">
     <style>
-        body {{ margin: 0; background-color: transparent; }}
-        .markmap-container {{ 
-            width: 100%; 
-            height: 500px; 
-            border: 1px solid #444; 
-            border-radius: 10px; 
-            background-color: #1e1e1e; 
-            overflow: hidden;
+        html, body {{
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
         }}
-        /* 强制覆盖 SVG 文本颜色为纯白 */
-        svg text {{ fill: #ffffff !important; font-weight: 500 !important; font-family: sans-serif; }}
-        svg foreignObject div {{ color: #ffffff !important; font-family: sans-serif; }}
+        /* 给 markmap 容器强制指定绝对高度和宽度 */
+        .markmap {{
+            width: 100%;
+            height: 500px; 
+            background-color: #1e1e1e;
+            border: 1px solid #444;
+            border-radius: 10px;
+        }}
+        /* 确保生成的 SVG 铺满整个容器 */
+        .markmap > svg {{
+            width: 100% !important;
+            height: 100% !important;
+        }}
+        /* 强制覆盖字体颜色为纯白，提升质感 */
+        svg text {{
+            fill: #ffffff !important;
+            font-family: sans-serif !important;
+        }}
+        svg foreignObject div {{
+            color: #ffffff !important;
+            font-family: sans-serif !important;
+        }}
     </style>
     <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader@0.16"></script>
     </head>
     <body>
-    <div class="markmap-container">
         <div class="markmap">
             <script type="text/template">
             {mindmap_content}
             </script>
         </div>
-    </div>
     </body>
     </html>
     """
     
-    # 渲染 HTML 组件 (关键：打开 scrolling 允许框架内捕获鼠标滚轮事件)
+    # 渲染 HTML 组件 (保持 scrolling=True 以允许鼠标滚轮交互)
     components.html(html_code, height=520, scrolling=True)
 # ------------------------------------------
 # Tab 3: 宏观战略政策简报 (Strategic Policy Briefing)
