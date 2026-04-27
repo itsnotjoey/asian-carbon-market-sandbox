@@ -478,7 +478,7 @@ with tab2:
                 "allocation": "采用基准法和祖父法免费分配，辅以“市场调整系数”调控总量，并设有20%或20万吨的履约缺口上限。每年通常举行两次配额拍卖。",
                 "offset": "CCER上限为分配量的10%。另允许配额短缺的单位使用绿电证书及武汉市级抵销信用，上限均为10%。2024年二级市场均价为40.41元人民币。"
             },
-            "中国台湾 (Taiwan, China)": {
+            "台湾 (Taiwan)": {
                 "status": "建设中。2023年《气候变迁因应法》规定将分阶段实施碳费及国内总量管制与交易计划（ETS）。",
                 "coverage": "要求年排放超25,000吨二氧化碳当量的电力和制造业从2026年起（基于2025年排放）缴纳碳费。",
                 "allocation": "初期以征收碳费为主，费率为每吨300新台币（约合9.34美元）。计划在四年内（最早2026年）由碳费过渡到ETS。",
@@ -621,7 +621,7 @@ with tab2:
                 "allocation": "Uses benchmarking and grandparenting for free allocation, along with a 'market adjustment factor'. Regular ad hoc auctions are held twice a year.",
                 "offset": "CCERs limited to 10%. Green electricity certificates and Wuhan city credits can be used specifically to offset shortfalls (capped at 10%). The 2024 average secondary market price was CNY 40.41 (USD 5.75)."
             },
-            "Taiwan, China": {
+            "Taiwan": {
                 "status": "Under development. The 2023 Climate Change Response Act mandates a carbon fee transitioning to a domestic ETS within four years (as early as 2026).",
                 "coverage": "The initial carbon fee will apply to power and manufacturing industries emitting more than 25,000 tCO2e annually, based on 2025 emissions.",
                 "allocation": "The system begins with a carbon fee of TWD 300 (USD 9.34) per tCO2e in 2026, transitioning into a full cap-and-trade mechanism.",
@@ -762,7 +762,7 @@ with tab2:
   - Thailand: Climate Change Act
   - Vietnam: 2025 Pilot
   - Malaysia: BCX Platform
-- **Taiwan, China**
+- **Taiwan**
   - Carbon Fee First
   - ETS Transition 2026
 ## Common Mechanisms
