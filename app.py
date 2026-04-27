@@ -704,13 +704,13 @@ with tab2:
     st.markdown("---")
     
     if lang == "中文":
-        st.markdown("#### 🗺️ 市场全景架构图 (交互式)")
+        st.markdown("#### 🗺️ 市场观察")
         st.caption("💡 提示：点击蓝色圆点可以展开/折叠分支，使用鼠标滚轮缩放，按住左键拖拽。")
     else:
-        st.markdown("#### 🗺️ Market Taxonomy (Interactive)")
+        st.markdown("#### 🗺️ Market Observation")
         st.caption("💡 Tip: Click blue circles to expand/collapse. Scroll to zoom, drag to move.")
 
-    # 按照 NotebookLM 逻辑编写的 Markdown 层级
+    # 按照 NotebookLM 最新逻辑编写的 Markdown 层级
     mindmap_content = """
 # Global Carbon Market Profiles
 ## Established Markets
@@ -719,13 +719,17 @@ with tab2:
   - Mining and Manufacturing
   - ACCU Offsets
 - **New Zealand**
-  - 2008 Launch
-  - Forestry & Energy
+  - Auction-based
+  - Forestry and Energy
+  - No Offsets Allowed
 - **Republic of Korea**
-  - 2015 Launch
-  - Power & Industry
+  - Nationwide Mandatory
+  - Power and Industry
+  - 567 MtCO2e Cap
 - **Indonesia**
-  - Power Sector
+  - Power Sector Focus
+  - Cap-Tax-and-Trade Hybrid
+  - Domestic Offsets
 ## China Markets
 - **National ETS**
   - World's Largest
@@ -751,14 +755,16 @@ with tab2:
 ## Developing Markets
 - **India**
   - CCTS Scheme
-  - Power & Industries
+  - Intensity-based
+  - PAT Transition
 - **Southeast Asia**
-  - Thailand
-  - Malaysia
-  - Vietnam
+  - Philippines: Bill 11375
+  - Thailand: Climate Change Act
+  - Vietnam: 2025 Pilot
+  - Malaysia: BCX Platform
 - **Taiwan, China**
-  - Carbon Fee
-  - Transition to ETS
+  - Carbon Fee First
+  - ETS Transition 2026
 ## Common Mechanisms
 - Benchmarking
 - Grandparenting
@@ -766,21 +772,41 @@ with tab2:
 - Offset Credits
     """
     
-    # 嵌入 Markmap HTML 引擎
+    # 嵌入 Markmap HTML 引擎 (增加纯白字体覆盖和防拦截样式)
     html_code = f"""
-    <div class="markmap" style="height: 500px; border: 1px solid #444; border-radius: 10px; background: #1a1a1a;">
-    <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader@0.16"></script>
-    <pre decode>
-    {mindmap_content}
-    </pre>
-    </div>
+    <!DOCTYPE html>
+    <html>
+    <head>
     <style>
-    .markmap > svg {{ width: 100%; height: 100%; }}
+        body {{ margin: 0; background-color: transparent; }}
+        .markmap-container {{ 
+            width: 100%; 
+            height: 500px; 
+            border: 1px solid #444; 
+            border-radius: 10px; 
+            background-color: #1e1e1e; 
+            overflow: hidden;
+        }}
+        /* 强制覆盖 SVG 文本颜色为纯白 */
+        svg text {{ fill: #ffffff !important; font-weight: 500 !important; font-family: sans-serif; }}
+        svg foreignObject div {{ color: #ffffff !important; font-family: sans-serif; }}
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader@0.16"></script>
+    </head>
+    <body>
+    <div class="markmap-container">
+        <div class="markmap">
+            <script type="text/template">
+            {mindmap_content}
+            </script>
+        </div>
+    </div>
+    </body>
+    </html>
     """
     
-    # 渲染 HTML 组件
-    components.html(html_code, height=520)
+    # 渲染 HTML 组件 (关键：打开 scrolling 允许框架内捕获鼠标滚轮事件)
+    components.html(html_code, height=520, scrolling=True)
 # ------------------------------------------
 # Tab 3: 宏观战略政策简报 (Strategic Policy Briefing)
 # ------------------------------------------
