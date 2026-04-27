@@ -698,7 +698,7 @@ with tab2:
     st.success(data['offset'])
 
 st.markdown(lbl_offset)
-    st.success(data['offset'])
+st.success(data['offset'])
 
     # ==========================================
     # --- 以下为你需要新增的思维导图代码 ---
