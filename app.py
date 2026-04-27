@@ -715,58 +715,58 @@ st.markdown(lbl_offset)
 
     # 按照 NotebookLM 逻辑编写的 Markdown 层级
     mindmap_content = """
-# Global Carbon Market Profiles
-## Established Markets
-- **Australia**
-  - Safeguard Mechanism
-  - Mining and Manufacturing
-  - ACCU Offsets
-- **New Zealand**
-  - 2008 Launch
-  - Forestry & Energy
-- **Republic of Korea**
-  - 2015 Launch
-  - Power & Industry
-- **Indonesia**
-  - Power Sector
-## China Markets
-- **National ETS**
-  - World's Largest
-  - Power Sector
-  - CCER Offsets
-- **Regional Pilots**
-  - Beijing: Price Corridor
-  - Shanghai: 100% Compliance
-  - Guangdong: Largest Regional
-  - Shenzhen: High Liquidity
-  - Hubei: Registry Operator
-  - Chongqing: Non-CO2 GHGs
-  - Tianjin: Industrial Focus
-  - Fujian: Forestry Emphasis
-## Japan Markets
-- **GX-ETS**
-  - Voluntary Phase
-  - Mandatory by 2026
-  - Fossil Fuel Levy
-- **City-Level**
-  - Tokyo: Buildings Focus
-  - Saitama: Linked to Tokyo
-## Developing Markets
-- **India**
-  - CCTS Scheme
-  - Power & Industries
-- **Southeast Asia**
-  - Thailand
-  - Malaysia
-  - Vietnam
-- **Taiwan, China**
-  - Carbon Fee
-  - Transition to ETS
-## Common Mechanisms
-- Benchmarking
-- Grandparenting
-- Auctioning
-- Offset Credits
+    # Global Carbon Market Profiles
+    ## Established Markets
+    - **Australia**
+      - Safeguard Mechanism
+      - Mining and Manufacturing
+      - ACCU Offsets
+    - **New Zealand**
+      - 2008 Launch
+      - Forestry & Energy
+    - **Republic of Korea**
+      - 2015 Launch
+      - Power & Industry
+    - **Indonesia**
+      - Power Sector
+    ## China Markets
+    - **National ETS**
+      - World's Largest
+      - Power Sector
+      - CCER Offsets
+    - **Regional Pilots**
+      - Beijing: Price Corridor
+      - Shanghai: 100% Compliance
+      - Guangdong: Largest Regional
+      - Shenzhen: High Liquidity
+      - Hubei: Registry Operator
+      - Chongqing: Non-CO2 GHGs
+      - Tianjin: Industrial Focus
+      - Fujian: Forestry Emphasis
+    ## Japan Markets
+    - **GX-ETS**
+      - Voluntary Phase
+      - Mandatory by 2026
+      - Fossil Fuel Levy
+    - **City-Level**
+      - Tokyo: Buildings Focus
+      - Saitama: Linked to Tokyo
+    ## Developing Markets
+    - **India**
+      - CCTS Scheme
+      - Power & Industries
+    - **Southeast Asia**
+      - Thailand
+      - Malaysia
+      - Vietnam
+    - **Taiwan, China**
+      - Carbon Fee
+      - Transition to ETS
+    ## Common Mechanisms
+    - Benchmarking
+    - Grandparenting
+    - Auctioning
+    - Offset Credits
     """
     
     # 嵌入 Markmap HTML 引擎
