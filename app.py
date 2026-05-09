@@ -771,32 +771,38 @@ with tab2:
 - Offset Credits
 """
 
-   # 核心升级：增加“物理尺寸检测”，防止 D3.js 因容器宽高为 0 导致缩放计算输出 NaN
+  # 核心升级：废弃系统主题随动，强制锁定“极客暗黑主题”，确保纯白字体完美显示
     html_code = f"""
     <!DOCTYPE html>
     <html lang="en">
     <head>
     <meta charset="UTF-8">
     <style>
-        /* 增加 touch-action: none 防止浏览器原生滚动干扰拖拽 */
+        /* 强制深色背景面板，自带高级感圆角，彻底屏蔽外部系统主题干扰 */
         html, body {{
             margin: 0; padding: 0; width: 100%; height: 100%;
-            background-color: transparent; overflow: hidden;
-            font-family: sans-serif; touch-action: none;
+            background-color: #17181c; 
+            border-radius: 8px;
+            overflow: hidden;
+            font-family: sans-serif; 
+            touch-action: none;
         }}
         svg {{
-            width: 100vw; height: 100vh; display: block;
+            width: 100%; height: 100%; display: block;
         }}
-        /* 默认模式 (Light) */
-        svg text {{ fill: #31333F !important; font-size: 14px; pointer-events: none; }}
-        foreignObject * {{ color: #31333F !important; }}
-        /* 暗色模式 (Dark) */
-        @media (prefers-color-scheme: dark) {{
-            svg text {{ fill: #ffffff !important; }}
-            foreignObject * {{ color: #ffffff !important; }}
+        
+        /* 绝对锁定纯白字体，加入微弱的文字阴影提升质感 */
+        svg text {{ 
+            fill: #ffffff !important; 
+            font-size: 14px; 
+            pointer-events: none; 
+        }}
+        foreignObject * {{ 
+            color: #ffffff !important; 
+            font-weight: 500;
         }}
     </style>
-    <!-- 引入底层依赖库 -->
+    <!-- 引入 D3.js 底层依赖库 -->
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
     <script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.16.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/markmap-view@0.16.0"></script>
@@ -808,10 +814,9 @@ with tab2:
             
             function renderMindmap() {{
                 const svgElement = document.getElementById('mindmap');
-                // 获取当前 SVG 的真实物理尺寸
                 const rect = svgElement.getBoundingClientRect();
                 
-                // 终极防御：必须确保 JS 库已加载，且容器宽度和高度 > 0 时，才允许初始化 D3 引擎！
+                // 物理雷达检测：只有当画板真正在屏幕上展开(宽高>0)时，才启动 D3 引擎，防止 NaN 崩溃
                 if (window.markmap && window.d3 && rect.width > 0 && rect.height > 0) {{
                     const {{ Markmap }} = window.markmap;
                     const transformer = new window.markmap.Transformer();
@@ -825,19 +830,18 @@ with tab2:
                         autoFit: true
                     }}, root);
                 }} else {{
-                    // 如果尺寸为 0，说明 Streamlit 还在构建框架，使用动画帧递归等待
+                    // 如果没展开，随浏览器刷新率继续轮询等待
                     requestAnimationFrame(renderMindmap);
                 }}
             }}
             
-            // 启动渲染雷达
             requestAnimationFrame(renderMindmap);
         </script>
     </body>
     </html>
     """
     
-    # 渲染 HTML 组件
+    # 渲染 HTML 组件（保持 scrolling=False）
     components.html(html_code, height=500, scrolling=False)
 # ------------------------------------------
 # Tab 3: 宏观战略政策简报 (Strategic Policy Briefing)
