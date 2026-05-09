@@ -698,7 +698,7 @@ with tab2:
     st.success(data['offset'])
 
     # ==========================================
-    # --- 以下为你新增的思维导图代码 ---
+    # --- 以下为你新增的思维导图代码 (V10 终极修复版) ---
     # ==========================================
     
     st.markdown("---")
@@ -710,7 +710,7 @@ with tab2:
         st.markdown("#### 🗺️ Market Observation")
         st.caption("💡 Tip: Click blue circles to expand/collapse. Scroll to zoom, drag to move.")
 
-    # 按照 NotebookLM 最新逻辑编写的 Markdown 层级
+    # 核心修复 1：使用 .strip() 去除 Markdown 前后的不可见空行，确保 # 号在第一行
     mindmap_content = """
 # Global Carbon Market Profiles
 ## Established Markets
@@ -770,9 +770,9 @@ with tab2:
 - Grandparenting
 - Auctioning
 - Offset Credits
-    """
+""".strip()
     
-    # 嵌入 Markmap HTML 引擎 (修复白屏：将 JS 引擎移至 DOM 底部)
+    # 核心修复 2：优化 HTML 结构，增加自动初始化脚本
     html_code = f"""
     <!DOCTYPE html>
     <html lang="en">
@@ -780,51 +780,33 @@ with tab2:
     <meta charset="UTF-8">
     <style>
         html, body {{
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            background-color: transparent;
+            margin: 0; padding: 0; width: 100%; height: 100%;
+            background-color: transparent; overflow: hidden;
         }}
         .markmap {{
-            width: 100%;
-            height: 500px; 
+            width: 100%; height: 500px;
             background-color: #1e1e1e;
             border: 1px solid #444;
             border-radius: 10px;
         }}
-        /* 强制 SVG 充满容器 */
-        .markmap > svg {{
-            width: 100% !important;
-            height: 100% !important;
-        }}
-        /* 强制覆盖字体颜色为纯白 */
-        svg text {{
-            fill: #ffffff !important;
-            font-family: sans-serif !important;
-        }}
-        svg foreignObject div {{
-            color: #ffffff !important;
-            font-family: sans-serif !important;
-        }}
+        .markmap > svg {{ width: 100% !important; height: 100% !important; }}
+        svg text {{ fill: #ffffff !important; font-family: sans-serif !important; }}
+        svg foreignObject div {{ color: #ffffff !important; font-family: sans-serif !important; }}
     </style>
     </head>
     <body>
-        <!-- 1. 先把画板和内容准备好 -->
         <div class="markmap">
             <script type="text/template">
 {mindmap_content}
             </script>
         </div>
-        
-        <!-- 2. 核心修复：最后再呼叫 JS 引擎来渲染，保证它一定能找到画板 -->
         <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader@0.16"></script>
     </body>
     </html>
     """
     
-    # 渲染 HTML 组件
-    components.html(html_code, height=520, scrolling=True)
+    # 核心修复 3：关闭 scrolling 提升稳定性
+    components.html(html_code, height=520, scrolling=False)
 # ------------------------------------------
 # Tab 3: 宏观战略政策简报 (Strategic Policy Briefing)
 # ------------------------------------------
