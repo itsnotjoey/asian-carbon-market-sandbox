@@ -771,26 +771,25 @@ with tab2:
 - Offset Credits
 """
 
-    # 核心升级：增加异步加载安全锁，确保刷新后缩放功能绝对可用
+   # 核心升级：增加“物理尺寸检测”，防止 D3.js 因容器宽高为 0 导致缩放计算输出 NaN
     html_code = f"""
     <!DOCTYPE html>
     <html lang="en">
     <head>
     <meta charset="UTF-8">
     <style>
+        /* 增加 touch-action: none 防止浏览器原生滚动干扰拖拽 */
         html, body {{
             margin: 0; padding: 0; width: 100%; height: 100%;
             background-color: transparent; overflow: hidden;
-            font-family: sans-serif;
+            font-family: sans-serif; touch-action: none;
         }}
         svg {{
-            width: 100%; height: 100%; display: block;
+            width: 100vw; height: 100vh; display: block;
         }}
-        
         /* 默认模式 (Light) */
-        svg text {{ fill: #31333F !important; font-size: 14px; }}
+        svg text {{ fill: #31333F !important; font-size: 14px; pointer-events: none; }}
         foreignObject * {{ color: #31333F !important; }}
-
         /* 暗色模式 (Dark) */
         @media (prefers-color-scheme: dark) {{
             svg text {{ fill: #ffffff !important; }}
@@ -807,37 +806,38 @@ with tab2:
         <script>
             const markdown = `{mindmap_content}`;
             
-            // 核心修复：建立安全轮询机制 (Polling)
             function renderMindmap() {{
-                // 检查 markmap 和 d3 是否已经完全挂载到浏览器窗口
-                if (window.markmap && window.d3) {{
+                const svgElement = document.getElementById('mindmap');
+                // 获取当前 SVG 的真实物理尺寸
+                const rect = svgElement.getBoundingClientRect();
+                
+                // 终极防御：必须确保 JS 库已加载，且容器宽度和高度 > 0 时，才允许初始化 D3 引擎！
+                if (window.markmap && window.d3 && rect.width > 0 && rect.height > 0) {{
                     const {{ Markmap }} = window.markmap;
                     const transformer = new window.markmap.Transformer();
                     const {{ root }} = transformer.transform(markdown);
                     
-                    // 强制清空画布，防止刷新导致的多重重叠
-                    document.getElementById('mindmap').innerHTML = '';
+                    svgElement.innerHTML = '';
                     
-                    // 生成导图并绑定缩放(zoom)、拖拽(pan)
                     Markmap.create('#mindmap', {{
                         zoom: true,
                         pan: true,
                         autoFit: true
                     }}, root);
                 }} else {{
-                    // 如果没准备好，等 50 毫秒再试一次，直到成功为止
-                    setTimeout(renderMindmap, 50);
+                    // 如果尺寸为 0，说明 Streamlit 还在构建框架，使用动画帧递归等待
+                    requestAnimationFrame(renderMindmap);
                 }}
             }}
             
-            // 启动渲染程序
-            renderMindmap();
+            // 启动渲染雷达
+            requestAnimationFrame(renderMindmap);
         </script>
     </body>
     </html>
     """
     
-    # 渲染 HTML 组件 (保持 scrolling=False)
+    # 渲染 HTML 组件
     components.html(html_code, height=500, scrolling=False)
 # ------------------------------------------
 # Tab 3: 宏观战略政策简报 (Strategic Policy Briefing)
