@@ -771,40 +771,30 @@ with tab2:
 - Offset Credits
 """
 
-    # 核心升级：引入自适应主题 (Dark/Light Mode) 的 CSS 媒体查询
+    # 核心升级：增加异步加载安全锁，确保刷新后缩放功能绝对可用
     html_code = f"""
     <!DOCTYPE html>
     <html lang="en">
     <head>
     <meta charset="UTF-8">
     <style>
-        /* 1. 撑满整个框，设定背景为透明，让 Streamlit 的底色透过来 */
         html, body {{
             margin: 0; padding: 0; width: 100%; height: 100%;
             background-color: transparent; overflow: hidden;
             font-family: sans-serif;
         }}
         svg {{
-            width: 100vw; height: 100vh;
+            width: 100%; height: 100%; display: block;
         }}
         
-        /* 2. 默认模式 (Light Mode) 的字体颜色：深灰/黑色 */
-        svg text {{
-            fill: #31333F !important;
-            font-size: 14px;
-        }}
-        foreignObject * {{
-            color: #31333F !important;
-        }}
+        /* 默认模式 (Light) */
+        svg text {{ fill: #31333F !important; font-size: 14px; }}
+        foreignObject * {{ color: #31333F !important; }}
 
-        /* 3. 暗色模式 (Dark Mode) 监听器：系统/浏览器切换为暗色时，字体自动变纯白 */
+        /* 暗色模式 (Dark) */
         @media (prefers-color-scheme: dark) {{
-            svg text {{
-                fill: #ffffff !important;
-            }}
-            foreignObject * {{
-                color: #ffffff !important;
-            }}
+            svg text {{ fill: #ffffff !important; }}
+            foreignObject * {{ color: #ffffff !important; }}
         }}
     </style>
     <!-- 引入底层依赖库 -->
@@ -816,15 +806,32 @@ with tab2:
         <svg id="mindmap"></svg>
         <script>
             const markdown = `{mindmap_content}`;
-            const {{ Markmap }} = window.markmap;
-            const transformer = new window.markmap.Transformer();
-            const {{ root }} = transformer.transform(markdown);
             
-            Markmap.create('#mindmap', {{
-                zoom: true,
-                pan: true,
-                autoFit: true
-            }}, root);
+            // 核心修复：建立安全轮询机制 (Polling)
+            function renderMindmap() {{
+                // 检查 markmap 和 d3 是否已经完全挂载到浏览器窗口
+                if (window.markmap && window.d3) {{
+                    const {{ Markmap }} = window.markmap;
+                    const transformer = new window.markmap.Transformer();
+                    const {{ root }} = transformer.transform(markdown);
+                    
+                    // 强制清空画布，防止刷新导致的多重重叠
+                    document.getElementById('mindmap').innerHTML = '';
+                    
+                    // 生成导图并绑定缩放(zoom)、拖拽(pan)
+                    Markmap.create('#mindmap', {{
+                        zoom: true,
+                        pan: true,
+                        autoFit: true
+                    }}, root);
+                }} else {{
+                    // 如果没准备好，等 50 毫秒再试一次，直到成功为止
+                    setTimeout(renderMindmap, 50);
+                }}
+            }}
+            
+            // 启动渲染程序
+            renderMindmap();
         </script>
     </body>
     </html>
