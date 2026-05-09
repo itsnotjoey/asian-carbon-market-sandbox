@@ -698,7 +698,7 @@ with tab2:
     st.success(data['offset'])
 
     # ==========================================
-    # --- 以下为你新增的思维导图代码 (V10 终极修复版) ---
+    # --- 以下为你新增的思维导图代码 (专业级 API 驱动版) ---
     # ==========================================
     
     st.markdown("---")
@@ -710,7 +710,6 @@ with tab2:
         st.markdown("#### 🗺️ Market Observation")
         st.caption("💡 Tip: Click blue circles to expand/collapse. Scroll to zoom, drag to move.")
 
-    # 核心修复 1：使用 .strip() 去除 Markdown 前后的不可见空行，确保 # 号在第一行
     mindmap_content = """
 # Global Carbon Market Profiles
 ## Established Markets
@@ -770,43 +769,69 @@ with tab2:
 - Grandparenting
 - Auctioning
 - Offset Credits
-""".strip()
-    
-    # 核心修复 2：优化 HTML 结构，增加自动初始化脚本
+"""
+
+    # 核心升级：引入自适应主题 (Dark/Light Mode) 的 CSS 媒体查询
     html_code = f"""
     <!DOCTYPE html>
     <html lang="en">
     <head>
     <meta charset="UTF-8">
     <style>
+        /* 1. 撑满整个框，设定背景为透明，让 Streamlit 的底色透过来 */
         html, body {{
             margin: 0; padding: 0; width: 100%; height: 100%;
             background-color: transparent; overflow: hidden;
+            font-family: sans-serif;
         }}
-        .markmap {{
-            width: 100%; height: 500px;
-            background-color: #1e1e1e;
-            border: 1px solid #444;
-            border-radius: 10px;
+        svg {{
+            width: 100vw; height: 100vh;
         }}
-        .markmap > svg {{ width: 100% !important; height: 100% !important; }}
-        svg text {{ fill: #ffffff !important; font-family: sans-serif !important; }}
-        svg foreignObject div {{ color: #ffffff !important; font-family: sans-serif !important; }}
+        
+        /* 2. 默认模式 (Light Mode) 的字体颜色：深灰/黑色 */
+        svg text {{
+            fill: #31333F !important;
+            font-size: 14px;
+        }}
+        foreignObject * {{
+            color: #31333F !important;
+        }}
+
+        /* 3. 暗色模式 (Dark Mode) 监听器：系统/浏览器切换为暗色时，字体自动变纯白 */
+        @media (prefers-color-scheme: dark) {{
+            svg text {{
+                fill: #ffffff !important;
+            }}
+            foreignObject * {{
+                color: #ffffff !important;
+            }}
+        }}
     </style>
+    <!-- 引入底层依赖库 -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/markmap-lib@0.16.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/markmap-view@0.16.0"></script>
     </head>
     <body>
-        <div class="markmap">
-            <script type="text/template">
-{mindmap_content}
-            </script>
-        </div>
-        <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader@0.16"></script>
+        <svg id="mindmap"></svg>
+        <script>
+            const markdown = `{mindmap_content}`;
+            const {{ Markmap }} = window.markmap;
+            const transformer = new window.markmap.Transformer();
+            const {{ root }} = transformer.transform(markdown);
+            
+            Markmap.create('#mindmap', {{
+                zoom: true,
+                pan: true,
+                autoFit: true
+            }}, root);
+        </script>
     </body>
     </html>
     """
     
-    # 核心修复 3：关闭 scrolling 提升稳定性
-    components.html(html_code, height=520, scrolling=False)
+    # 渲染 HTML 组件 (保持 scrolling=False)
+    components.html(html_code, height=500, scrolling=False)
 # ------------------------------------------
 # Tab 3: 宏观战略政策简报 (Strategic Policy Briefing)
 # ------------------------------------------
