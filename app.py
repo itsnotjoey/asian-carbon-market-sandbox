@@ -772,7 +772,7 @@ with tab2:
 - Offset Credits
     """
     
-    # 嵌入 Markmap HTML 引擎 (修复画布塌陷与居中问题)
+    # 嵌入 Markmap HTML 引擎 (修复白屏：将 JS 引擎移至 DOM 底部)
     html_code = f"""
     <!DOCTYPE html>
     <html lang="en">
@@ -786,7 +786,6 @@ with tab2:
             height: 100%;
             background-color: transparent;
         }}
-        /* 给 markmap 容器强制指定绝对高度和宽度 */
         .markmap {{
             width: 100%;
             height: 500px; 
@@ -794,12 +793,12 @@ with tab2:
             border: 1px solid #444;
             border-radius: 10px;
         }}
-        /* 确保生成的 SVG 铺满整个容器 */
+        /* 强制 SVG 充满容器 */
         .markmap > svg {{
             width: 100% !important;
             height: 100% !important;
         }}
-        /* 强制覆盖字体颜色为纯白，提升质感 */
+        /* 强制覆盖字体颜色为纯白 */
         svg text {{
             fill: #ffffff !important;
             font-family: sans-serif !important;
@@ -809,19 +808,22 @@ with tab2:
             font-family: sans-serif !important;
         }}
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader@0.16"></script>
     </head>
     <body>
+        <!-- 1. 先把画板和内容准备好 -->
         <div class="markmap">
             <script type="text/template">
-            {mindmap_content}
+{mindmap_content}
             </script>
         </div>
+        
+        <!-- 2. 核心修复：最后再呼叫 JS 引擎来渲染，保证它一定能找到画板 -->
+        <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader@0.16"></script>
     </body>
     </html>
     """
     
-    # 渲染 HTML 组件 (保持 scrolling=True 以允许鼠标滚轮交互)
+    # 渲染 HTML 组件
     components.html(html_code, height=520, scrolling=True)
 # ------------------------------------------
 # Tab 3: 宏观战略政策简报 (Strategic Policy Briefing)
