@@ -872,7 +872,7 @@ if lang == "中文":
     * **2022年**：韩国K-ETS进入第三阶段，覆盖范围扩至全国79%排放量。沙特主权基金(PIF)牵头成立中东与北非自愿碳市场(RVCMC)。
     * **2023年**：日本推出绿色转型排放权交易市场（GX-ETS）；印尼启动燃煤电厂强制ETS。阿联酋举办COP28，大力发展碳金融；澳大利亚彻底改革保障机制，要求高排企业每年减排4.9%，实质上转变为交易市场。
     * **2024年**：中国宣布ETS将扩容至钢铁等8个高碳行业。新加坡将碳税大幅提升至25新元/吨。
-    * **2025年**：越南全国试点碳市场正式启动。欧盟CBAM正式开始征收碳关税。中东主权财富基金加速跨国布局，向亚洲的绿色基建及碳汇注入巨资；**澳大利亚**加速对日韩绿氢出口布局，并探索跨国碳捕集与封存(CCS)枢纽合作。
+    * **2025年**：越南全国试点碳市场正式启动。欧盟CBAM正式开始征收碳关税。中东主权财富基金加速跨国布局，向亚洲的绿色基建及碳汇注入巨资；澳大利亚加速对日韩绿氢出口布局，并探索跨国碳捕集与封存(CCS)枢纽合作。
 
     **第三阶段：强制履约深化与行业扩容（2026—2030）**
     * **2026年**：日本GX-ETS转为强制履约。韩国电力行业拍卖比例提升至50%。印度CCTS首个正式履约期开始。马来西亚征收碳税。
@@ -891,35 +891,35 @@ if lang == "中文":
 else:
     st.markdown("""
     **Phase 1: Early Exploration & Local Pilots (1997—2020)**
-    * **1997**: Japan allows voluntary carbon offsets. **Australia** signs the Kyoto Protocol, though climate policy fluctuated heavily due to domestic fossil fuel interests; **Middle East** traditional fossil fuel exporters remain initially conservative in climate negotiations.
+    * **1997**: Japan allows voluntary carbon offsets. Australia signs the Kyoto Protocol, though climate policy fluctuated heavily due to domestic fossil fuel interests; Middle East traditional fossil fuel exporters remain initially conservative in climate negotiations.
     * **2005**: Japan launches the voluntary emissions trading scheme (JVETS).
     * **2010**: Tokyo Metropolitan Government launches Asia's first city-level mandatory cap-and-trade program (TMG ETS).
-    * **2011**: China's NDRC approves 7 regional ETS pilots. **Australia** briefly introduces a Carbon Pricing Mechanism (repealed in 2014).
+    * **2011**: China's NDRC approves 7 regional ETS pilots. Australia briefly introduces a Carbon Pricing Mechanism (repealed in 2014).
     * **2013**: China's regional pilots officially start trading.
-    * **2015**: South Korea establishes East Asia's first national mandatory carbon market (K-ETS). **Gulf states** sign the Paris Agreement, envisioning economic diversification.
-    * **2016**: Asia Society Policy Institute publishes a roadmap for linking China, Japan, and Korea. **Australia** establishes the Safeguard Mechanism to limit emissions from large facilities. The **Middle East** remains heavily reliant on fossil fuels for water desalination, highlighting the urgent need for a clean transition.
+    * **2015**: South Korea establishes East Asia's first national mandatory carbon market (K-ETS). Gulf states sign the Paris Agreement, envisioning economic diversification.
+    * **2016**: Asia Society Policy Institute publishes a roadmap for linking China, Japan, and Korea. Australia establishes the Safeguard Mechanism to limit emissions from large facilities. The Middle East remains heavily reliant on fossil fuels for water desalination, highlighting the urgent need for a clean transition.
     * **2019**: Singapore introduces a carbon tax at 5 SGD/t.
     * **2020**: Southeast Asian voluntary carbon credit supply peaks at ~21% of the global total.
 
     **Phase 2: National Mandatory Markets & Rapid Expansion (2021—2025)**
-    * **2021**: China's national ETS officially launches. **Saudi Arabia** announces Green Initiative & 2060 Net Zero, and **UAE** pledges Net Zero by 2050.
-    * **2022**: South Korea's K-ETS enters Phase 3. **Saudi PIF** establishes the MENA Regional Voluntary Carbon Market Co (RVCMC).
-    * **2023**: Japan launches the GX-ETS; Indonesia launches mandatory ETS for coal plants. **UAE** hosts COP28, aggressively expanding carbon finance; **Australia** reforms its Safeguard Mechanism, requiring 4.9% annual cuts, effectively becoming a trading market.
+    * **2021**: China's national ETS officially launches. Saudi Arabia announces Green Initiative & 2060 Net Zero, and UAE pledges Net Zero by 2050.
+    * **2022**: South Korea's K-ETS enters Phase 3. Saudi PIF establishes the MENA Regional Voluntary Carbon Market Co (RVCMC).
+    * **2023**: Japan launches the GX-ETS; Indonesia launches mandatory ETS for coal plants. UAE hosts COP28, aggressively expanding carbon finance; Australia reforms its Safeguard Mechanism, requiring 4.9% annual cuts, effectively becoming a trading market.
     * **2024**: China restarts CCER and announces ETS expansion to 8 sectors. Singapore hikes carbon tax to 25 SGD/t.
-    * **2025**: Vietnam launches pilot national ETS. EU CBAM officially begins. **Middle East** sovereign wealth funds pour capital into Asian green infrastructure and carbon sinks; **Australia** accelerates green hydrogen exports to JP/KR and explores cross-border CCS hub cooperation.
+    * **2025**: Vietnam launches pilot national ETS. EU CBAM officially begins. Middle East sovereign wealth funds pour capital into Asian green infrastructure and carbon sinks; Australia accelerates green hydrogen exports to JP/KR and explores cross-border CCS hub cooperation.
 
     **Phase 3: Deep Compliance & Sector Expansion (2026—2030)**
     * **2026**: Japan's GX-ETS transitions to mandatory compliance. Korea implements K-ETS Phase 4. Malaysia taxes steel and energy sectors.
     * **2027**: China ETS Phase 2 introduces auctioning.
     * **2028**: Japan introduces GX Surcharge. Indonesia introduces Cap-Tax-Trade hybrid mechanism.
     * **2029**: Vietnam national ETS becomes fully operational.
-    * **2030**: China achieves carbon peak. **Middle East** transitions into a climate finance & green hydrogen hub; **Australia** transitions into a 'Renewable Energy Superpower', supplying zero-carbon energy and credits to Asia.
+    * **2030**: China achieves carbon peak. Middle East transitions into a climate finance & green hydrogen hub; Australia transitions into a 'Renewable Energy Superpower', supplying zero-carbon energy and credits to Asia.
 
     **Phase 4: Deep Decarbonization, Integration & Net-Zero (2031—2060)**
     * **2033**: Japan introduces mandatory quota auctions.
-    * **2035**: EU CBAM fully implemented. China transitions to full auctioning. The **Middle East** is projected to export up to 18 million tons of clean hydrogen to major demand centers such as Europe and East Asia (Japan and South Korea).
+    * **2035**: EU CBAM fully implemented. China transitions to full auctioning. The Middle East is projected to export up to 18 million tons of clean hydrogen to major demand centers such as Europe and East Asia (Japan and South Korea).
     * **2040**: C-J-K carbon market linkage matures. SE Asia remains a core global offset hub.
-    * **2050**: Japan, Korea, Singapore, and **Australia** achieve net-zero. Australia becomes the APAC cornerstone for CDR and green commodities.
+    * **2050**: Japan, Korea, Singapore, and Australia achieve net-zero. Australia becomes the APAC cornerstone for CDR and green commodities.
     * **2060**: China achieves carbon neutrality. National ETS transforms into a carbon removal incentive system.
     """)
 
