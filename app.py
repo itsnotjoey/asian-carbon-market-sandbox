@@ -94,7 +94,7 @@ with st.sidebar:
     st.markdown(t["legend_title"] + "\n" + t["legend_text"])
 
 # ==========================================
-# 4. 【史诗级】国家历史数据库 (全面整合中日韩深度史料)
+# 4. 国家历史数据库 (全面整合中日韩深度史料)
 # ==========================================
 def get_detailed_history(country, year, lang):
     db = {
@@ -332,58 +332,6 @@ with tab1:
             map_style="https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json",
             tooltip={"html": "<b>{name}</b><br/>{status}"}
         ))
-
-    # 静态历史年表附录
-    st.markdown("---")
-    st.subheader("📜 亚洲碳市场发展年表（1997—2060）" if lang == "中文" else "📜 Asian Carbon Market Timeline (1997-2060)")
-
-    if lang == "中文":
-        st.markdown("""
-        **第一阶段：早期探索与地方试点（1997—2020）**
-        * **1997年**：日本颁布措施允许企业通过自愿碳额度抵消排放。
-        * **2005年**：日本启动自愿排放交易体系（JVETS）。
-        * **2010年**：日本东京都政府启动亚洲首个城市级强制性总量与交易计划（TMG ETS）。韩国颁布《低碳绿色增长基本法》。
-        * **2011年**：中国发改委批准北京、上海等7省市开展碳排放权交易试点。日本埼玉县ETS启动并与东京都市场互联。
-        * **2013年**：中国各地试点陆续正式开市，深圳率先启动。
-        * **2015年**：韩国建立东亚首个全国性强制碳市场（K-ETS）。
-        * **2016年**：亚洲协会政策研究院提出中日韩三国碳市场渐进式链接路线图。
-        * **2019年**：新加坡引入碳税机制，初始税率5新元/吨。
-        * **2020年**：东南亚自愿碳信用供应占全球约21%，达到历史高峰，随后快速萎缩。
-
-        **第二阶段：全国强制市场建立与快速扩张（2021—2025）**
-        * **2021年**：中国全国碳排放权交易市场正式启动。
-        * **2022年**：韩国K-ETS进入第三阶段，覆盖范围扩至全国79%排放量。
-        * **2023年**：日本推出绿色转型排放权交易市场（GX-ETS）；印尼启动燃煤电厂强制ETS；印度碳信用交易计划（CCTS）启动试点。
-        * **2024年**：中国重启CCER市场，宣布ETS将扩容至钢铁等8大行业。新加坡碳税提升至25新元/吨。
-        * **2025年**：越南全国试点碳市场启动。欧盟CBAM正式开始征收碳关税。
-
-        **第三阶段：强制履约深化与行业扩容（2026—2030）**
-        * **2026年**：日本GX-ETS转为强制履约。韩国引入"碳差额合约（CCfD）"。印度CCTS首个正式履约期开始。
-        * **2027年**：中国全国ETS进入第二阶段，逐步引入拍卖机制。印尼ETS扩容。
-        * **2028年**：日本引入GX附加费。印尼引入"总量上限—碳税—交易"混合机制。
-        * **2029年**：越南全国碳市场正式全面运行。
-        * **2030年**：中国实现碳达峰。东盟共同碳框架（ACCF）推动标准互认。
-
-        **第四阶段：深度脱碳、区域一体化与净零目标（2031—2060）**
-        * **2033年**：日本对电力行业高排放主体正式引入强制配额拍卖。
-        * **2035年**：欧盟CBAM全面实施。中国全国碳市场免费配额基本退出。
-        * **2040年**：中日韩三国碳市场链接框架趋于成熟。东南亚成为全球碳抵消枢纽。
-        * **2050年**：日、韩、新实现碳中和或净零排放。
-        * **2060年**：中国实现碳中和目标，全国碳市场转型为净零后的碳移除激励体系。
-        """)
-    else:
-        st.markdown("*Please refer to the detailed timeline in the previous section or switch to Chinese for full details.*")
-
-    with st.expander("📚 References"):
-        st.markdown("""
-        * Australian Government (DCCEEW). (2023). *Safeguard Mechanism Reforms*.
-        * BloombergNEF. (2025). *Advancing Southeast Asia Carbon Market: Nature and Nurture*.
-        * CLP. (2024). *CLP’s Climate Vision 2050*.
-        * EWING, J. (2016). *Roadmap to a Northeast Asian Carbon Market*. Asia Society Policy Institute.
-        * International Carbon Action Partnership. (2025). *Emissions Trading Worldwide: Status Report 2025*. ICAP.
-        * International Energy Agency. (2021). *Net Zero by 2050*. IEA.
-        * World Economic Forum, & Bain & Company. (2025). *Asia’s Carbon Markets: Strategic Imperatives for Corporations*. WEF.
-        """)
 
 # ------------------------------------------
 # Tab 2: 市场微观数据库 (基于 ICAP 2025 报告)
