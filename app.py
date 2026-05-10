@@ -857,35 +857,35 @@ st.subheader("📜 亚洲碳市场发展年表（1997—2060）" if lang == "中
 if lang == "中文":
     st.markdown("""
     **第一阶段：早期探索与地方试点（1997—2020）**
-    * **1997年**：日本颁布措施允许企业通过自愿碳额度抵消排放；**澳大利亚**签署《京都议定书》，但由于国内化石能源利益，气候政策长期摇摆；**中东**作为传统化石能源出口巨头，初期在国际气候谈判中持保守态度。
+    * **1997年**：日本颁布措施允许企业通过自愿碳额度抵消排放；澳大利亚签署《京都议定书》，但由于国内化石能源利益，气候政策长期摇摆；中东作为传统化石能源出口巨头，初期在国际气候谈判中持保守态度。
     * **2005年**：日本启动自愿排放交易体系（JVETS），为日后全国市场的设计积累了数据经验。
     * **2010年**：日本东京都政府启动亚洲首个城市级强制性总量与交易计划（TMG ETS）。韩国颁布《低碳绿色增长基本法》。
-    * **2011年**：中国国家发改委批准北京、上海等7个省市开展碳排放权交易试点。日本埼玉县ETS启动并与东京都市场互联。**澳大利亚**短暂引入碳定价机制（后于2014年被废除）。
+    * **2011年**：中国国家发改委批准北京、上海等7个省市开展碳排放权交易试点。日本埼玉县ETS启动并与东京都市场互联。澳大利亚短暂引入碳定价机制（后于2014年被废除）。
     * **2013年**：中国各地试点陆续正式开市，深圳率先启动。试点的总覆盖量构成当时全球规模第二大的碳市场。
-    * **2015年**：韩国正式建立东亚首个全国性强制碳市场（K-ETS）。**海湾国家**签署《巴黎协定》，开始提出经济多元化与能源转型愿景。
-    * **2016年**：亚洲协会政策研究院提出中日韩三国碳市场渐进式链接路线图。**澳大利亚**建立保障机制（Safeguard Mechanism），要求大型排放设施控制基准线。
+    * **2015年**：韩国正式建立东亚首个全国性强制碳市场（K-ETS）。海湾国家签署《巴黎协定》，开始提出经济多元化与能源转型愿景。
+    * **2016年**：亚洲协会政策研究院提出中日韩三国碳市场渐进式链接路线图。澳大利亚建立保障机制（Safeguard Mechanism），要求大型排放设施控制基准线。中东地区严重依赖化石燃料进行海水淡化，亟待转型。
     * **2019年**：新加坡引入碳税机制，初始税率5新元/吨。
     * **2020年**：东南亚自愿碳信用供应占全球约21%，达到历史高峰，随后供应快速萎缩。
 
     **第二阶段：全国强制市场建立与快速扩张（2021—2025）**
-    * **2021年**：中国全国碳排放权交易市场正式启动，成为全球最大碳市场。**沙特**提出“绿色沙特倡议”及2060净零目标，**阿联酋**宣布2050净零目标。
-    * **2022年**：韩国K-ETS进入第三阶段，覆盖范围扩至全国79%排放量。**沙特主权基金(PIF)**牵头成立中东与北非自愿碳市场(RVCMC)。
-    * **2023年**：日本推出绿色转型排放权交易市场（GX-ETS）；印尼启动燃煤电厂强制ETS。**阿联酋**举办COP28，大力发展碳金融；**澳大利亚**彻底改革保障机制，要求高排企业每年减排4.9%，实质上转变为交易市场。
+    * **2021年**：中国全国碳排放权交易市场正式启动，成为全球最大碳市场。沙特提出“绿色沙特倡议”及2060净零目标，阿联酋宣布2050净零目标。
+    * **2022年**：韩国K-ETS进入第三阶段，覆盖范围扩至全国79%排放量。沙特主权基金(PIF)牵头成立中东与北非自愿碳市场(RVCMC)。
+    * **2023年**：日本推出绿色转型排放权交易市场（GX-ETS）；印尼启动燃煤电厂强制ETS。阿联酋举办COP28，大力发展碳金融；澳大利亚彻底改革保障机制，要求高排企业每年减排4.9%，实质上转变为交易市场。
     * **2024年**：中国宣布ETS将扩容至钢铁等8个高碳行业。新加坡将碳税大幅提升至25新元/吨。
-    * **2025年**：越南全国试点碳市场正式启动。欧盟CBAM正式开始征收碳关税。**中东主权财富基金**加速跨国布局，向亚洲的绿色基建及碳汇注入巨资；**澳大利亚**加速对日韩绿氢出口布局，并探索跨国碳捕集与封存(CCS)枢纽合作。
+    * **2025年**：越南全国试点碳市场正式启动。欧盟CBAM正式开始征收碳关税。中东主权财富基金加速跨国布局，向亚洲的绿色基建及碳汇注入巨资；**澳大利亚**加速对日韩绿氢出口布局，并探索跨国碳捕集与封存(CCS)枢纽合作。
 
     **第三阶段：强制履约深化与行业扩容（2026—2030）**
     * **2026年**：日本GX-ETS转为强制履约。韩国电力行业拍卖比例提升至50%。印度CCTS首个正式履约期开始。马来西亚征收碳税。
     * **2027年**：中国全国ETS进入第二阶段，逐步引入拍卖机制。印尼ETS扩容至燃气和燃油电厂。
     * **2028年**：日本引入GX附加费。印尼引入"总量上限—碳税—交易"混合机制。
     * **2029年**：越南全国碳市场完成试点，正式全面运行。
-    * **2030年**：中国实现碳达峰，全国ETS转为绝对总量上限。**中东**从化石能源出口中心初步转型为连接亚欧的“气候金融与绿氢枢纽”；**澳大利亚**转型为“可再生能源超级大国”，为亚洲提供大量零碳能源与高质量碳信用。
+    * **2030年**：中国实现碳达峰，全国ETS转为绝对总量上限。中东从化石能源出口中心初步转型为连接亚欧的“气候金融与绿氢枢纽”；澳大利亚转型为“可再生能源超级大国”，为亚洲提供大量零碳能源与高质量碳信用。
 
     **第四阶段：深度脱碳、区域一体化与净零目标（2031—2060）**
     * **2033年**：日本对电力行业高排放主体正式引入强制配额拍卖。
-    * **2035年**：欧盟CBAM进入全面实施阶段。中国全国碳市场免费配额基本退出。
+    * **2035年**：欧盟CBAM进入全面实施阶段。中国全国碳市场免费配额基本退出。中东预计可以向欧洲和东亚（日本和韩国）等主要需求中心出口高达1800万吨的清洁氢能。
     * **2040年**：中日韩三国碳市场链接框架趋于成熟。东南亚成为全球碳抵消枢纽。
-    * **2050年**：日本、韩国、新加坡及**澳大利亚**实现碳中和或净零排放。澳大利亚成为亚太地区负排放技术(CDR)和绿色大宗商品的核心基石。
+    * **2050年**：日本、韩国、新加坡及澳大利亚实现碳中和或净零排放。澳大利亚成为亚太地区负排放技术(CDR)和绿色大宗商品的核心基石。
     * **2060年**：中国实现碳中和目标，全国碳市场转型为净零后的碳移除激励体系。
     """)
 else:
@@ -897,7 +897,7 @@ else:
     * **2011**: China's NDRC approves 7 regional ETS pilots. **Australia** briefly introduces a Carbon Pricing Mechanism (repealed in 2014).
     * **2013**: China's regional pilots officially start trading.
     * **2015**: South Korea establishes East Asia's first national mandatory carbon market (K-ETS). **Gulf states** sign the Paris Agreement, envisioning economic diversification.
-    * **2016**: Asia Society Policy Institute publishes a roadmap for linking China, Japan, and Korea. **Australia** establishes the Safeguard Mechanism to limit emissions from large facilities.
+    * **2016**: Asia Society Policy Institute publishes a roadmap for linking China, Japan, and Korea. **Australia** establishes the Safeguard Mechanism to limit emissions from large facilities. The **Middle East** remains heavily reliant on fossil fuels for water desalination, highlighting the urgent need for a clean transition.
     * **2019**: Singapore introduces a carbon tax at 5 SGD/t.
     * **2020**: Southeast Asian voluntary carbon credit supply peaks at ~21% of the global total.
 
@@ -917,7 +917,7 @@ else:
 
     **Phase 4: Deep Decarbonization, Integration & Net-Zero (2031—2060)**
     * **2033**: Japan introduces mandatory quota auctions.
-    * **2035**: EU CBAM fully implemented. China transitions to full auctioning.
+    * **2035**: EU CBAM fully implemented. China transitions to full auctioning. The **Middle East** is projected to export up to 18 million tons of clean hydrogen to major demand centers such as Europe and East Asia (Japan and South Korea).
     * **2040**: C-J-K carbon market linkage matures. SE Asia remains a core global offset hub.
     * **2050**: Japan, Korea, Singapore, and **Australia** achieve net-zero. Australia becomes the APAC cornerstone for CDR and green commodities.
     * **2060**: China achieves carbon neutrality. National ETS transforms into a carbon removal incentive system.
@@ -928,11 +928,17 @@ with st.expander("📚 References"):
     st.markdown("""
     * BloombergNEF. (2025). *Advancing Southeast Asia Carbon Market: Nature and Nurture*. BloombergNEF.
     * CLP. (2024). *CLP’s Climate Vision 2050*. CLP.
+    * Department of Climate Change, Energy, the Environment and Water. (2024a). National Hydrogen Strategy 2024. https://www.dcceew.gov.au/sites/default/files/documents/national-hydrogen-strategy-2024.pdf
+    * Department of Climate Change, Energy, the Environment and Water. (2024b). Safeguard Mechanism. https://www.dcceew.gov.au/sites/default/files/documents/safeguard-mechanism-reforms-factsheet-2023.pdf
     * EWING, J. (2016). *Roadmap to a Northeast Asian Carbon Market*. Asia Society Policy Institute.
     * Fortune Business Insights. (2026). Carbon Offsets Market Size, Share & Industry Analysis, By Type (Compliance Market and Voluntary Market), By Project Type (Avoidance/Reduction Projects and Removal/Sequestration Projects), By End-user (Renewable Energy, Forestry and Land, Industrial, Household and Appliances, Transportation, and Others), and Regional Forecast, 2026-2034. In *Fortune Business Insights*. Fortune Business Insights. https://www.fortunebusinessinsights.com/carbon-offsets-market-109080
     * International Carbon Action Partnership. (2025). *Emissions Trading Worldwide: Status Report 2025*. International Carbon Action Partnership.
     * International Energy Agency. (2021). *Net Zero by 2050*. International Energy Agency.
+    * Masdar. (2021, October 18). UAE announces Net Zero by 2050 strategic initiative. Masdar. https://masdar.ae/en/news/newsroom/uae-announces-net-zero-by-2050-strategic-initiative
+    * PIF. (2022, October 24). PIF announces the establishment of the Regional Voluntary Carbon Market Company. https://www.pif.gov.sa/en/news-and-insights/press-releases/2022/regional-voluntary-carbon-market/
+    * Saudi & Middle East Green Initiatives. (2021, October 23). HRH the Crown Prince and Prime Minister announces the Kingdom of Saudi Arabia’s aims to achieve net zero emissions by 2060. Saudi & Middle East Green Initiatives. https://www.sgi.gov.sa/knowledge-hub/hrh-the-crown-prince-and-prime-minister-announces-the-kingdom-of-saudi-arabia-s-aims-to-achieve-net-zero-emissions-by-2060/
     * Tamellini, L., Marullaz, J., Assous, A., & Barre, C. (2025). *Carbon pricing trends in Asia* (K. Diab, Ed.). Carbon Market Watch.
+    * World Economic Forum, & Bain & Company. (2023). Closing the Climate Action Gap: Accelerating Decarbonization and the Energy Transition in MENA. https://www3.weforum.org/docs/WEF_Closing_the_Climate_Action_Gap_2023.pdf
     * World Economic Forum, & Bain & Company. (2025). *Asia’s Carbon Markets: Strategic Imperatives for Corporations*. World Economic Forum.
     """)
 
