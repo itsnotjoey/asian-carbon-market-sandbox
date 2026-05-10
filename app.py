@@ -857,70 +857,70 @@ st.subheader("📜 亚洲碳市场发展年表（1997—2060）" if lang == "中
 if lang == "中文":
     st.markdown("""
     **第一阶段：早期探索与地方试点（1997—2020）**
-    * **1997年**：日本颁布措施允许企业通过自愿碳额度抵消排放，成为亚洲碳市场机制的最早探索者。
+    * **1997年**：日本颁布措施允许企业通过自愿碳额度抵消排放；**澳大利亚**签署《京都议定书》，但由于国内化石能源利益，气候政策长期摇摆；**中东**作为传统化石能源出口巨头，初期在国际气候谈判中持保守态度。
     * **2005年**：日本启动自愿排放交易体系（JVETS），为日后全国市场的设计积累了数据经验。
     * **2010年**：日本东京都政府启动亚洲首个城市级强制性总量与交易计划（TMG ETS）。韩国颁布《低碳绿色增长基本法》。
-    * **2011年**：中国国家发改委批准北京、上海等7个省市开展碳排放权交易试点。日本埼玉县ETS启动并与东京都市场互联。
+    * **2011年**：中国国家发改委批准北京、上海等7个省市开展碳排放权交易试点。日本埼玉县ETS启动并与东京都市场互联。**澳大利亚**短暂引入碳定价机制（后于2014年被废除）。
     * **2013年**：中国各地试点陆续正式开市，深圳率先启动。试点的总覆盖量构成当时全球规模第二大的碳市场。
-    * **2015年**：韩国正式建立东亚首个全国性强制碳市场（K-ETS），初期覆盖全国68%排放量。
-    * **2016年**：亚洲协会政策研究院提出中日韩三国碳市场渐进式链接的五步路线图。
+    * **2015年**：韩国正式建立东亚首个全国性强制碳市场（K-ETS）。**海湾国家**签署《巴黎协定》，开始提出经济多元化与能源转型愿景。
+    * **2016年**：亚洲协会政策研究院提出中日韩三国碳市场渐进式链接路线图。**澳大利亚**建立保障机制（Safeguard Mechanism），要求大型排放设施控制基准线。
     * **2019年**：新加坡引入碳税机制，初始税率5新元/吨。
     * **2020年**：东南亚自愿碳信用供应占全球约21%，达到历史高峰，随后供应快速萎缩。
 
     **第二阶段：全国强制市场建立与快速扩张（2021—2025）**
-    * **2021年**：中国全国碳排放权交易市场正式启动，初期覆盖电力行业约2000家企业，成为全球最大碳市场。《巴黎协定》第六条确立跨境规则。
-    * **2022年**：韩国K-ETS进入第三阶段，覆盖范围扩至全国79%排放量。
-    * **2023年**：日本推出绿色转型排放权交易市场（GX-ETS）；印尼启动燃煤电厂强制ETS；印度碳信用交易计划（CCTS）启动试点。欧盟CBAM过渡期启动。
-    * **2024年**：中国重启CCER市场，宣布ETS将扩容至钢铁等8个高碳行业。新加坡将碳税大幅提升至25新元/吨。东南亚自愿碳信用全球供应占比骤降至9%。
-    * **2025年**：越南全国试点碳市场正式启动。泰国提交《气候变化法案》草案。欧盟CBAM正式开始征收碳关税。
+    * **2021年**：中国全国碳排放权交易市场正式启动，成为全球最大碳市场。**沙特**提出“绿色沙特倡议”及2060净零目标，**阿联酋**宣布2050净零目标。
+    * **2022年**：韩国K-ETS进入第三阶段，覆盖范围扩至全国79%排放量。**沙特主权基金(PIF)**牵头成立中东与北非自愿碳市场(RVCMC)。
+    * **2023年**：日本推出绿色转型排放权交易市场（GX-ETS）；印尼启动燃煤电厂强制ETS。**阿联酋**举办COP28，大力发展碳金融；**澳大利亚**彻底改革保障机制，要求高排企业每年减排4.9%，实质上转变为交易市场。
+    * **2024年**：中国宣布ETS将扩容至钢铁等8个高碳行业。新加坡将碳税大幅提升至25新元/吨。
+    * **2025年**：越南全国试点碳市场正式启动。欧盟CBAM正式开始征收碳关税。**中东主权财富基金**加速跨国布局，向亚洲的绿色基建及碳汇注入巨资；**澳大利亚**加速对日韩绿氢出口布局，并探索跨国碳捕集与封存(CCS)枢纽合作。
 
     **第三阶段：强制履约深化与行业扩容（2026—2030）**
-    * **2026年**：日本GX-ETS转为强制履约。韩国电力行业拍卖比例提升至50%，引入"碳差额合约（CCfD）"。印度CCTS首个正式履约期开始。马来西亚征收碳税。
+    * **2026年**：日本GX-ETS转为强制履约。韩国电力行业拍卖比例提升至50%。印度CCTS首个正式履约期开始。马来西亚征收碳税。
     * **2027年**：中国全国ETS进入第二阶段，逐步引入拍卖机制。印尼ETS扩容至燃气和燃油电厂。
     * **2028年**：日本引入GX附加费。印尼引入"总量上限—碳税—交易"混合机制。
     * **2029年**：越南全国碳市场完成试点，正式全面运行。
-    * **2030年**：中国实现碳达峰，全国ETS完成向8大行业的全面扩容，机制转为绝对总量上限。新加坡完成碳税阶梯式提升。东盟共同碳框架（ACCF）推动标准互认。
+    * **2030年**：中国实现碳达峰，全国ETS转为绝对总量上限。**中东**从化石能源出口中心初步转型为连接亚欧的“气候金融与绿氢枢纽”；**澳大利亚**转型为“可再生能源超级大国”，为亚洲提供大量零碳能源与高质量碳信用。
 
     **第四阶段：深度脱碳、区域一体化与净零目标（2031—2060）**
     * **2033年**：日本对电力行业高排放主体正式引入强制配额拍卖。
     * **2035年**：欧盟CBAM进入全面实施阶段。中国全国碳市场免费配额基本退出。
-    * **2040年**：中日韩三国碳市场链接框架趋于成熟。前沿碳消除技术（DACCS, BECCS）占据重要份额。东南亚成为全球碳抵消枢纽。
-    * **2050年**：日本、韩国、新加坡实现碳中和或净零排放。亚洲碳市场在能源系统彻底转型中发挥核心倒逼作用。
+    * **2040年**：中日韩三国碳市场链接框架趋于成熟。东南亚成为全球碳抵消枢纽。
+    * **2050年**：日本、韩国、新加坡及**澳大利亚**实现碳中和或净零排放。澳大利亚成为亚太地区负排放技术(CDR)和绿色大宗商品的核心基石。
     * **2060年**：中国实现碳中和目标，全国碳市场转型为净零后的碳移除激励体系。
     """)
 else:
     st.markdown("""
     **Phase 1: Early Exploration & Local Pilots (1997—2020)**
-    * **1997**: Japan allows companies to offset emissions via voluntary carbon credits, pioneering Asian carbon market mechanisms.
-    * **2005**: Japan launches the voluntary emissions trading scheme (JVETS), accumulating data for future national market design.
-    * **2010**: Tokyo Metropolitan Government launches Asia's first city-level mandatory cap-and-trade program (TMG ETS). South Korea enacts the Framework Act on Low Carbon, Green Growth.
-    * **2011**: China's NDRC approves 7 regional ETS pilots (Beijing, Shanghai, etc.). Saitama Prefecture ETS launches in Japan and links with Tokyo.
-    * **2013**: China's regional pilots officially start trading, led by Shenzhen, becoming the world's second-largest carbon market at the time.
-    * **2015**: South Korea establishes East Asia's first national mandatory carbon market (K-ETS), covering 68% of national emissions.
-    * **2016**: Asia Society Policy Institute publishes a roadmap for linking China, Japan, and Korea carbon markets.
-    * **2019**: Singapore introduces a carbon tax covering ~80% of emissions at 5 SGD/t.
-    * **2020**: Southeast Asian voluntary carbon credit supply peaks at ~21% of the global total, dominated by nature-based projects, before rapidly shrinking.
+    * **1997**: Japan allows voluntary carbon offsets. **Australia** signs the Kyoto Protocol, though climate policy fluctuated heavily due to domestic fossil fuel interests; **Middle East** traditional fossil fuel exporters remain initially conservative in climate negotiations.
+    * **2005**: Japan launches the voluntary emissions trading scheme (JVETS).
+    * **2010**: Tokyo Metropolitan Government launches Asia's first city-level mandatory cap-and-trade program (TMG ETS).
+    * **2011**: China's NDRC approves 7 regional ETS pilots. **Australia** briefly introduces a Carbon Pricing Mechanism (repealed in 2014).
+    * **2013**: China's regional pilots officially start trading.
+    * **2015**: South Korea establishes East Asia's first national mandatory carbon market (K-ETS). **Gulf states** sign the Paris Agreement, envisioning economic diversification.
+    * **2016**: Asia Society Policy Institute publishes a roadmap for linking China, Japan, and Korea. **Australia** establishes the Safeguard Mechanism to limit emissions from large facilities.
+    * **2019**: Singapore introduces a carbon tax at 5 SGD/t.
+    * **2020**: Southeast Asian voluntary carbon credit supply peaks at ~21% of the global total.
 
     **Phase 2: National Mandatory Markets & Rapid Expansion (2021—2025)**
-    * **2021**: China's national ETS officially launches for the power sector, becoming the world's largest. Article 6 of the Paris Agreement establishes cross-border trading rules.
-    * **2022**: South Korea's K-ETS enters Phase 3, expanding to 79% of national emissions.
-    * **2023**: Japan launches the GX-ETS; Indonesia launches mandatory ETS for coal plants; India launches CCTS pilot; EU CBAM transition period begins.
-    * **2024**: China restarts CCER and announces ETS expansion to 8 sectors. Singapore hikes carbon tax to 25 SGD/t. SE Asia voluntary credit global share drops to 9%.
-    * **2025**: Vietnam launches pilot national ETS. Thailand submits Climate Change Bill. EU CBAM officially begins levying carbon tariffs.
+    * **2021**: China's national ETS officially launches. **Saudi Arabia** announces Green Initiative & 2060 Net Zero, and **UAE** pledges Net Zero by 2050.
+    * **2022**: South Korea's K-ETS enters Phase 3. **Saudi PIF** establishes the MENA Regional Voluntary Carbon Market Co (RVCMC).
+    * **2023**: Japan launches the GX-ETS; Indonesia launches mandatory ETS for coal plants. **UAE** hosts COP28, aggressively expanding carbon finance; **Australia** reforms its Safeguard Mechanism, requiring 4.9% annual cuts, effectively becoming a trading market.
+    * **2024**: China restarts CCER and announces ETS expansion to 8 sectors. Singapore hikes carbon tax to 25 SGD/t.
+    * **2025**: Vietnam launches pilot national ETS. EU CBAM officially begins. **Middle East** sovereign wealth funds pour capital into Asian green infrastructure and carbon sinks; **Australia** accelerates green hydrogen exports to JP/KR and explores cross-border CCS hub cooperation.
 
     **Phase 3: Deep Compliance & Sector Expansion (2026—2030)**
-    * **2026**: Japan's GX-ETS transitions to mandatory compliance. Korea implements K-ETS Phase 4 (50% auctioning for power, CCfD introduced). India CCTS first compliance period begins. Malaysia taxes steel and energy sectors.
-    * **2027**: China ETS Phase 2 introduces auctioning. Indonesia ETS expands to gas and oil plants.
+    * **2026**: Japan's GX-ETS transitions to mandatory compliance. Korea implements K-ETS Phase 4. Malaysia taxes steel and energy sectors.
+    * **2027**: China ETS Phase 2 introduces auctioning.
     * **2028**: Japan introduces GX Surcharge. Indonesia introduces Cap-Tax-Trade hybrid mechanism.
-    * **2029**: Vietnam national ETS becomes fully operational with auctioning.
-    * **2030**: China achieves carbon peak; ETS covers 8 sectors with absolute caps. Singapore hits target carbon tax rate. ASEAN Common Carbon Framework (ACCF) promotes standard mutual recognition.
+    * **2029**: Vietnam national ETS becomes fully operational.
+    * **2030**: China achieves carbon peak. **Middle East** transitions into a climate finance & green hydrogen hub; **Australia** transitions into a 'Renewable Energy Superpower', supplying zero-carbon energy and credits to Asia.
 
     **Phase 4: Deep Decarbonization, Integration & Net-Zero (2031—2060)**
-    * **2033**: Japan introduces mandatory quota auctions for high-emission power entities.
-    * **2035**: EU CBAM fully implemented. China ETS transitions to full auctioning, phasing out free allocation.
-    * **2040**: C-J-K carbon market linkage matures. Frontier tech (DACCS, BECCS) gains share. SE Asia remains a core global offset hub.
-    * **2050**: Japan, Korea, and Singapore achieve net-zero. Carbon markets drive major energy system transformations across Asia.
-    * **2060**: China achieves carbon neutrality. National ETS transforms into a carbon removal incentive system for net-negative emissions.
+    * **2033**: Japan introduces mandatory quota auctions.
+    * **2035**: EU CBAM fully implemented. China transitions to full auctioning.
+    * **2040**: C-J-K carbon market linkage matures. SE Asia remains a core global offset hub.
+    * **2050**: Japan, Korea, Singapore, and **Australia** achieve net-zero. Australia becomes the APAC cornerstone for CDR and green commodities.
+    * **2060**: China achieves carbon neutrality. National ETS transforms into a carbon removal incentive system.
     """)
 
 # 参考文献折叠面板 (双语环境下均保持英文)
